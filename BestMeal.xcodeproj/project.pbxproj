@@ -3,27 +3,55 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D06425686CD30A8C2C11D53 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
-		EB6F77FE2584889E00C50F9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FD2584889E00C50F9F /* ViewController.swift */; };
 		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
 		EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78022584889F00C50F9F /* Assets.xcassets */; };
 		EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */; };
+		EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */; };
+		EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783125848E8900C50F9F /* SearchViewController.swift */; };
+		EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */; };
+		EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783725848EB100C50F9F /* NameListViewController.swift */; };
+		EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783A25848EC000C50F9F /* DetailViewController.swift */; };
+		EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783D25848F4400C50F9F /* OpeningViewController.swift */; };
+		EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */; };
+		EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784325849D8B00C50F9F /* ShopData.swift */; };
+		EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78602584CABB00C50F9F /* CardViewCell.swift */; };
+		EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78612584CABB00C50F9F /* CardViewCell.xib */; };
+		EB6F78802584D7B800C50F9F /* DataOnTheCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */; };
+		EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */; };
+		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7FDD78726DFA4398899A1899 /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
+		AB652B1E367440AC205E2E80 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
+		D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB6F77FD2584889E00C50F9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB6F78002584889E00C50F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB6F78022584889F00C50F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB6F78052584889F00C50F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB6F78072584889F00C50F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		EB6F783125848E8900C50F9F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwipeViewController.swift; sourceTree = "<group>"; };
+		EB6F783725848EB100C50F9F /* NameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameListViewController.swift; sourceTree = "<group>"; };
+		EB6F783A25848EC000C50F9F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EB6F783D25848F4400C50F9F /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
+		EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsModel.swift; sourceTree = "<group>"; };
+		EB6F784325849D8B00C50F9F /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
+		EB6F78602584CABB00C50F9F /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		EB6F78612584CABB00C50F9F /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
+		EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOnTheCardModel.swift; sourceTree = "<group>"; };
+		EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoToMakeOriginalList.swift; sourceTree = "<group>"; };
+		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +59,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D06425686CD30A8C2C11D53 /* Pods_BestMeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CB61249AEC703DE57834B42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FDD78726DFA4398899A1899 /* Pods-BestMeal.debug.xcconfig */,
+				AB652B1E367440AC205E2E80 /* Pods-BestMeal.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7F93EE6ED0E47D606646B805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB6F77ED2584889E00C50F9F = {
 			isa = PBXGroup;
 			children = (
 				EB6F77F82584889E00C50F9F /* BestMeal */,
 				EB6F77F72584889E00C50F9F /* Products */,
+				0CB61249AEC703DE57834B42 /* Pods */,
+				7F93EE6ED0E47D606646B805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +104,51 @@
 		EB6F77F82584889E00C50F9F /* BestMeal */ = {
 			isa = PBXGroup;
 			children = (
-				EB6F77F92584889E00C50F9F /* AppDelegate.swift */,
-				EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */,
-				EB6F77FD2584889E00C50F9F /* ViewController.swift */,
-				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
-				EB6F78022584889F00C50F9F /* Assets.xcassets */,
-				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
+				EB6F780F25848AE400C50F9F /* Model */,
+				EB6F781125848AEF00C50F9F /* Controller */,
+				EB6F781025848AE900C50F9F /* View */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
 			);
 			path = BestMeal;
+			sourceTree = "<group>";
+		};
+		EB6F780F25848AE400C50F9F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
+				EB6F784325849D8B00C50F9F /* ShopData.swift */,
+				EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */,
+				EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB6F781025848AE900C50F9F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F78602584CABB00C50F9F /* CardViewCell.swift */,
+				EB6F78612584CABB00C50F9F /* CardViewCell.xib */,
+				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
+				EB6F78022584889F00C50F9F /* Assets.xcassets */,
+				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB6F781125848AEF00C50F9F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F77F92584889E00C50F9F /* AppDelegate.swift */,
+				EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */,
+				EB6F783D25848F4400C50F9F /* OpeningViewController.swift */,
+				EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */,
+				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
+				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
+				EB6F783725848EB100C50F9F /* NameListViewController.swift */,
+				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
+				EB6F783A25848EC000C50F9F /* DetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB6F780A2584889F00C50F9F /* Build configuration list for PBXNativeTarget "BestMeal" */;
 			buildPhases = (
+				E26208A1E4B2A150C944B936 /* [CP] Check Pods Manifest.lock */,
 				EB6F77F22584889E00C50F9F /* Sources */,
 				EB6F77F32584889E00C50F9F /* Frameworks */,
 				EB6F77F42584889E00C50F9F /* Resources */,
+				B50D4B3786DAA5B835336268 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,20 +212,74 @@
 			files = (
 				EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */,
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
+				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
 				EB6F78012584889E00C50F9F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B50D4B3786DAA5B835336268 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BestMeal/Pods-BestMeal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BestMeal/Pods-BestMeal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BestMeal/Pods-BestMeal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E26208A1E4B2A150C944B936 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BestMeal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB6F77F22584889E00C50F9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB6F77FE2584889E00C50F9F /* ViewController.swift in Sources */,
+				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
+				EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */,
+				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
+				EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
+				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
+				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
+				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
+				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
+				EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */,
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
+				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
+				EB6F78802584D7B800C50F9F /* DataOnTheCardModel.swift in Sources */,
+				EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +423,7 @@
 		};
 		EB6F780B2584889F00C50F9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FDD78726DFA4398899A1899 /* Pods-BestMeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +442,7 @@
 		};
 		EB6F780C2584889F00C50F9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB652B1E367440AC205E2E80 /* Pods-BestMeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
