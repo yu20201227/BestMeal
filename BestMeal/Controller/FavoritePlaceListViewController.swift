@@ -53,8 +53,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         self.title = "\(userName)'s MusicList"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HUD.show(.progress)
     }
     
 
