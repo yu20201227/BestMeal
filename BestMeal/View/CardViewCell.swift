@@ -12,11 +12,13 @@ class CardViewCell: CardCell {
     
     @IBOutlet weak var goodImages:UIImageView!
     @IBOutlet weak var placeNameLabel:UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
+        
+        
+            }
     override func prepareForReuse() {
         super.prepareForReuse()
     }

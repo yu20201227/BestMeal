@@ -16,8 +16,8 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
+    
     @IBAction func registerButton(sender:UIButton){
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passTextField.text!) { (result, error) in
             

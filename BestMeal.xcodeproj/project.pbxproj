@@ -26,6 +26,7 @@
 		EB6F78802584D7B800C50F9F /* DataOnTheCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */; };
 		EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */; };
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
+		EB6F788B2585A31F00C50F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOnTheCardModel.swift; sourceTree = "<group>"; };
 		EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoToMakeOriginalList.swift; sourceTree = "<group>"; };
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
+		EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				EB6F781125848AEF00C50F9F /* Controller */,
 				EB6F781025848AE900C50F9F /* View */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
+				EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */,
 			);
 			path = BestMeal;
 			sourceTree = "<group>";
@@ -115,8 +118,8 @@
 		EB6F780F25848AE400C50F9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
+				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */,
 				EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */,
 			);
@@ -214,6 +217,7 @@
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
 				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
 				EB6F78012584889E00C50F9F /* Main.storyboard in Resources */,
+				EB6F788B2585A31F00C50F9F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

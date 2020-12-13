@@ -18,10 +18,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     let animationView = AnimationView()
     let locationManager = CLLocationManager()
+    var annotation = MKPointAnnotation()
     
     var idoValue = Double()
     var keidoValue = Double()
-    var apikey = ""
+    var apikey = "d88dcf59b664fa3f9b089ed353977965"
     var totalHitCount = Int()
     var indexNumber = Int()
     var shopDataArray = [ShopData]()
@@ -33,6 +34,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        startUpdatingLocation()
+        configureSubview()
 
     }
     func bootIndicator(){
@@ -75,7 +78,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         locationManager.startUpdatingLocation()
         
         mapView.delegate = self
-        mapView.mapType = .satellite
+        mapView.mapType = .standard
         mapView.userTrackingMode = .follow
     }
     @IBAction func searchButton(sender:UIButton){
@@ -87,19 +90,57 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         //boot AnalyticdModel
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
+            }
+    
+    func addAnnotation(shopData:[ShopData]){
+        
+        for i in 0...totalHitCount - 1 {
+            print(i)
+            
+            annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
+            
+            annotation.title = shopData[i].name
+            annotation.subtitle = shopData[i].tel
+            
+            urlStringArray.append(shopData[i].url!)
+            imageStringArray.append(shopData[i].shop_image!)
+            nameStringArray.append(shopData[i].name!)
+            telArray.append(shopData[i].tel!)
+            mapView.addAnnotation(annotation)
+        }
+        searchTextField.resignFirstResponder()
+    }
+    
+    func removeArray(){
+        mapView.removeAnnotations(mapView.annotations)
+        urlStringArray = []
+        imageStringArray = []
+        nameStringArray = []
+        telArray = []
     }
     
     func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
+        addAnnotation(shopData: shopDataArray)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         indexNumber = Int()
+        
+        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
+            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
+        }
+        performSegue(withIdentifier: "toCards", sender: nil)
+    }
+    
+    //それぞれのArrayの後に[indexNumber]をつける
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cardVC = segue.destination as! CardSwipeViewController
-        cardVC.urlInfos = urlStringArray[indexNumber]
-        cardVC.nameInfos = nameStringArray[indexNumber]
-        cardVC.imageUrlStringInfos = imageStringArray[indexNumber]
-        cardVC.telInfos = telArray[indexNumber]
+        cardVC.urlInfos = [urlStringArray[indexNumber]]
+        cardVC.nameInfos = [nameStringArray[indexNumber]]
+        cardVC.imageUrlStringInfos = [imageStringArray[indexNumber]]
+        cardVC.telInfos = [telArray[indexNumber]]
         
         
     }

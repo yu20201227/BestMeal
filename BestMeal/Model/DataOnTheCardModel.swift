@@ -47,7 +47,7 @@ class DataOnTheCardModel {
     }
     
     func toContents()->[String:Any]{
-        return ["nameOnTheCard":nameOnTheCard!, "imageOnTheCard":imageOnTheCard!, "userEmail":userEmail!, "userName":userName!, "telOnTheCard":telOnTheCard, "urlInfoOnTheCard":urlInfoOnTheCard]
+        return ["nameOnTheCard":nameOnTheCard!, "imageOnTheCard":imageOnTheCard!, "userEmail":userEmail!, "userName":userName!, "telOnTheCard":telOnTheCard!, "urlInfoOnTheCard":urlInfoOnTheCard!]
     }
     func save(){
         ref.setValue(toContents())

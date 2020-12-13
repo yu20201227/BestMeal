@@ -35,10 +35,12 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         cardSwiper.delegate = self
         cardSwiper.datasource = self
         cardSwiper.register(nib:UINib(nibName: "CardViewCell", bundle: nil), forCellWithReuseIdentifier: "CardViewCell")
         cardSwiper.reloadData()
+        
         
         
         
@@ -48,6 +50,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
+        
+
         
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: index) as? CardViewCell {
             verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
@@ -60,12 +64,16 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardCell.placeNameLabel.text = placename
             cardCell.placeNameLabel.textColor = UIColor.black
             cardCell.goodImages.sd_setImage(with: URL(string: imageUrlStringInfos[index]), completed: nil)
+            
+        
+            
+            
             return cardCell
             
         }
         return CardCell()
     }
-    //willswipeaway記述（indexがない)
+
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         urlInfos.remove(at: index)
         telInfos.remove(at: index)
@@ -93,5 +101,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     @IBAction func backButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func toFavListButton(sender:UIButton){
+        performSegue(withIdentifier: "toList", sender: nil)
     }
 }
