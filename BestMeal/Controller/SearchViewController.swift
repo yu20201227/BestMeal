@@ -3,7 +3,7 @@
 //  BestMeal
 //
 //  Created by Owner on 2020/12/12.
-//
+//There is no indicator...
 
 import UIKit
 import MapKit
@@ -36,11 +36,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         super.viewDidLoad()
         startUpdatingLocation()
         configureSubview()
-
-    }
-    func bootIndicator(){
         
     }
+    
     //get permisson of user's current location
     func startUpdatingLocation(){
         locationManager.requestAlwaysAuthorization()
