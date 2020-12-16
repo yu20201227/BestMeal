@@ -100,8 +100,24 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         return cell
     }
+    
+    func toDetailScreen(){
+        performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    func showAlert(){
+        
+        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
+        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
+            self.toDetailScreen()
+        }
+        let cancel = UIAlertAction(title: "キャンセル", style: .cancel)
+            
+            alertController.addAction(toDetailInfo)
+            alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+        }
+    }
 
     
-
-}
 
