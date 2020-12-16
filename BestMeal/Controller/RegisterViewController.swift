@@ -11,7 +11,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField:UITextField!
+    @IBOutlet weak var userNameTextField:UITextField!
     @IBOutlet weak var passTextField:UITextField!
 
     override func viewDidLoad() {
@@ -19,8 +19,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButton(sender:UIButton){
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passTextField.text!) { (result, error) in
-            
+        Auth.auth().createUser(withEmail: userNameTextField.text!, password: passTextField.text!) { (result, error) in
+
             if result?.user != nil {
                 self.performSegue(withIdentifier: "toSearch", sender: nil)
                 
@@ -29,5 +29,5 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-    
 }
+    

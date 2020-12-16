@@ -79,6 +79,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         mapView.mapType = .standard
         mapView.userTrackingMode = .follow
     }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         let latitude = location?.coordinate.latitude
@@ -90,7 +91,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBAction func searchButton(sender:UIButton){
         searchTextField.resignFirstResponder()
         
-        let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=50&freeword=\(searchTextField.text!)"
+        let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
         //boot AnalyticdModel
@@ -101,26 +102,26 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
 
     }
     
-//    func addAnnotation(shopData:[ShopData]){
-//        removeArray()
-//
-//        for i in 0...totalHitCount - 1 {
-//            print(i)
-//
-//            annotation = MKPointAnnotation()
-//            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
-//
-//            annotation.title = shopData[i].name
-//            annotation.subtitle = shopData[i].tel
-//
-//            urlStringArray.append(shopData[i].url!)
-//            imageStringArray.append(shopData[i].shop_image!)
-//            nameStringArray.append(shopData[i].name!)
-//            telArray.append(shopData[i].tel!)
-//            mapView.addAnnotation(annotation)
-//        }
-//        searchTextField.resignFirstResponder()
-//    }
+    func addAnnotation(shopData:[ShopData]){
+        removeArray()
+
+        for i in 0...totalHitCount - 1 {
+            print(i)
+
+            annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
+
+            annotation.title = shopData[i].name
+            annotation.subtitle = shopData[i].tel
+
+            urlStringArray.append(shopData[i].url!)
+            imageStringArray.append(shopData[i].shop_image!)
+            nameStringArray.append(shopData[i].name!)
+            telArray.append(shopData[i].tel!)
+            mapView.addAnnotation(annotation)
+        }
+        searchTextField.resignFirstResponder()
+    }
 
     func removeArray(){
         mapView.removeAnnotations(mapView.annotations)
@@ -134,16 +135,17 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         shopDataArray = arrayData
         totalHitCount = resultCount
 
-        //addAnnotation(shopData: shopDataArray)
+        addAnnotation(shopData: shopDataArray)
     }
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        indexNumber = Int()
-//
-//        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
-//            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
-//        }
-//        performSegue(withIdentifier: "toCards", sender: nil)
-//    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        indexNumber = Int()
+
+        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
+            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
+        }
+        performSegue(withIdentifier: "toCards", sender: nil)
+    }
+    
 
     //それぞれのArrayの後に[indexNumber]をつける
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

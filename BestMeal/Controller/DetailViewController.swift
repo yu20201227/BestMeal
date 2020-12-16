@@ -31,6 +31,9 @@ class DetailViewController: UIViewController {
     @IBAction func telButton(_ sender: Any) {
         UIApplication.shared.open(URL(string: "tel://\(tel)")!, options: [:], completionHandler: nil)
     }
+    @IBAction func backButton(sender:UIButton){
+        dismiss(animated: true, completion: nil)
+    }
     
 
 }

@@ -21,7 +21,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var listImage = ""
     var listTel = ""
     var userName = ""
-    var userEmail = ""
+    var userPass = ""
     var favRef = Database.database().reference()
     
     
@@ -31,8 +31,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         favTableView.allowsSelection = true
         
         
-        if UserDefaults.standard.object(forKey: "userEmali") != nil{
-            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
+        if UserDefaults.standard.object(forKey: "userPass") != nil{
+            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
         }
 
         if UserDefaults.standard.object(forKey: "userName") != nil{
