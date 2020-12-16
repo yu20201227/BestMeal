@@ -209,8 +209,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krn-3j-KA7">
-                                                    <rect key="frame" x="16" y="11" width="327" height="108"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t10-n6-GcL">
+                                                    <rect key="frame" x="16" y="24" width="343" height="95"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -225,10 +225,13 @@
                         <viewLayoutGuide key="safeArea" id="UK9-Jd-kmc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="HLd-2J-ZYZ" id="ERg-oz-tgw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYr-d5-8kh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2977" y="851"/>
+            <point key="canvasLocation" x="2976.8000000000002" y="850.52473763118451"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="a6H-Eb-fQr">
@@ -295,6 +298,9 @@
                                 <rect key="frame" x="221" y="26" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="お気に入りリストへ"/>
+                                <connections>
+                                    <action selector="toFavListButtonWithSender:" destination="uXE-cJ-inV" eventType="touchUpInside" id="UPD-JX-QmU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IbU-ya-DpF"/>

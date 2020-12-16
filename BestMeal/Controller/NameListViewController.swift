@@ -12,7 +12,7 @@ import PKHUD
 
 class NameListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    @IBOutlet weak var nameLabel:UILabel!
+
     @IBOutlet weak var tableView:UITableView!
     
     var listRef = Database.database().reference()
