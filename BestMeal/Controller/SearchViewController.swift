@@ -79,6 +79,14 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         mapView.mapType = .standard
         mapView.userTrackingMode = .follow
     }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first
+        let latitude = location?.coordinate.latitude
+        let longitude = location?.coordinate.longitude
+        idoValue = latitude!
+        keidoValue = longitude!
+    }
+    
     @IBAction func searchButton(sender:UIButton){
         searchTextField.resignFirstResponder()
         
@@ -88,29 +96,32 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         //boot AnalyticdModel
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
-    }
-    
-    func addAnnotation(shopData:[ShopData]){
-        removeArray()
         
-        for i in 0...totalHitCount - 1 {
-            print(i)
-            
-            annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
-            
-            annotation.title = shopData[i].name
-            annotation.subtitle = shopData[i].tel
-            
-            urlStringArray.append(shopData[i].url!)
-            imageStringArray.append(shopData[i].shop_image!)
-            nameStringArray.append(shopData[i].name!)
-            telArray.append(shopData[i].tel!)
-            mapView.addAnnotation(annotation)
-        }
-        searchTextField.resignFirstResponder()
+        performSegue(withIdentifier: "toCards", sender: nil)
+
     }
     
+//    func addAnnotation(shopData:[ShopData]){
+//        removeArray()
+//
+//        for i in 0...totalHitCount - 1 {
+//            print(i)
+//
+//            annotation = MKPointAnnotation()
+//            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
+//
+//            annotation.title = shopData[i].name
+//            annotation.subtitle = shopData[i].tel
+//
+//            urlStringArray.append(shopData[i].url!)
+//            imageStringArray.append(shopData[i].shop_image!)
+//            nameStringArray.append(shopData[i].name!)
+//            telArray.append(shopData[i].tel!)
+//            mapView.addAnnotation(annotation)
+//        }
+//        searchTextField.resignFirstResponder()
+//    }
+
     func removeArray(){
         mapView.removeAnnotations(mapView.annotations)
         urlStringArray = []
@@ -118,29 +129,30 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         nameStringArray = []
         telArray = []
     }
-    
-    func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
+
+   func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
-        
-        addAnnotation(shopData: shopDataArray)
+
+        //addAnnotation(shopData: shopDataArray)
     }
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        indexNumber = Int()
-        
-        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
-            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
-        }
-        performSegue(withIdentifier: "toCards", sender: nil)
-    }
-    
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        indexNumber = Int()
+//
+//        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
+//            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
+//        }
+//        performSegue(withIdentifier: "toCards", sender: nil)
+//    }
+
     //それぞれのArrayの後に[indexNumber]をつける
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let cardVC = segue.destination as! CardSwipeViewController
-        cardVC.urlInfos = [urlStringArray[indexNumber]]
-        cardVC.nameInfos = [nameStringArray[indexNumber]]
-        cardVC.imageUrlStringInfos = [imageStringArray[indexNumber]]
-        cardVC.telInfos = [telArray[indexNumber]]
+        cardVC.urlInfos = urlStringArray
+        cardVC.nameInfos = nameStringArray
+        cardVC.imageUrlStringInfos = imageStringArray
+        cardVC.telInfos = telArray
         
         
     }
