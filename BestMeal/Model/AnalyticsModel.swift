@@ -41,7 +41,7 @@ class AnalyticsModel {
                     print(json.description)
                     var totalCount = json["total_hit_count"].int
                     if totalCount! > 50 {
-                        totalCount  = 50
+                        totalCount = 50
                     }
                     
                     for i in 0...totalCount! - 1 {
