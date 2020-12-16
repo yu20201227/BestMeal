@@ -82,15 +82,16 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBAction func searchButton(sender:UIButton){
         searchTextField.resignFirstResponder()
         
-        let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=50&freeword=\(searchTextField.text!)&"
+        let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=50&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
         //boot AnalyticdModel
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
-            }
+    }
     
     func addAnnotation(shopData:[ShopData]){
+        removeArray()
         
         for i in 0...totalHitCount - 1 {
             print(i)
@@ -121,6 +122,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
+        
         addAnnotation(shopData: shopDataArray)
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
