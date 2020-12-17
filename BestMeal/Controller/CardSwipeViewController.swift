@@ -3,7 +3,7 @@
 //  BestMeal
 //
 //  Created by Owner on 2020/12/12.
-//
+//品質管理：a版
 
 import UIKit
 import VerticalCardSwiper
@@ -20,8 +20,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     var imageUrlStringInfos = [String]()
     var telInfos = [String]()
     
+    var userPass = String()
     var userEmail = String()
-    var userName = String()
     
     var likePlaceUrlArray = [String]()
     var likePlaceNameArray = [String]()
@@ -65,9 +65,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardCell.placeNameLabel.textColor = UIColor.black
             cardCell.goodImages.sd_setImage(with: URL(string: imageUrlStringInfos[index]), completed: nil)
             
-        
-            
-            
             return cardCell
             
         }
@@ -92,7 +89,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             
             if likePlaceNameArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceUrlArray.count != 0 && likePlaceImageUrlAray.count != 0 {
                 
-                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userEmail: userEmail, userName: userName, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
+                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
                 
                 dataOnTheCardModel.save()
                 

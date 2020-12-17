@@ -69,7 +69,7 @@ class NameListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let listDataModel = getUserIdDataArray[indexPath.row]
         let userNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-        userNameLabel.text = "\(String(describing: listDataModel.userName))'s List"
+        userNameLabel.text = "\(String(describing: listDataModel.userEmail))'s List"
         
         return cell
         

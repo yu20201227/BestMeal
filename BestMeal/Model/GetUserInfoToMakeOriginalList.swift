@@ -11,16 +11,25 @@ import PKHUD
 
 class GetUserInfoToMakeOriginalList {
     
+    var userPass:String! = ""
     var userEmail:String! = ""
-    var userName:String! = ""
     var ref:DatabaseReference! = Database.database().reference().child("profile")
     
     init(snapShot:DataSnapshot){
         ref = snapShot.ref
         if let value = snapShot.value as? [String:Any]{
-            userName = value["userName"] as? String
             userEmail = value["userEmail"] as? String
+            userPass = value["userPass"] as? String
             
+        }
+        func toContents()-> [String:Any]{
+            return ["userEmail":userEmail,"userPass":userPass as Any]
+            
+        }
+        //MusicListAppでは"userName"は"autoID"になっている
+        func saveProfile(){
+            ref.setValue(toContents())
+            UserDefaults.standard.set(ref.key, forKey: "userName")
         }
     }
 }
