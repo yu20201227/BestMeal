@@ -94,7 +94,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
         //let placeUrlLabel = cell.contentView.viewWithTag(3) as! UILabel
-        placeNameLabelOnTheList.text = cardData.nameOnTheCard
+        placeNameLabelOnTheList.text = "\(String(describing: cardData.nameOnTheCard))'S List"
         //placeUrlLabel.text = cardData.urlInfoOnTheCard
         
         placeImageViewOnTheList.sd_setImage(with: URL(string: cardData.imageOnTheCard), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
@@ -112,10 +112,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
             self.toDetailScreen()
         }
-        let cancel = UIAlertAction(title: "キャンセル", style: .cancel)
+        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
             
             alertController.addAction(toDetailInfo)
-            alertController.addAction(cancel)
+            alertController.addAction(toCancel)
         self.present(alertController, animated: true, completion: nil)
         }
     
@@ -123,6 +123,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     @IBAction func tapImage(_ sender: Any)
     {
         showAlert()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //画面タップ後の情報？
     }
 }
 

@@ -102,4 +102,4 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     @IBAction func toFavListButton(sender:UIButton){
         performSegue(withIdentifier: "toList", sender: nil)
     }
-}
+    }

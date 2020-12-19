@@ -28,7 +28,7 @@ class DataOnTheCardModel {
         self.telOnTheCard = telOnTheCard
         self.urlInfoOnTheCard = urlInfoOnTheCard
         
-        ref = Database.database().reference().child("users").child(userEmail).childByAutoId()
+        ref = Database.database().reference().child("users").child("userEmail").childByAutoId()
     }
     
     init(snapShot:DataSnapshot){

@@ -23,7 +23,7 @@ class GetUserInfoToMakeOriginalList {
             
         }
         func toContents()-> [String:Any]{
-            return ["userEmail":userEmail,"userPass":userPass as Any]
+            return ["userEmail":userEmail, "userPass":userPass]
             
         }
         //MusicListAppでは"userName"は"autoID"になっている
