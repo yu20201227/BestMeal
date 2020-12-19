@@ -15,20 +15,20 @@ class DataOnTheCardModel {
     var imageOnTheCard:String! = ""
     var telOnTheCard:String! = ""
     var urlInfoOnTheCard:String! = ""
+    var userPass:String! = ""
     var userEmail:String! = ""
-    var userName:String! = ""
     var ref:DatabaseReference!
     
-    init(nameOnTheCard:String, imageOnTheCard:String, userEmail:String, userName:String, telOnTheCard:String, urlInfoOnTheCard:String){
+    init(nameOnTheCard:String, imageOnTheCard:String, userPass:String, userEmail:String, telOnTheCard:String, urlInfoOnTheCard:String){
         
         self.nameOnTheCard = nameOnTheCard
         self.imageOnTheCard = imageOnTheCard
-        self.userName = userName
         self.userEmail = userEmail
+        self.userPass = userPass
         self.telOnTheCard = telOnTheCard
         self.urlInfoOnTheCard = urlInfoOnTheCard
         
-        ref = Database.database().reference().child("users").child(userName).childByAutoId()
+        ref = Database.database().reference().child("users").child("userEmail").childByAutoId()
     }
     
     init(snapShot:DataSnapshot){
@@ -37,8 +37,8 @@ class DataOnTheCardModel {
             
             nameOnTheCard = value["nameOnTheCard"] as? String
             imageOnTheCard = value["imageOnTheCard"] as? String
-            userName = value["userName"] as? String
             userEmail = value["userEmail"] as? String
+            userPass = value["userPass"] as? String
             telOnTheCard = value["telOnTheCard"] as? String
             urlInfoOnTheCard = value["urlInfoOnTheCard"] as? String
 
@@ -47,7 +47,7 @@ class DataOnTheCardModel {
     }
     
     func toContents()->[String:Any]{
-        return ["nameOnTheCard":nameOnTheCard!, "imageOnTheCard":imageOnTheCard!, "userEmail":userEmail!, "userName":userName!, "telOnTheCard":telOnTheCard!, "urlInfoOnTheCard":urlInfoOnTheCard!]
+        return ["nameOnTheCard":nameOnTheCard!, "imageOnTheCard":imageOnTheCard!, "userPass":userPass!, "userEmail":userEmail!, "telOnTheCard":telOnTheCard!, "urlInfoOnTheCard":urlInfoOnTheCard!]
     }
     func save(){
         ref.setValue(toContents())

@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         detailTableView.sd_setImage(with: URL(string: imageURLString), completed: nil)
-        let request = URLRequest(url: URL(string: url)!)
+        let request = URLRequest(url: (URL(string: url))!)
         webKit.load(request)
 
     }

@@ -16,7 +16,6 @@
 		EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */; };
 		EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783125848E8900C50F9F /* SearchViewController.swift */; };
 		EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */; };
-		EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783725848EB100C50F9F /* NameListViewController.swift */; };
 		EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783A25848EC000C50F9F /* DetailViewController.swift */; };
 		EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783D25848F4400C50F9F /* OpeningViewController.swift */; };
 		EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */; };
@@ -43,7 +42,6 @@
 		EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EB6F783125848E8900C50F9F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwipeViewController.swift; sourceTree = "<group>"; };
-		EB6F783725848EB100C50F9F /* NameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameListViewController.swift; sourceTree = "<group>"; };
 		EB6F783A25848EC000C50F9F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EB6F783D25848F4400C50F9F /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsModel.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */,
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
-				EB6F783725848EB100C50F9F /* NameListViewController.swift */,
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
 				EB6F783A25848EC000C50F9F /* DetailViewController.swift */,
 			);
@@ -273,7 +270,6 @@
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
 				EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
-				EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,

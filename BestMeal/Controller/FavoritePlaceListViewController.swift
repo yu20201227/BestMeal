@@ -12,17 +12,19 @@ import PKHUD
 
 class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
+
     @IBOutlet weak var favTableView:UITableView!
+        
     
     var onTheCardDataArray = [DataOnTheCardModel]()
     var listName = ""
     var listUrl = ""
     var listImage = ""
     var listTel = ""
-    var userName = ""
+    var userEmail = ""
     var userPass = ""
     var favRef = Database.database().reference()
+    var indexNumber = Int()
     
     
     override func viewDidLoad() {
@@ -37,9 +39,9 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
 
         if UserDefaults.standard.object(forKey: "userName") != nil{
             
-            userName = UserDefaults.standard.object(forKey: "userName") as! String
+            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
             
-            self.title = "\(userName)'s MusicList"
+            self.title = "\(userEmail)'s MusicList"
         }
         favTableView.delegate = self
         favTableView.dataSource = self
@@ -49,9 +51,9 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
         
-        self.title = "\(userName)'s MusicList"
+        self.title = "\(userEmail)'s MusicList"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -59,7 +61,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         super.viewDidAppear(animated)
         HUD.show(.progress)
         
-        favRef.child("users").child(userName).observe(.value) { (snapshot) in
+        favRef.child("users").child("userEmail").observe(.value) { (snapshot) in
             
             self.onTheCardDataArray.removeAll()
             
@@ -83,6 +85,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
         
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,34 +96,58 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let cardData = onTheCardDataArray[indexPath.row]
         
-        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        let placeNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-        let placeUrlLabel = cell.contentView.viewWithTag(3) as! UILabel
-        placeNameLabel.text = cardData.nameOnTheCard
-        placeUrlLabel.text = cardData.urlInfoOnTheCard
+        let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
+        let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
+        //let placeUrlLabel = cell.contentView.viewWithTag(3) as! UILabel
+        placeNameLabelOnTheList.text =  cardData.nameOnTheCard
+        //placeUrlLabel.text = cardData.urlInfoOnTheCard
         
-        imageView.sd_setImage(with: URL(string: cardData.imageOnTheCard), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
+        placeImageViewOnTheList.sd_setImage(with: URL(string: cardData.imageOnTheCard), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
         
         return cell
     }
     
-    func toDetailScreen(){
+//    func toDetailScreen(){
+//        performSegue(withIdentifier: "toDetail", sender: nil)
+//    }
+//
+//    func showAlert(){
+//
+//        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
+//        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
+//            self.toDetailScreen()
+//        }
+//        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
+//
+//            alertController.addAction(toDetailInfo)
+//            alertController.addAction(toCancel)
+//        self.present(alertController, animated: true, completion: nil)
+//        }
+//
+//
+//    @IBAction func tapImage(_ sender: UITapGestureRecognizer)
+//    {
+//        self.showAlert()
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let _ = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+    }
+    
+    @IBAction func toDetailButton(sender:UIButton){
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
-    func showAlert(){
-        
-        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
-        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
-            self.toDetailScreen()
-        }
-        let cancel = UIAlertAction(title: "キャンセル", style: .cancel)
-            
-            alertController.addAction(toDetailInfo)
-            alertController.addAction(cancel)
-        self.present(alertController, animated: true, completion: nil)
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailVC = segue.destination as! DetailViewController
+        detailVC.url = self.listUrl
+        detailVC.name = self.listName
+        detailVC.tel = self.listTel
+        detailVC.imageURLString = self.listImage
+        //present(detailVC, animated: true, completion: nil)
     }
+}
 
     
 
