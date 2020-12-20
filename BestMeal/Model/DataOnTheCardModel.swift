@@ -41,6 +41,7 @@ class DataOnTheCardModel {
             userPass = value["userPass"] as? String
             telOnTheCard = value["telOnTheCard"] as? String
             urlInfoOnTheCard = value["urlInfoOnTheCard"] as? String
+            print("{\(urlInfoOnTheCard)}URLInfoの表示")
 
             
         }

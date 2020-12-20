@@ -99,8 +99,17 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     @IBAction func backButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
     }
+    
+    
     @IBAction func toFavListButton(sender:UIButton){
         performSegue(withIdentifier: "toList", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let listVC = segue.destination as! FavoritePlaceListViewController
+        listVC.listImage = self.likePlaceImageUrlAray
+        listVC.listTel = self.likePlaceTelArray
+        listVC.listName = self.likePlaceNameArray
+        listVC.listUrl = self.likePlaceUrlArray
     }
     
 }

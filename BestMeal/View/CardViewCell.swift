@@ -33,5 +33,4 @@ class CardViewCell: CardCell {
         self.layer.cornerRadius = 12
         super.layoutSubviews()
     }
-
 }

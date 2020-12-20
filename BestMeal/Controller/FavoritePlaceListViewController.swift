@@ -17,12 +17,12 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
     
     var onTheCardDataArray = [DataOnTheCardModel]()
-    var listName = ""
-    var listUrl = ""
-    var listImage = ""
-    var listTel = ""
-    var userEmail = ""
-    var userPass = ""
+    var listName = [String]()
+    var listUrl = [String]()
+    var listImage = [String]()
+    var listTel = [String]()
+    var userEmail = String()
+    var userPass = String()
     var favRef = Database.database().reference()
     var indexNumber = Int()
     
@@ -38,7 +38,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         }
 
         if UserDefaults.standard.object(forKey: "userName") != nil{
-            
             userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
             
             self.title = "\(userEmail)'s MusicList"
@@ -135,13 +134,14 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
     }
     
-    @IBAction func toDetailButton(sender:UIButton){
+    @IBAction func toDetailButton(sender: UIButton){
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
         detailVC.url = self.listUrl
+        print("[\(listUrl)]これがURLだよ！！！！！！！！！")
         detailVC.name = self.listName
         detailVC.tel = self.listTel
         detailVC.imageURLString = self.listImage
