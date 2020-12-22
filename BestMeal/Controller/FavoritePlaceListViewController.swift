@@ -89,7 +89,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         return 160
     }
         
-    //cardDataを使用せず、listNameとlistImageを使用
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -98,10 +98,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
         //let placeUrlLabel = cell.contentView.viewWithTag(3) as! UILabel
-        placeNameLabelOnTheList.text =  listName[indexPath.row]
+        placeNameLabelOnTheList.text =  cardData.nameOnTheCard
         //placeUrlLabel.text = cardData.urlInfoOnTheCard
         
-        placeImageViewOnTheList.sd_setImage(with: URL(string: listImage[indexPath.row]), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
+        placeImageViewOnTheList.sd_setImage(with: URL(string: cardData.imageOnTheCard), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
         
         return cell
     }
