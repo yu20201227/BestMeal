@@ -149,13 +149,14 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
+    //元：self.listName...
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
-        detailVC.url = self.listUrl
+        detailVC.url = [listUrl[indexNumber]]
         print("[\(listUrl)]これがURLだよ！！！！！！！！！")
-        detailVC.name = self.listName
-        detailVC.tel = self.listTel
-        detailVC.imageURLString = self.listImage
+        detailVC.name = [listName[indexNumber]]
+        detailVC.tel = [listTel[indexNumber]]
+        detailVC.imageURLString = [listImage[indexNumber]]
         //present(detailVC, animated: true, completion: nil)
     }
 }
