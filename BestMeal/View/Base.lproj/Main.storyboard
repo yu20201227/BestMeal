@@ -187,6 +187,7 @@
                     <navigationItem key="navigationItem" id="hPN-S2-OFP"/>
                     <connections>
                         <outlet property="designBackButton" destination="mQ3-aC-T42" id="UYf-M8-dQR"/>
+                        <outlet property="detailImageView" destination="yDe-ft-c11" id="vuT-nD-yrL"/>
                         <outlet property="webKit" destination="3yq-7e-XBg" id="bQH-oB-tF2"/>
                     </connections>
                 </viewController>

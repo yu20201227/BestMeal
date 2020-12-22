@@ -107,6 +107,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let listVC = segue.destination as! FavoritePlaceListViewController
+        //ここには右にスワイプした数がしっかりと遷移されているため次のViewControllerだと思われる
         listVC.listImage = self.likePlaceImageUrlAray
         listVC.listTel = self.likePlaceTelArray
         listVC.listName = self.likePlaceNameArray

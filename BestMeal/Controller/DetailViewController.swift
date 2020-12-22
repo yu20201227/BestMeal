@@ -37,6 +37,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("URLが\(url.count)個入っています")
+
+        //finalImageには最初に選定したピザ屋の情報しか表示されない（一つしか受け付けていない状態）
+        //finalUrlも同様に一つしか受け付けていない状態
         changeType()
         detailImageView.sd_setImage(with: URL(string: finalImage), completed: nil)
         let request = URLRequest(url: (URL(string:finalUrl)!))
@@ -56,29 +60,35 @@ class DetailViewController: UIViewController {
     
     func changeType(){
         
+        for i in 0...url.count {
+            
+        }
+        
 //        let dataOnTheCard = DataOnTheCardModel(nameOnTheCard: name[indexNumber], imageOnTheCard: imageURLString[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: tel[indexNumber], urlInfoOnTheCard: url[indexNumber])
                 
-        finalUrl.append(url[indexNumber])
-        finalTel.append(tel[indexNumber])
-        finalName.append(name[indexNumber])
-        finalImage.append(imageURLString[indexNumber])
+//        finalUrl.append(url[indexNumber])
+//        finalTel.append(tel[indexNumber])
+//        finalName.append(name[indexNumber])
+//        finalImage.append(imageURLString[indexNumber])
         
-        if finalImage != "" && finalName != "" && finalTel != "" && finalUrl != "" {
+        
+//        if finalImage != "" && finalName != "" && finalTel != "" && finalUrl != "" {
+//
+//            for _ in 0...finalImage.count/finalTel.count/finalName.count/finalUrl.count {
+//                let thisImage = finalImage[indexNumber]
+//                let thisUrl = finalUrl[indexNumber]
+//                let thisName = finalName[indexNumber]
+//                let thisTel = finalTel[indexNumber]
+//
+//                finalImage = thisImage
+//                finalName = thisName
+//                finalTel = thisTel
+//                finalUrl = thisUrl
+//
+//            }
+//        }
+//    }
 
-            for _ in 0...imageURLString.count/tel.count/name.count/url.count {
-                let thisImage = imageURLString[indexNumber]
-                let thisUrl = url[indexNumber]
-                let thisName = name[indexNumber]
-                let thisTel = tel[indexNumber]
-
-                finalImage = thisImage
-                finalName = thisName
-                finalTel = thisTel
-                finalUrl = thisUrl
-                
-            }
-        }
     }
-
 
 }

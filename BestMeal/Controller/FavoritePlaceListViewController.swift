@@ -30,6 +30,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("listImageには\(listImage.count)個入っています。これが右にすワイプした数と比例していること")
+        
         favTableView.allowsSelection = true
         
         
