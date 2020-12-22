@@ -72,7 +72,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         // the highest accuracy possible
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         
         mapView.delegate = self

@@ -108,14 +108,14 @@
                                                     </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYM-7s-P1J">
-                                                    <rect key="frame" x="172" y="21" width="188" height="58"/>
+                                                    <rect key="frame" x="172" y="21" width="188" height="88"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-kP-l9E">
-                                                    <rect key="frame" x="219" y="95" width="72" height="54"/>
+                                                    <rect key="frame" x="333" y="117" width="38" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="詳細" image="search"/>
                                                     <connections>
@@ -137,13 +137,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-uz-qiI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Dtf-dG-Pf4">
-                    <connections>
-                        <action selector="tapImage:" destination="0Ls-zG-UWC" id="cO9-GR-nES"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Dtf-dG-Pf4"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="1057"/>
+            <point key="canvasLocation" x="2429.5999999999999" y="1055.6221889055473"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Wws-0p-JVF">
@@ -181,7 +177,7 @@
                                     <color key="titleColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="telButton:" destination="dJE-Ag-EzX" eventType="touchUpInside" id="fTg-BQ-pYd"/>
+                                    <action selector="telButtonWithSender:" destination="dJE-Ag-EzX" eventType="touchUpInside" id="nfR-bj-eWr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -190,7 +186,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hPN-S2-OFP"/>
                     <connections>
-                        <outlet property="detailTableView" destination="yDe-ft-c11" id="dhH-Nl-quR"/>
+                        <outlet property="designBackButton" destination="mQ3-aC-T42" id="UYf-M8-dQR"/>
                         <outlet property="webKit" destination="3yq-7e-XBg" id="bQH-oB-tF2"/>
                     </connections>
                 </viewController>
