@@ -83,7 +83,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         
         if swipeDirection == .Right {
             likePlaceUrlArray.append(urlInfos[indexNumber])
-            print("[\(likePlaceUrlArray)]右スワイプURL")
             likePlaceTelArray.append(telInfos[indexNumber])
             likePlaceNameArray.append(nameInfos[indexNumber])
             likePlaceImageUrlAray.append(imageUrlStringInfos[indexNumber])
@@ -92,7 +91,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
                 
                 let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
                 
-                dataOnTheCardModel.save()
+               dataOnTheCardModel.save()
                 
             }
         }

@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
     var name = [String]()
     var imageURLString =  [String]()
     var tel =  [String]()
-    var information = [DataOnTheCardModel]()
+//    var information = [DataOnTheCardModel]()
     
     var finalUrl = String()
     var finalName = String()
