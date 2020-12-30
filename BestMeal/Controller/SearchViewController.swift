@@ -101,11 +101,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
         
-        if urlString.isEmpty != true && totalHitCount <= 10  {
-        performSegue(withIdentifier: "toCards", sender: nil)
-        }else{
-            print("something wrong or the number of hitCounts under the standard")
-        }
+//        if urlStringArray.isEmpty != true && totalHitCount <= 10  {
+//        performSegue(withIdentifier: "toCards", sender: nil)
+//        }else{
+//            print("something wrong or the number of hitCounts under the standard")
+//        }
         HUD.hide()
     }
     
@@ -137,12 +137,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         nameStringArray = []
         telArray = []
     }
-
-   func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
+    
+    func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
-
+        
         addAnnotation(shopData: shopDataArray)
+        performSegue(withIdentifier: "toCards", sender: nil)
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         indexNumber = Int()
@@ -150,7 +151,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
         }
-        performSegue(withIdentifier: "toCards", sender: nil)
+        //↓アノテーションをタップしたらカードに遷移する
+        //performSegue(withIdentifier: "toCards", sender: nil)
     }
     
 
@@ -167,4 +169,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
 }
+
+//検索ボタンを押すと遷移はせずにJSONに入り、アノテーションを表示する
+//もう一度検索を押すとカードに遷移する
 
