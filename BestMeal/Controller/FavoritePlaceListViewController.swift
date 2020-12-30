@@ -14,6 +14,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     
     @IBOutlet weak var favTableView:UITableView!
+    @IBOutlet weak var toDetailUIButton:UIButton!
+    
     
     
     var onTheCardDataArray = [DataOnTheCardModel]()
@@ -26,25 +28,29 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var favRef = Database.database().reference()
     var indexNumber = Int()
     
-
+    var indexName = String()
+    var indexImage = String()
+    var indexUrl = String()
+    var indexTel = String()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("listImageには\(listImage.count)個入っています。これが右にすワイプした数と比例していること")
-        print(listImage)
-        
         favTableView.allowsSelection = true
         
-        
+
         if UserDefaults.standard.object(forKey: "userPass") != nil{
             userPass = UserDefaults.standard.object(forKey: "userPass") as! String
         }
-        
+
         if UserDefaults.standard.object(forKey: "userName") != nil{
             userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
-            
+
             self.title = "\(userEmail)'s MusicList"
         }
+        
+        
         favTableView.delegate = self
         favTableView.dataSource = self
         
@@ -62,11 +68,11 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         HUD.show(.progress)
-        
+
         favRef.child("users").child("userEmail").observe(.value) { (snapshot) in
-            
+
             self.onTheCardDataArray.removeAll()
-            
+
             for child in snapshot.children {
                 let childSnapShot = child as! DataSnapshot
                 let personalData = DataOnTheCardModel(snapShot: childSnapShot)
@@ -92,20 +98,25 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         return 160
     }
     
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //右にスワイプした分だけ繰り返し
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         //listName&listImageをそのまま反映させたことによりクリア
-        let cardNameData = listName[indexPath.row]
-        let cardImageData = listImage[indexPath.row]
-
+        indexName = listName[indexPath.row]
+        indexImage = listImage[indexPath.row]
+        indexUrl = listUrl[indexPath.row]
+        indexTel = listTel[indexPath.row]
+        
         
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
-        placeNameLabelOnTheList.text = cardNameData
+        placeNameLabelOnTheList.text = indexName
         
-        placeImageViewOnTheList.sd_setImage(with: URL(string: cardImageData), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
+        placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
+                
+       // toDetailUIButton = listUrl[indexPath.row]
         
         return cell
     }
@@ -117,53 +128,72 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            //            self.onTheCardDataArray.remove(at: indexPath.row)
+            //self.onTheCardDataArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with:.automatic)
         }
     }
     
-    //    func toDetailScreen(){
-    //        performSegue(withIdentifier: "toDetail", sender: nil)
-    //    }
-    //
-    //    func showAlert(){
-    //
-    //        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
-    //        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
-    //            self.toDetailScreen()
-    //        }
-    //        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
-    //
-    //            alertController.addAction(toDetailInfo)
-    //            alertController.addAction(toCancel)
-    //        self.present(alertController, animated: true, completion: nil)
-    //        }
-    //
-    //
-    //    @IBAction func tapImage(_ sender: UITapGestureRecognizer)
-    //    {
-    //        self.showAlert()
-    //    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _ = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        
-    }
-    
-    @IBAction func toDetailButton(sender: UIButton){
+    func toDetailScreen(){
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
-    //元：self.listName...
+    func showAlert(){
+        
+        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
+        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
+            self.toDetailScreen()
+        }
+        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
+        
+        alertController.addAction(toDetailInfo)
+        alertController.addAction(toCancel)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func tapImage(_ sender: UITapGestureRecognizer)
+    {
+        self.showAlert()
+    }
+    
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "toDetail", sender: nil)
+            let indexUrls = URL(string: indexUrl)
+//            if UIApplication.shared.canOpenURL(indexUrls!) {
+//                UIApplication.shared.open(indexUrls!)
+//            }
+            
+        }
+//
+//    @IBAction func toDetailButton(sender: UIButton){
+//        performSegue(withIdentifier: "toDetail", sender: nil)
+//        let url = URL(string: indexUrl)
+//        if UIApplication.shared.canOpenURL(url!){
+//            UIApplication.shared.open(url!)
+//
+////            indexName = ""
+////            indexImage = ""
+////            indexUrl = ""
+////            indexTel = ""
+//
+//
+//        }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
-        detailVC.url = [listUrl[indexNumber]]
-        detailVC.name = [listName[indexNumber]]
-        detailVC.tel = [listTel[indexNumber]]
-        detailVC.imageURLString = [listImage[indexNumber]]
-        //present(detailVC, animated: true, completion: nil)
-    }
-}
+       // index（右辺）にはそれぞれ複数情報が取得できている。
+        detailVC.url = indexUrl
+        detailVC.tel = indexTel
+        detailVC.name = indexName
+        detailVC.imageURLString = indexImage
 
+
+    }
+    
+}
+    
+    
 
 

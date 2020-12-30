@@ -83,6 +83,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         
         if swipeDirection == .Right {
             likePlaceUrlArray.append(urlInfos[indexNumber])
+            print("\(likePlaceUrlArray)")
             likePlaceTelArray.append(telInfos[indexNumber])
             likePlaceNameArray.append(nameInfos[indexNumber])
             likePlaceImageUrlAray.append(imageUrlStringInfos[indexNumber])

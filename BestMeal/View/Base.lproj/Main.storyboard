@@ -228,7 +228,7 @@
                     <connections>
                         <outlet property="mapView" destination="ovQ-bm-J2r" id="Ued-T6-woX"/>
                         <outlet property="searchTextField" destination="ezm-XT-IyO" id="3ar-gd-NPu"/>
-                        <segue destination="uXE-cJ-inV" kind="presentation" identifier="toCards" id="2n4-6n-QyL"/>
+                        <segue destination="uXE-cJ-inV" kind="presentation" identifier="toCards" id="mBc-kB-Q8V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzx-gT-tqS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUi-dP-9nk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458.4000000000001" y="67.916041979010501"/>
+            <point key="canvasLocation" x="3860" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fvB-Dk-4Wk">
