@@ -3,7 +3,7 @@
 //  BestMeal
 //
 //  Created by Owner on 2020/12/12.
-//
+//品質管理：a版
 
 import UIKit
 import VerticalCardSwiper
@@ -20,8 +20,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     var imageUrlStringInfos = [String]()
     var telInfos = [String]()
     
+    var userPass = String()
     var userEmail = String()
-    var userName = String()
     
     var likePlaceUrlArray = [String]()
     var likePlaceNameArray = [String]()
@@ -60,13 +60,12 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             //カードに配列を表示させる
             let placeImage = imageUrlStringInfos[index]
             let placename = nameInfos[index]
+            let placeUrl = urlInfos[index]
             cardCell.setRandomBackgroundColor()
             cardCell.placeNameLabel.text = placename
             cardCell.placeNameLabel.textColor = UIColor.black
+            cardCell.placeUrlInfoLabel.text = placeUrl
             cardCell.goodImages.sd_setImage(with: URL(string: imageUrlStringInfos[index]), completed: nil)
-            
-        
-            
             
             return cardCell
             
@@ -82,27 +81,49 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        indexNumber = index
         
+        //[]内をindexNumberからindexへ変更
         if swipeDirection == .Right {
-            likePlaceUrlArray.append(urlInfos[indexNumber])
-            likePlaceTelArray.append(telInfos[indexNumber])
-            likePlaceNameArray.append(nameInfos[indexNumber])
-            likePlaceImageUrlAray.append(imageUrlStringInfos[indexNumber])
-            
-            if likePlaceNameArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceUrlArray.count != 0 && likePlaceImageUrlAray.count != 0 {
-                
-                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userEmail: userEmail, userName: userName, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
-                
-                dataOnTheCardModel.save()
-                
+            //カードが0枚になってしまった瞬間にリストへ遷移したい(下記のコードではダメだった）
+            if urlInfos.count == 0 {
+                performSegue(withIdentifier: "toList", sender: nil)
             }
+            likePlaceUrlArray.append(urlInfos[index])
+            likePlaceTelArray.append(telInfos[index])
+            likePlaceNameArray.append(nameInfos[index])
+            likePlaceImageUrlAray.append(imageUrlStringInfos[index])
+            
+//            if likePlaceNameArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceUrlArray.count != 0 && likePlaceImageUrlAray.count != 0 {
+//
+//                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
+//
+//                    dataOnTheCardModel.save()
+                //performSegue(withIdentifier: "toList", sender: nil)
+//
+//                }
         }
     }
+    
+    
     @IBAction func backButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
     }
+    
+    
     @IBAction func toFavListButton(sender:UIButton){
         performSegue(withIdentifier: "toList", sender: nil)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let listVC = segue.destination as! FavoritePlaceListViewController
+        //ここには右にスワイプした数がしっかりと遷移されているため次のViewControllerだと思われる
+        listVC.listImage = self.likePlaceImageUrlAray
+        listVC.listTel = self.likePlaceTelArray
+        listVC.listName = self.likePlaceNameArray
+        listVC.listUrl = self.likePlaceUrlArray
+    }
+    
 }
+
+
+//カード画面の最後に戻るボタンを入れて、カードがなくなったときに押してリストに飛んでもらう
+

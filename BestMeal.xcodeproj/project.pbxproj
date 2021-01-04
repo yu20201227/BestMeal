@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D06425686CD30A8C2C11D53 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */; };
+		EB49AB8C259C6B7800A1DCE9 /* AccessFailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB49AB8B259C6B7800A1DCE9 /* AccessFailViewController.swift */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
 		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
@@ -16,14 +17,12 @@
 		EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */; };
 		EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783125848E8900C50F9F /* SearchViewController.swift */; };
 		EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */; };
-		EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783725848EB100C50F9F /* NameListViewController.swift */; };
 		EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783A25848EC000C50F9F /* DetailViewController.swift */; };
 		EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F783D25848F4400C50F9F /* OpeningViewController.swift */; };
 		EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */; };
 		EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784325849D8B00C50F9F /* ShopData.swift */; };
 		EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78602584CABB00C50F9F /* CardViewCell.swift */; };
 		EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78612584CABB00C50F9F /* CardViewCell.xib */; };
-		EB6F78802584D7B800C50F9F /* DataOnTheCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */; };
 		EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */; };
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
 		EB6F788B2585A31F00C50F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */; };
@@ -33,6 +32,7 @@
 		7FDD78726DFA4398899A1899 /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
 		AB652B1E367440AC205E2E80 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
 		D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB49AB8B259C6B7800A1DCE9 /* AccessFailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFailViewController.swift; sourceTree = "<group>"; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,14 +43,12 @@
 		EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EB6F783125848E8900C50F9F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwipeViewController.swift; sourceTree = "<group>"; };
-		EB6F783725848EB100C50F9F /* NameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameListViewController.swift; sourceTree = "<group>"; };
 		EB6F783A25848EC000C50F9F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EB6F783D25848F4400C50F9F /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsModel.swift; sourceTree = "<group>"; };
 		EB6F784325849D8B00C50F9F /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
 		EB6F78602584CABB00C50F9F /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		EB6F78612584CABB00C50F9F /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
-		EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOnTheCardModel.swift; sourceTree = "<group>"; };
 		EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoToMakeOriginalList.swift; sourceTree = "<group>"; };
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
 		EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			children = (
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
-				EB6F787F2584D7B800C50F9F /* DataOnTheCardModel.swift */,
 				EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */,
 			);
 			path = Model;
@@ -147,9 +144,9 @@
 				EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */,
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
-				EB6F783725848EB100C50F9F /* NameListViewController.swift */,
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
 				EB6F783A25848EC000C50F9F /* DetailViewController.swift */,
+				EB49AB8B259C6B7800A1DCE9 /* AccessFailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,16 +270,15 @@
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
 				EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
-				EB6F783825848EB100C50F9F /* NameListViewController.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
+				EB49AB8C259C6B7800A1DCE9 /* AccessFailViewController.swift in Sources */,
 				EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */,
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
-				EB6F78802584D7B800C50F9F /* DataOnTheCardModel.swift in Sources */,
 				EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,8 +427,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +437,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LIAM.BestMeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -451,8 +449,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LIAM.BestMeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

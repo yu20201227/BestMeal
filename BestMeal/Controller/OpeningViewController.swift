@@ -16,6 +16,7 @@ class OpeningViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // startOpeningAnimation()
+        view.backgroundColor = UIColor.flatMint()
 
     }
 //

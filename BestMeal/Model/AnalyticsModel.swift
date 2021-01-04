@@ -40,8 +40,11 @@ class AnalyticsModel {
                     let json:JSON = try JSON(data: response.data!)
                     print(json.description)
                     var totalCount = json["total_hit_count"].int
-                    if totalCount! > 50 {
-                        totalCount = 50
+                    if totalCount! > 15 {
+                        totalCount = 15
+                        print(totalCount as Any)
+                    }else{
+                        print("数が足りません.")
                     }
                     
                     for i in 0...totalCount! - 1 {
