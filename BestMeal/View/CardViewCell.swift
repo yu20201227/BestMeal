@@ -12,6 +12,7 @@ class CardViewCell: CardCell {
     
     @IBOutlet weak var goodImages:UIImageView!
     @IBOutlet weak var placeNameLabel:UILabel!
+    @IBOutlet weak var placeUrlInfoLabel:UILabel!
     
 
     override func awakeFromNib() {
@@ -33,5 +34,4 @@ class CardViewCell: CardCell {
         self.layer.cornerRadius = 12
         super.layoutSubviews()
     }
-
 }

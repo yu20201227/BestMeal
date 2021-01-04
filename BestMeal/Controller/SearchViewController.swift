@@ -10,6 +10,7 @@ import MapKit
 import Lottie
 import SwiftyJSON
 import Alamofire
+import PKHUD
 
 class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol{
     
@@ -72,7 +73,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         // the highest accuracy possible
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         
         mapView.delegate = self
@@ -91,6 +92,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBAction func searchButton(sender:UIButton){
         searchTextField.resignFirstResponder()
         
+        HUD.show(.progress)
+        
         let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
@@ -98,8 +101,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
         
-        performSegue(withIdentifier: "toCards", sender: nil)
-
+        HUD.hide()
     }
     
     func addAnnotation(shopData:[ShopData]){
@@ -130,12 +132,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         nameStringArray = []
         telArray = []
     }
-
-   func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
+    
+    func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
-
+        
         addAnnotation(shopData: shopDataArray)
+        performSegue(withIdentifier: "toCards", sender: nil)
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         indexNumber = Int()
@@ -143,6 +146,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
         }
+        //↓アノテーションをタップしたらカードに遷移する
         performSegue(withIdentifier: "toCards", sender: nil)
     }
     
@@ -161,84 +165,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
 }
 
-//
-//  ListViewController.swift
-//  BestMeal
-//
-//  Created by Owner on 2020/12/12.
-//
+//検索ボタンを押すと遷移はせずにJSONに入り、アノテーションを表示する
+//もう一度検索を押すとカードに遷移する
 
-//import UIKit
-//import Firebase
-//import SDWebImage
-//import PKHUD
-//
-//class NameListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-//
-//
-//    @IBOutlet weak var tableView:UITableView!
-//
-//    var listRef = Database.database().reference()
-//    var getUserIdDataArray = [GetUserInfoToMakeOriginalList]()
-//    var indexNumber = Int()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//    }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        HUD.show(.progress)
-//
-//        listRef.child("profile").observe(.value) { (snapshot) in
-//            HUD.hide()
-//
-//            self.getUserIdDataArray.removeAll()
-//
-//            //childrenは階層になっているデータ本体
-//            for child in snapshot.children {
-//
-//                let childSnapShot = child as! DataSnapshot
-//                let listData = GetUserInfoToMakeOriginalList(snapShot:childSnapShot)
-//                self.getUserIdDataArray.insert(listData, at: 0)
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.isNavigationBarHidden = true
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return getUserIdDataArray.count
-//    }
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 225
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        cell.selectionStyle = .none
-//
-//        let listDataModel = getUserIdDataArray[indexPath.row]
-//        let userNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-//        userNameLabel.text = "\(String(describing: listDataModel.userEmail))'s List"
-//
-//        return cell
-//
-//    }
-//
-//
-//
-//}
-//
