@@ -18,7 +18,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     
     
-    var onTheCardDataArray = [DataOnTheCardModel]()
+  //  var onTheCardDataArray = [DataOnTheCardModel]()
     var listName = [String]()
     var listUrl = [String]()
     var listImage = [String]()
@@ -63,28 +63,9 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         self.title = "\(userEmail)'s MusicList"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        self.favTableView.reloadData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        HUD.show(.progress)
-
-        favRef.child("users").child("userEmail").observe(.value) { (snapshot) in
-
-            self.onTheCardDataArray.removeAll()
-
-            for child in snapshot.children {
-                let childSnapShot = child as! DataSnapshot
-                let personalData = DataOnTheCardModel(snapShot: childSnapShot)
-                self.onTheCardDataArray.insert(personalData, at: 0)
-                self.favTableView.reloadData()
-            }
-            HUD.hide()
-        }
-    }
-    
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listName.count
@@ -103,15 +84,17 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         //右にスワイプした分だけ繰り返し
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let detailVC = DetailViewController()
         //listName&listImageをそのまま反映させたことによりクリア
         indexName = listName[indexPath.row]
         indexImage = listImage[indexPath.row]
         indexUrl = listUrl[indexPath.row]
         indexTel = listTel[indexPath.row]
         
-        
+        //直接UIImageViewやUILabelに代入できないのか
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
+        var searchButton = cell.contentView.viewWithTag(3)
         placeNameLabelOnTheList.text = indexName
         
         placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
@@ -157,8 +140,14 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            performSegue(withIdentifier: "toDetail", sender: nil)
+            //performSegue(withIdentifier: "toDetail", sender: nil)
+            indexUrl = listUrl[indexPath.row]
             let indexUrls = URL(string: indexUrl)
+            if UIApplication.shared.canOpenURL(indexUrls! as URL) {
+                UIApplication.shared.open(indexUrls! as URL, options: [:], completionHandler: nil)
+            }
+            
+            
 //            if UIApplication.shared.canOpenURL(indexUrls!) {
 //                UIApplication.shared.open(indexUrls!)
 //            }
@@ -194,6 +183,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
 }
     
+//カードに表示されているものは正しくlistへ遷移される？？
     
 
 

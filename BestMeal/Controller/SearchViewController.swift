@@ -101,11 +101,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
         
-//        if urlStringArray.isEmpty != true && totalHitCount <= 10  {
-//        performSegue(withIdentifier: "toCards", sender: nil)
-//        }else{
-//            print("something wrong or the number of hitCounts under the standard")
-//        }
         HUD.hide()
     }
     
@@ -152,7 +147,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
         }
         //↓アノテーションをタップしたらカードに遷移する
-        //performSegue(withIdentifier: "toCards", sender: nil)
+        performSegue(withIdentifier: "toCards", sender: nil)
     }
     
 
