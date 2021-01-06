@@ -57,7 +57,7 @@ class CardSwipeViewController: UIViewController,UINavigationControllerDelegate, 
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
-
+        
         
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: index) as? CardViewCell {
             verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
@@ -78,7 +78,7 @@ class CardSwipeViewController: UIViewController,UINavigationControllerDelegate, 
         }
         return CardCell()
     }
-
+    
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         urlInfos.remove(at: index)
         telInfos.remove(at: index)
@@ -97,32 +97,29 @@ class CardSwipeViewController: UIViewController,UINavigationControllerDelegate, 
             likePlaceTelArray.append(telInfos[index])
             likePlaceNameArray.append(nameInfos[index])
             likePlaceImageUrlAray.append(imageUrlStringInfos[index])
+            
+            if likePlaceUrlArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceNameArray.count != 0 && likePlaceUrlArray.count != 0 {
+                
+                let saveListData = SaveListData(shopImage: likePlaceImageUrlAray[index], shopName: likePlaceNameArray[index], shopInfoUrl: likePlaceUrlArray[index])
+                
+                saveListData.save()
+            }
         }
         
+       
     }
-    
-    func upLoadImage(){
-        //データをfirestoreへ保存したい
-        let storage = Storage.storage().reference(forURL: likePlaceNameArray[indexNumber])
-        let storage2 = Storage.storage().reference(forURL: likePlaceImageUrlAray[indexNumber])
-        var likePlaceImageUrlAray:Data = Data()
-        
-        
-
-    }
-    
     
     @IBAction func backButton(sender:Any){
-
+        
         //self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func didTapAccessFavListButton(sender: Any){
-
         performSegue(withIdentifier: "toList", sender: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let listVC = segue.destination as! FavoritePlaceListViewController
         //ここには右にスワイプした数がしっかりと遷移されているため次のViewControllerだと思われる
