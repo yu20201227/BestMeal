@@ -38,6 +38,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         startUpdatingLocation()
         configureSubview()
         
+        
+        
     }
     
     //get permisson of user's current location
@@ -89,7 +91,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         keidoValue = longitude!
     }
     
-    @IBAction func searchButton(sender:UIButton){
+    @IBAction func didTapSearchButton(sender: Any){
         searchTextField.resignFirstResponder()
         
         HUD.show(.progress)
@@ -162,9 +164,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         
     }
-    
+    @IBAction func toCards(sender:UIButton){
+        performSegue(withIdentifier: "toCards", sender: nil)
+    }
 }
 
-//検索ボタンを押すと遷移はせずにJSONに入り、アノテーションを表示する
-//もう一度検索を押すとカードに遷移する
-
+//リストに追加された内容をユーザーが消さない限り残しておく
+//カードが0枚になったらエラーを起こさずリストへ誘導する

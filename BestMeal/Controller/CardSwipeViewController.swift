@@ -12,8 +12,12 @@ import Lottie
 import Firebase
 import SDWebImage
 import ChameleonFramework
+import FirebaseAuth
+import FirebaseInstallations
+import FirebaseDatabase
+import FirebaseStorage
 
-class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource{
+class CardSwipeViewController: UIViewController,UINavigationControllerDelegate, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource{
     
     var urlInfos = [String]()
     var nameInfos = [String]()
@@ -30,6 +34,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     var indexNumber = Int()
     
+    
     @IBOutlet weak var cardSwiper:VerticalCardSwiper!
     
     
@@ -40,6 +45,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         cardSwiper.datasource = self
         cardSwiper.register(nib:UINib(nibName: "CardViewCell", bundle: nil), forCellWithReuseIdentifier: "CardViewCell")
         cardSwiper.reloadData()
+        self.navigationController?.isNavigationBarHidden = false
         
         
         
@@ -81,7 +87,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        
         //[]内をindexNumberからindexへ変更
         if swipeDirection == .Right {
             //カードが0枚になってしまった瞬間にリストへ遷移したい(下記のコードではダメだった）
@@ -92,25 +97,30 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             likePlaceTelArray.append(telInfos[index])
             likePlaceNameArray.append(nameInfos[index])
             likePlaceImageUrlAray.append(imageUrlStringInfos[index])
-            
-//            if likePlaceNameArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceUrlArray.count != 0 && likePlaceImageUrlAray.count != 0 {
-//
-//                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
-//
-//                    dataOnTheCardModel.save()
-                //performSegue(withIdentifier: "toList", sender: nil)
-//
-//                }
         }
+        
+    }
+    
+    func upLoadImage(){
+        //データをfirestoreへ保存したい
+        let storage = Storage.storage().reference(forURL: likePlaceNameArray[indexNumber])
+        let storage2 = Storage.storage().reference(forURL: likePlaceImageUrlAray[indexNumber])
+        var likePlaceImageUrlAray:Data = Data()
+        
+        
+
     }
     
     
-    @IBAction func backButton(sender:UIButton){
+    @IBAction func backButton(sender:Any){
+
+        //self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
     
-    @IBAction func toFavListButton(sender:UIButton){
+    @IBAction func didTapAccessFavListButton(sender: Any){
+
         performSegue(withIdentifier: "toList", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

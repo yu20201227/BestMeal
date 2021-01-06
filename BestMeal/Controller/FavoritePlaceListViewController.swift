@@ -3,7 +3,7 @@
 //  BestMeal
 //
 //  Created by Owner on 2020/12/12.
-//
+//リファクタリング中
 
 import UIKit
 import Firebase
@@ -14,11 +14,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     
     @IBOutlet weak var favTableView:UITableView!
-    @IBOutlet weak var toDetailUIButton:UIButton!
     
     
-    
-  //  var onTheCardDataArray = [DataOnTheCardModel]()
     var listName = [String]()
     var listUrl = [String]()
     var listImage = [String]()
@@ -33,26 +30,28 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var indexUrl = String()
     var indexTel = String()
     
+    var data = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         favTableView.allowsSelection = true
-        
-
-        if UserDefaults.standard.object(forKey: "userPass") != nil{
-            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
-        }
-
-        if UserDefaults.standard.object(forKey: "userName") != nil{
-            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
-
-            self.title = "\(userEmail)'s MusicList"
-        }
-        
-        
+//
+//        if UserDefaults.standard.object(forKey: "userPass") != nil{
+//            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+//        }
+//
+//        if UserDefaults.standard.object(forKey: "userName") != nil{
+//            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
+//
+//            self.title = "\(userEmail)'s MusicList"
+//        }
+                
+                
         favTableView.delegate = self
         favTableView.dataSource = self
+      //  favTableView.backgroundColor = .black
         
     }
     
@@ -84,61 +83,44 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         //右にスワイプした分だけ繰り返し
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let detailVC = DetailViewController()
         //listName&listImageをそのまま反映させたことによりクリア
         indexName = listName[indexPath.row]
         indexImage = listImage[indexPath.row]
         indexUrl = listUrl[indexPath.row]
         indexTel = listTel[indexPath.row]
         
+        let userDefault = UserDefaults.standard
+
         //直接UIImageViewやUILabelに代入できないのか
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
-        var searchButton = cell.contentView.viewWithTag(3)
         placeNameLabelOnTheList.text = indexName
+     
         
         placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
-                
-       // toDetailUIButton = listUrl[indexPath.row]
+        
+        //        data.append(indexName)
+        //        data.append(indexImage)
+        //        favTableView.reloadData()
         
         return cell
     }
+    
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    //削除する前にアラートを出したい
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            //self.onTheCardDataArray.remove(at: indexPath.row)
+            //indexImage.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with:.automatic)
         }
     }
-    
-    func toDetailScreen(){
-        performSegue(withIdentifier: "toDetail", sender: nil)
-    }
-    
-    func showAlert(){
         
-        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
-        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
-            self.toDetailScreen()
-        }
-        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
-        
-        alertController.addAction(toDetailInfo)
-        alertController.addAction(toCancel)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func tapImage(_ sender: UITapGestureRecognizer)
-    {
-        self.showAlert()
-    }
-    
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             //performSegue(withIdentifier: "toDetail", sender: nil)
             indexUrl = listUrl[indexPath.row]
@@ -146,44 +128,21 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
             if UIApplication.shared.canOpenURL(indexUrls! as URL) {
                 UIApplication.shared.open(indexUrls! as URL, options: [:], completionHandler: nil)
             }
-            
-            
-//            if UIApplication.shared.canOpenURL(indexUrls!) {
-//                UIApplication.shared.open(indexUrls!)
-//            }
-            
         }
-//
-//    @IBAction func toDetailButton(sender: UIButton){
-//        performSegue(withIdentifier: "toDetail", sender: nil)
-//        let url = URL(string: indexUrl)
-//        if UIApplication.shared.canOpenURL(url!){
-//            UIApplication.shared.open(url!)
-//
-////            indexName = ""
-////            indexImage = ""
-////            indexUrl = ""
-////            indexTel = ""
-//
-//
-//        }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
-       // index（右辺）にはそれぞれ複数情報が取得できている。
+        // index（右辺）にはそれぞれ複数情報が取得できている。
         detailVC.url = indexUrl
         detailVC.tel = indexTel
         detailVC.name = indexName
         detailVC.imageURLString = indexImage
-
-
     }
     
+    @IBAction func didTapGoBackButton(sender:UIButton){
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
-    
-//カードに表示されているものは正しくlistへ遷移される？？
-    
-
-
+//リストに反映されている情報が、右スワイプした情報と一つづつずれている（一つ下のカード情報がリストに反映される）

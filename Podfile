@@ -18,5 +18,6 @@ target 'BestMeal' do
  pod 'DTGradientButton'
  pod 'ChameleonFramework'
  pod 'lottie-ios'
+ pod 'FirebaseUI/Storage'
 
 end

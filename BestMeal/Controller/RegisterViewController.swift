@@ -16,9 +16,11 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .brown
     }
     
-    @IBAction func registerButton(sender:UIButton){
+    @IBAction func didTapRegisterButton(sender:UIButton){
         Auth.auth().createUser(withEmail: userEmailTextField.text!, password: passTextField.text!) { (result, error) in
 
             if result?.user != nil {
