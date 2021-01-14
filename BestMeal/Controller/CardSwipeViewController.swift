@@ -41,8 +41,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         cardSwiper.register(nib:UINib(nibName: "CardViewCell", bundle: nil), forCellWithReuseIdentifier: "CardViewCell")
         cardSwiper.reloadData()
         
-        
-        
+ 
         
     }
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
@@ -77,32 +76,38 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         telInfos.remove(at: index)
         nameInfos.remove(at: index)
         imageUrlStringInfos.remove(at: index)
+        
     }
     
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         
         //[]内をindexNumberからindexへ変更
         if swipeDirection == .Right {
-            //カードが0枚になってしまった瞬間にリストへ遷移したい(下記のコードではダメだった）
-            if urlInfos.count == 0 {
-                performSegue(withIdentifier: "toList", sender: nil)
-            }
             likePlaceUrlArray.append(urlInfos[index])
             likePlaceTelArray.append(telInfos[index])
             likePlaceNameArray.append(nameInfos[index])
             likePlaceImageUrlAray.append(imageUrlStringInfos[index])
             
-//            if likePlaceNameArray.count != 0 && likePlaceTelArray.count != 0 && likePlaceUrlArray.count != 0 && likePlaceImageUrlAray.count != 0 {
-//
-//                let dataOnTheCardModel = DataOnTheCardModel(nameOnTheCard: nameInfos[indexNumber], imageOnTheCard: imageUrlStringInfos[indexNumber], userPass: userPass, userEmail: userEmail, telOnTheCard: telInfos[indexNumber], urlInfoOnTheCard: urlInfos[indexNumber])
-//
-//                    dataOnTheCardModel.save()
-                //performSegue(withIdentifier: "toList", sender: nil)
-//
-//                }
+        }
+        if nameInfos.count == 0 {
+            if swipeDirection == .Right {
+//                let listView = FavoritePlaceListViewController()
+//                var listViewUrl = listView.listUrl
+//                var listViewImage = listView.listImage
+//                var listViewName = listView.listName
+//                listViewUrl = urlInfos
+//                listViewName = nameInfos
+//                listViewImage = imageUrlStringInfos
+                performSegue(withIdentifier: "toList", sender: nil)
+            } else {
+                if nameInfos.count == 0{
+                    if swipeDirection == .Left {
+                        performSegue(withIdentifier: "toList", sender: nil)
+                    }
+                }
+            }
         }
     }
-    
     
     @IBAction func backButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
@@ -121,4 +126,16 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         listVC.listUrl = self.likePlaceUrlArray
     }
     
+    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+        // Called when the user starts dragging a card to the side (optional).
+        if urlInfos.count <= 1 {
+            if swipeDirection == .Right {
+                let listView = FavoritePlaceListViewController()
+                var listViewUrl = listView.listUrl
+                listViewUrl = urlInfos
+                performSegue(withIdentifier: "toList", sender: nil)
+            }
+        }
+    }
 }
+
