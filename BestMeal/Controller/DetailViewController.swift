@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var webKit: WKWebView!
     @IBOutlet weak var designBackButton:UIButton!
-    @IBOutlet weak var searchButton:UIButton!
     
     var url = String()
     var name = String()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cUm-Up-Ryb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ws5-oa-Ldj">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -30,6 +30,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="b9n-b8-niN"/>
                     <connections>
+                        <outlet property="didTapToNextButton" destination="JO6-de-ra8" id="anb-Jd-Auy"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="toRegister" id="lnr-0h-MES"/>
                     </connections>
                 </viewController>
@@ -82,7 +83,7 @@
         <!--Favorite Place List View Controller-->
         <scene sceneID="qbc-nE-7ai">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="0Ls-zG-UWC" customClass="FavoritePlaceListViewController" customModule="BestMeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListMenu" modalPresentationStyle="fullScreen" id="0Ls-zG-UWC" customClass="FavoritePlaceListViewController" customModule="BestMeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KKn-Ma-ZWI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,15 +123,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-kP-l9E">
-                                                    <rect key="frame" x="333" y="117" width="38" height="39"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="詳細" image="search"/>
-                                                    <connections>
-                                                        <action selector="toDetailButtonWithSender:" destination="0Ls-zG-UWC" eventType="touchUpInside" id="GJU-XN-QdN"/>
-                                                        <segue destination="dJE-Ag-EzX" kind="show" identifier="toDetail" id="dpb-df-tpq"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -339,7 +331,6 @@
     </scenes>
     <resources>
         <image name="call" width="256" height="256"/>
-        <image name="search" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

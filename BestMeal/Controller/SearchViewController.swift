@@ -99,6 +99,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
+        
         //boot AnalyticdModel
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
@@ -109,8 +110,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func addAnnotation(shopData:[ShopData]){
         removeArray()
 
-        //-1を削除
-        for i in 0...totalHitCount - 1{
+        for i in 0...totalHitCount - 1 {
+            //取得アノテーションが1以下だった場合、強制的にリストへ飛ばす
+            if totalHitCount <= 1 {
+                let listViewController = self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
+                self.present(listViewController, animated: true, completion: nil)
+            }
             print(i)
             annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
@@ -162,12 +167,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         cardVC.nameInfos = nameStringArray
         cardVC.imageUrlStringInfos = imageStringArray
         cardVC.telInfos = telArray
-        
+         
         
     }
     
 }
-
-//検索ボタンを押すと遷移はせずにJSONに入り、アノテーションを表示する
-//もう一度検索を押すとカードに遷移する
-

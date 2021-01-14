@@ -27,6 +27,7 @@
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
 		EB6F788B2585A31F00C50F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */; };
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
+		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
 		EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOnTheList.swift; sourceTree = "<group>"; };
+		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
 				EB6F78022584889F00C50F9F /* Assets.xcassets */,
 				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
+				EB80173E25B042A80075A814 /* 10685-breakfast.json */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */,
 				EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */,
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
 				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
