@@ -23,9 +23,8 @@ class DetailViewController: UIViewController {
     var imageURLString = String()
     var tel =  String()
     var index = Int()
-    //↑しっかりと右スワイプされた数の情報が入っている
+
 //    var information = [DataOnTheCardModel]()
-    
 //    var finalUrl = [String]()
 //    var finalName = String()
 //    var finalImage = [String]()
@@ -47,11 +46,6 @@ class DetailViewController: UIViewController {
         
         for i in  listImages {
             let iImage = i
-    
-        
-        //finalImageには最初に選定したピザ屋の情報しか表示されない（一つしか受け付けていない状態）
-        //finalUrlも同様に一つしか受け付けていない状態
-            
         
        detailImageView.sd_setImage(with: URL(string: iImage), completed: nil)
         let request = URLRequest(url: (URL(string:url)!))
@@ -68,29 +62,6 @@ class DetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         
     
-    }
-    //
-//    func changeType(){
-//        finalUrl = url[indexNumber]
-//        finalTel = tel[indexNumber]
-//        finalName = name[indexNumber]
-//        finalImage = imageURLString[indexNumber]
-//    }
-    
-
-    
-    //
-//                    let thisImage = finalImage[indexNumber]
-//                    let thisUrl = finalUrl[indexNumber]
-//                    let thisName = finalName[indexNumber]
-//                    let thisTel = finalTel[indexNumber]
-//                    
-//                    finalImage = thisImage
-//                    finalName = thisName
-//                    finalTel = thisTel
-//                    finalUrl = thisUrl
-//                    
-//        }
-    
+    }    
 }
 

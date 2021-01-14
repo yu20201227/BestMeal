@@ -7,7 +7,6 @@
 
 import UIKit
 import Lottie
-//still not JSON file from lottie on this project.
 
 class OpeningViewController: UIViewController {
     
