@@ -14,8 +14,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     
     @IBOutlet weak var favTableView:UITableView!
-    @IBOutlet weak var toDetailUIButton:UIButton!
-    
     
     
   //  var onTheCardDataArray = [DataOnTheCardModel]()
@@ -177,8 +175,10 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         detailVC.tel = indexTel
         detailVC.name = indexName
         detailVC.imageURLString = indexImage
-
-
+    }
+    
+    @IBAction func didTapGoBackButton(sender:UIButton){
+        dismiss(animated: true, completion: nil)
     }
     
 }

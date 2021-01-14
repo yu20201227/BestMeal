@@ -13,7 +13,7 @@ protocol DoneCatchProtocol {
     func catchProtocol(arrayData:Array<ShopData>, resultCount:Int)
 }
 
-class AnalyticsModel {
+class AnalyticsModel{
     
     var idoValue:Double?
     var keidoValue:Double?

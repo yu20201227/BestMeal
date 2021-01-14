@@ -64,7 +64,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardCell.setRandomBackgroundColor()
             cardCell.placeNameLabel.text = placename
             cardCell.placeNameLabel.textColor = UIColor.black
-            cardCell.placeUrlInfoLabel.text = placeUrl
             cardCell.goodImages.sd_setImage(with: URL(string: imageUrlStringInfos[index]), completed: nil)
             
             return cardCell
@@ -123,7 +122,3 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
 }
-
-
-//カード画面の最後に戻るボタンを入れて、カードがなくなったときに押してリストに飛んでもらう
-

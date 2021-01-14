@@ -26,6 +26,7 @@
 		EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */; };
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
 		EB6F788B2585A31F00C50F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */; };
+		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoToMakeOriginalList.swift; sourceTree = "<group>"; };
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
 		EB6F788A2585A31F00C50F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOnTheList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */,
+				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
 				EB6F783B25848EC000C50F9F /* DetailViewController.swift in Sources */,
+				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

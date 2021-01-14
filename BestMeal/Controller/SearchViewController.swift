@@ -13,6 +13,7 @@ import Alamofire
 import PKHUD
 
 class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol{
+//DoneCatchProtocol
     
     @IBOutlet weak var searchTextField:UITextField!
     @IBOutlet weak var mapView:MKMapView!
@@ -35,6 +36,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         startUpdatingLocation()
         configureSubview()
         
@@ -107,9 +109,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func addAnnotation(shopData:[ShopData]){
         removeArray()
 
-        for i in 0...totalHitCount - 1 {
+        //-1を削除
+        for i in 0...totalHitCount - 1{
             print(i)
-
             annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
 
@@ -140,6 +142,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         addAnnotation(shopData: shopDataArray)
         performSegue(withIdentifier: "toCards", sender: nil)
     }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         indexNumber = Int()
 
