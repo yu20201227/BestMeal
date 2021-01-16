@@ -66,7 +66,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listName.count
+        return indexName.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

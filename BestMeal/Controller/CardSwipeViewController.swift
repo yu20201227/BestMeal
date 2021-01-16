@@ -50,7 +50,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
-
         
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: index) as? CardViewCell {
             verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
@@ -76,11 +75,9 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         telInfos.remove(at: index)
         nameInfos.remove(at: index)
         imageUrlStringInfos.remove(at: index)
-        
     }
     
-    func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        
+    func didSwipeCardAway(card:CardCell, index: Int, swipeDirection: SwipeDirection) {
         //[]内をindexNumberからindexへ変更
         if swipeDirection == .Right {
             likePlaceUrlArray.append(urlInfos[index])
@@ -91,13 +88,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         }
         if nameInfos.count == 0 {
             if swipeDirection == .Right {
-//                let listView = FavoritePlaceListViewController()
-//                var listViewUrl = listView.listUrl
-//                var listViewImage = listView.listImage
-//                var listViewName = listView.listName
-//                listViewUrl = urlInfos
-//                listViewName = nameInfos
-//                listViewImage = imageUrlStringInfos
                 performSegue(withIdentifier: "toList", sender: nil)
             } else {
                 if nameInfos.count == 0{
@@ -126,16 +116,16 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         listVC.listUrl = self.likePlaceUrlArray
     }
     
-    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        // Called when the user starts dragging a card to the side (optional).
-        if urlInfos.count <= 1 {
-            if swipeDirection == .Right {
-                let listView = FavoritePlaceListViewController()
-                var listViewUrl = listView.listUrl
-                listViewUrl = urlInfos
-                performSegue(withIdentifier: "toList", sender: nil)
-            }
-        }
-    }
+//    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+//        // Called when the user starts dragging a card to the side (optional).
+//        if urlInfos.count <= 1 {
+//            if swipeDirection == .Right {
+//                let listView = FavoritePlaceListViewController()
+//                var listViewUrl = listView.listUrl
+//                listViewUrl = urlInfos
+//                performSegue(withIdentifier: "toList", sender: nil)
+//            }
+//        }
+//    }
 }
 

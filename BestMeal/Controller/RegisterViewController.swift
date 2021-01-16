@@ -13,9 +13,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var userEmailTextField:UITextField!
     @IBOutlet weak var passTextField:UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -28,7 +30,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func registerButton(sender:UIButton){
         Auth.auth().createUser(withEmail: userEmailTextField.text!, password: passTextField.text!) { (result, error) in
-
+            
             if result?.user != nil {
                 //let saveProfile = SaveProfile
                 self.performSegue(withIdentifier: "toSearch", sender: nil)
@@ -39,5 +41,5 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         }
     }
 }
-    
+
 

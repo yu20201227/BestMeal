@@ -43,7 +43,6 @@ class AnalyticsModel{
                     if totalCount! > 15 {
                         totalCount = 15
                         print(totalCount as Any)
-
                     }
                     else {                        
                             print("数が足りません.")}
