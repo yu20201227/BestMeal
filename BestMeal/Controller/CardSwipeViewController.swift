@@ -50,7 +50,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
-
         
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: index) as? CardViewCell {
             verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
@@ -76,11 +75,9 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         telInfos.remove(at: index)
         nameInfos.remove(at: index)
         imageUrlStringInfos.remove(at: index)
-        
     }
     
-    func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        
+    func didSwipeCardAway(card:CardCell, index: Int, swipeDirection: SwipeDirection) {
         //[]内をindexNumberからindexへ変更
         if swipeDirection == .Right {
             likePlaceUrlArray.append(urlInfos[index])

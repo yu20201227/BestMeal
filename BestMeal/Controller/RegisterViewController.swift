@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

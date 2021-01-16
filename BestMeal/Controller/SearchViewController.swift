@@ -11,6 +11,7 @@ import Lottie
 import SwiftyJSON
 import Alamofire
 import PKHUD
+import ChameleonFramework
 
 class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol{
     
@@ -36,9 +37,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
-        
+        //design
+        searchTextField.layer.cornerRadius = 1.0
+        mapView.layer.cornerRadius = 1.0
     }
     
     //get permisson of user's current location
@@ -49,8 +53,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if status == .fullAccuracy {
             locationManager.startUpdatingLocation()
         }
-        
     }
+    
     //user changes the accuracy level of the location.
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
@@ -102,7 +106,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         //boot AnalyticdModel
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
-        
         HUD.hide()
     }
     
@@ -110,7 +113,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         removeArray()
 
         //-1消した
-        for i in 0...totalHitCount {
+        for i in 0...totalHitCount - 1{
             //取得アノテーションが1以下だった場合、強制的にリストへ飛ばす
             if totalHitCount <= 1 {
                 let listViewController = self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
