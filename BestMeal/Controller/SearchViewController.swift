@@ -13,7 +13,6 @@ import Alamofire
 import PKHUD
 
 class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol{
-//DoneCatchProtocol
     
     @IBOutlet weak var searchTextField:UITextField!
     @IBOutlet weak var mapView:MKMapView!
@@ -110,7 +109,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func addAnnotation(shopData:[ShopData]){
         removeArray()
 
-        for i in 0...totalHitCount - 1 {
+        //-1消した
+        for i in 0...totalHitCount {
             //取得アノテーションが1以下だった場合、強制的にリストへ飛ばす
             if totalHitCount <= 1 {
                 let listViewController = self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
@@ -118,8 +118,14 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             }
             print(i)
             annotation = MKPointAnnotation()
+            //annotationが０の場合
+            if annotation == nil {
+                let listViewController =
+                    self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
+                self.present(listViewController, animated: true, completion: nil)
+            }
             annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
-
+            
             annotation.title = shopData[i].name
             annotation.subtitle = shopData[i].tel
 
@@ -130,7 +136,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             mapView.addAnnotation(annotation)
         }
         searchTextField.resignFirstResponder()
-    }
+            }
 
     func removeArray(){
         mapView.removeAnnotations(mapView.annotations)
@@ -141,6 +147,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
+        if annotation == nil {
+            let listViewController =
+            self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
+            self.present(listViewController, animated: true, completion: nil)
+        }
         shopDataArray = arrayData
         totalHitCount = resultCount
         
@@ -170,5 +181,5 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
          
         
     }
-    
+    //アノテーションが０の時どうするか。
 }

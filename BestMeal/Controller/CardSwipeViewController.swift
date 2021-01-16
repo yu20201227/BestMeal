@@ -91,13 +91,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         }
         if nameInfos.count == 0 {
             if swipeDirection == .Right {
-//                let listView = FavoritePlaceListViewController()
-//                var listViewUrl = listView.listUrl
-//                var listViewImage = listView.listImage
-//                var listViewName = listView.listName
-//                listViewUrl = urlInfos
-//                listViewName = nameInfos
-//                listViewImage = imageUrlStringInfos
                 performSegue(withIdentifier: "toList", sender: nil)
             } else {
                 if nameInfos.count == 0{
@@ -126,16 +119,16 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         listVC.listUrl = self.likePlaceUrlArray
     }
     
-    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        // Called when the user starts dragging a card to the side (optional).
-        if urlInfos.count <= 1 {
-            if swipeDirection == .Right {
-                let listView = FavoritePlaceListViewController()
-                var listViewUrl = listView.listUrl
-                listViewUrl = urlInfos
-                performSegue(withIdentifier: "toList", sender: nil)
-            }
-        }
-    }
+//    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+//        // Called when the user starts dragging a card to the side (optional).
+//        if urlInfos.count <= 1 {
+//            if swipeDirection == .Right {
+//                let listView = FavoritePlaceListViewController()
+//                var listViewUrl = listView.listUrl
+//                listViewUrl = urlInfos
+//                performSegue(withIdentifier: "toList", sender: nil)
+//            }
+//        }
+//    }
 }
 
