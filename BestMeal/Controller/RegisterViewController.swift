@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
 
 class RegisterViewController: UIViewController, UITextFieldDelegate{
     
@@ -17,16 +16,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         userEmailTextField.resignFirstResponder()
         passTextField.resignFirstResponder()
-        
         return true
     }
-    
     
     @IBAction func registerButton(sender:UIButton){
         Auth.auth().createUser(withEmail: userEmailTextField.text!, password: passTextField.text!) { (result, error) in
@@ -40,6 +36,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
             }
         }
     }
+    
 }
+
 
 

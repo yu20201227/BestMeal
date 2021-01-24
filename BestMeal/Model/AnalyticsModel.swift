@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+import Firebase
 import Alamofire
 
 protocol DoneCatchProtocol {
@@ -21,16 +22,19 @@ class AnalyticsModel{
     var doneCatchDataProtocol:DoneCatchProtocol?
     var shopDataArray = [ShopData]()
     
+    var failedToGetInfo = ""
+    
     init(latitude: Double, longitude: Double, url:String){
         idoValue = latitude
         keidoValue = longitude
         urlString = url
     }
+    
     // analyize with JSON
     func analyizeWithJSON(){
         let encoderUrlString:String = urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        AF.request(encoderUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        AF.request(encoderUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { [self] (response) in
             
             print(response.debugDescription)
             
@@ -40,14 +44,16 @@ class AnalyticsModel{
                     let json:JSON = try JSON(data: response.data!)
                     print(json.description)
                     var totalCount = json["total_hit_count"].int
-                    if totalCount! > 15 {
-                        totalCount = 15
-                        print(totalCount as Any)
+                    if totalCount == nil {
+                        print("apiは０ですがアラートが出ていない可能性があります.")
+                        return
+                    } else if totalCount != nil {
+                        if totalCount! > 15{
+                            totalCount = 15
+                        }
                     }
-                    else {                        
-                            print("数が足りません.")}
                     
-                    for i in 0...totalCount! - 1 {
+                    for i in 0...totalCount! - 1{
                         //if info exit on JSON
                         if json["rest"][i]["latitude"] != "" && json["rest"][i]["longitude"] != "" && json["rest"][i]["url"] != "" && json["rest"][i]["name"] != "" && json["rest"][i]["tel"] != "" && json["rest"][i]["image_url"]["shop_image1"] != "" {
                             
@@ -70,6 +76,15 @@ class AnalyticsModel{
             }
         }
         
+    }
+    func alert(){
+        let alert:UIAlertController = UIAlertController(title: "警告", message: "情報を取得できませんでした。", preferredStyle: .alert)
+        
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+        })
+        alert.addAction(okAction)
     }
     
 }

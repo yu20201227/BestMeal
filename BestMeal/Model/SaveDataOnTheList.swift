@@ -7,38 +7,47 @@
 
 import Foundation
 import Firebase
-import PKHUD
+import Alamofire
+import FirebaseDatabase
+//ここ、要見直し（リストに保存するヒントになる）
 
-class SaveListData {
+class PlaceDataModel {
     
-    var shopImage:String! = ""
-    var shopName:String! = ""
-    var shopInfoUrl:String! = ""
+    var placeImage:String! = ""
+    var placeName:String! = ""
+    var placeUrl:String! = ""
     var ref:DatabaseReference!
+    var docID:String! = ""
+    var db = Firestore.firestore().collection("placeData")
     
-    init(shopImage:String, shopName:String, shopInfoUrl:String){
+    init(placeName:String, placeImage:String, placeUrl:String, docID:String){
+
+        self.placeName = placeName
+        self.placeImage = placeImage
+        self.placeUrl = placeUrl
+        self.docID = docID
         
-        self.shopName = shopName
-        self.shopImage = shopImage
-        self.shopInfoUrl = shopInfoUrl
-        
-        ref = Database.database().reference().child("users").child("userID").childByAutoId()
     }
-    
+
     init(snapShot:DataSnapshot){
         ref = snapShot.ref
-        
+
         if let value = snapShot.value as? [String:Any]{
-            shopName = value["shopName"] as? String
-            shopImage = value["shopImage"] as? String
-            shopInfoUrl = value["shopInfoUrl"] as? String
+            placeImage = value["placeImage"] as? String
+            placeName = value["placeName"] as? String
+            placeUrl = value["placeUrl"] as? String
+            docID = value["docID"] as? String
+            
         }
     }
-    
-    func toContents() -> [String:Any]{
-        return ["shopName":shopName!, "shopImage":shopImage!, "shopInfoUrl":shopInfoUrl!]
+
+    func toContents(){
+         self.db.document().setData(
+            ["placeName":placeName as Any, "placeImage":placeImage as Any, "placeUrl":placeUrl as Any])
     }
+    
     func save(){
         ref.setValue(toContents())
     }
 }
+

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -33,7 +35,7 @@
 		<string>アクション実行のため情報取得。</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>位置情報取得</string>
+	<string>近くて今すぐ行ける、あなたにぴったりのお店を探すために位置情報を取得します。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
