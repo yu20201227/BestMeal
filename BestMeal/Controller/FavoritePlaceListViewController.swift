@@ -6,67 +6,66 @@
 //
 
 import UIKit
-import Firebase
 import SDWebImage
-import PKHUD
+import FirebaseFirestore
+import Firebase
 
-class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
+class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate{
     
     @IBOutlet weak var favTableView:UITableView!
     
-    
-  //  var onTheCardDataArray = [DataOnTheCardModel]()
+    //var onTheCardDataArray = [SaveListData]()
     var listName = [String]()
     var listUrl = [String]()
     var listImage = [String]()
     var listTel = [String]()
     var userEmail = String()
     var userPass = String()
-    var favRef = Database.database().reference()
+    //var favRef = Database.database().reference()
     var indexNumber = Int()
+    let db = Firestore.firestore().collection("placeData")
+    var dataSets = [PlaceDataModel]()
     
     var indexName = String()
     var indexImage = String()
     var indexUrl = String()
     var indexTel = String()
     
+    var loadDBModel = LoadDBModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        favTableView.backgroundColor = .brown
+        print("\(listName)これがlistNameです")
+        
         favTableView.allowsSelection = true
         
-
         if UserDefaults.standard.object(forKey: "userPass") != nil{
             userPass = UserDefaults.standard.object(forKey: "userPass") as! String
         }
-
+        
         if UserDefaults.standard.object(forKey: "userName") != nil{
             userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
-
+            
             self.title = "\(userEmail)'s MusicList"
         }
-        
-        
         favTableView.delegate = self
         favTableView.dataSource = self
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = .white
-        
         self.title = "\(userEmail)'s MusicList"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
         self.favTableView.reloadData()
+        //loadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return indexName.count
+        return listName.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,31 +76,38 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         return 160
     }
     
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //右にスワイプした分だけ繰り返し
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let detailVC = DetailViewController()
-        //listName&listImageをそのまま反映させたことによりクリア
+        cell.backgroundColor = .brown
+        
         indexName = listName[indexPath.row]
         indexImage = listImage[indexPath.row]
         indexUrl = listUrl[indexPath.row]
-        indexTel = listTel[indexPath.row]
+        //indexTel = listTel[indexPath.row]
         
-        //直接UIImageViewやUILabelに代入できないのか
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
+        //   placeImageViewOnTheList.sd_setImage(with: URL(string: loadDBModel.dataSets[indexPath.row].placeImage), completed: nil)
+        
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
-        var searchButton = cell.contentView.viewWithTag(3)
         placeNameLabelOnTheList.text = indexName
+        //  placeNameLabelOnTheList.text = loadDBModel.dataSets[indexPath.row].placeName
+        
+        placeNameLabelOnTheList.textColor = .white
+        placeNameLabelOnTheList.textAlignment = .center
+        placeNameLabelOnTheList.layer.cornerRadius = 10.0
         
         placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
-                
-       // toDetailUIButton = listUrl[indexPath.row]
-        
+        placeImageViewOnTheList.layer.cornerRadius = 20.0
         return cell
+        
+        let fo = ["placeName":listName[indexPath.row],"placeUrl":listUrl[indexPath.row], "placeImage":listImage[indexPath.row]] as [String : Any]
+        db.document().setData(fo)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -109,8 +115,11 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            //self.onTheCardDataArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with:.automatic)
+            listUrl.remove(at: indexPath.row)
+            listName.remove(at: indexPath.row)
+            listImage.remove(at: indexPath.row)
+            listTel.remove(at: indexPath.row)
+            favTableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
     }
     
@@ -118,72 +127,35 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
-    func showAlert(){
-        
-        let alertController = UIAlertController(title: "選択", message: "詳細を開きますか？", preferredStyle: .actionSheet)
-        let toDetailInfo = UIAlertAction(title: "詳細を開く", style: .default) { (alert) in
-            self.toDetailScreen()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if UIApplication.shared.canOpenURL(URL(string: listUrl[indexPath.row])!){
+            UIApplication.shared.open(URL(string: listUrl[indexPath.row])!)
         }
-        let toCancel = UIAlertAction(title: "キャンセル", style: .cancel)
-        
-        alertController.addAction(toDetailInfo)
-        alertController.addAction(toCancel)
-        self.present(alertController, animated: true, completion: nil)
+        //performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
-    
-    @IBAction func tapImage(_ sender: UITapGestureRecognizer)
-    {
-        self.showAlert()
-    }
-    
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            //performSegue(withIdentifier: "toDetail", sender: nil)
-            indexUrl = listUrl[indexPath.row]
-            let indexUrls = URL(string: indexUrl)
-            if UIApplication.shared.canOpenURL(indexUrls! as URL) {
-                UIApplication.shared.open(indexUrls! as URL, options: [:], completionHandler: nil)
-            }
-            
-            
-//            if UIApplication.shared.canOpenURL(indexUrls!) {
-//                UIApplication.shared.open(indexUrls!)
-//            }
-            
-        }
-//
-//    @IBAction func toDetailButton(sender: UIButton){
-//        performSegue(withIdentifier: "toDetail", sender: nil)
-//        let url = URL(string: indexUrl)
-//        if UIApplication.shared.canOpenURL(url!){
-//            UIApplication.shared.open(url!)
-//
-////            indexName = ""
-////            indexImage = ""
-////            indexUrl = ""
-////            indexTel = ""
-//
-//
-//        }
-    
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailVC = segue.destination as! DetailViewController
-       // index（右辺）にはそれぞれ複数情報が取得できている。
-        detailVC.url = indexUrl
-        detailVC.tel = indexTel
-        detailVC.name = indexName
-        detailVC.imageURLString = indexImage
-    }
     
     @IBAction func didTapGoBackButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
     }
     
+    func uploadDataToFireStore(){
+        
+        var ref:DocumentReference? = nil
+        var refs:CollectionReference? = nil
+        
+        ref = db.document()
+        ref?.setData(["placeUrl" : indexUrl,
+                      "placeName": indexName,
+                      "placeImage": indexImage
+        ]) {  error in
+            if let error = error {
+                print("エラーが発生しています")
+            } else {
+                print("good")
+            }
+        }
+        
+    }
+    
 }
-    
-//カードに表示されているものは正しくlistへ遷移される？？
-    
-
-

@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "お気に入りリスト"; ObjectID = "72x-kY-e1U"; */
+"72x-kY-e1U.normalTitle" = "お気に入りリスト";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "CYM-7s-P1J"; */
+"CYM-7s-P1J.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "Hmd-7g-M5y"; */
+"Hmd-7g-M5y.normalTitle" = "戻る";
+
+/* Class = "UIButton"; normalTitle = "Call"; ObjectID = "XAA-zb-m8I"; */
+"XAA-zb-m8I.normalTitle" = "Call";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "mQ3-aC-T42"; */
+"mQ3-aC-T42.normalTitle" = "Back";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "mlX-ik-nY3"; */
+"mlX-ik-nY3.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "ssH-b9-Pag"; */
+"ssH-b9-Pag.normalTitle" = "戻る";
+
+/* Class = "UITextField"; placeholder = "pass"; ObjectID = "uaX-5t-EW7"; */
+"uaX-5t-EW7.placeholder" = "pass";

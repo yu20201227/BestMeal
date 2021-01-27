@@ -7,7 +7,7 @@
 
 import Foundation
 import Firebase
-import PKHUD
+import Alamofire
 
 class GetUserInfoToMakeOriginalList {
 

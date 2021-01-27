@@ -12,12 +12,15 @@ class CardViewCell: CardCell {
     
     @IBOutlet weak var goodImages:UIImageView!
     @IBOutlet weak var placeNameLabel:UILabel!    
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
-            }
+        placeNameLabel.font = .boldSystemFont(ofSize: 30.0)
+        placeNameLabel.font = placeNameLabel.font.withSize(25.0)
+        placeNameLabel.textColor = .white
+        goodImages.adjustsImageSizeForAccessibilityContentSizeCategory = true
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
     }

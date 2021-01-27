@@ -7,16 +7,16 @@ target 'BestMeal' do
 
   # Pods for BestMeal
 
- pod 'Firebase'
- pod 'Firebase/Database'
- pod 'Firebase/Auth'
  pod 'VerticalCardSwiper'
  pod 'SDWebImage'
- pod 'PKHUD'
- pod 'Alamofire'
  pod 'SwiftyJSON'
- pod 'DTGradientButton'
  pod 'ChameleonFramework'
  pod 'lottie-ios'
+ pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '7.4.0'
+ pod 'Firebase/Auth'
+ pod 'Alamofire'
+ pod 'Firebase/Database'
+ pod 'Picasso'
+
 
 end

@@ -4,6 +4,9 @@
 //
 //  Created by Owner on 2020/12/12.
 //
+//provisioningfileメモ
+//実機でビルドするときは「development」を利用し、apppstoreへ申請の際は「distribution」を使用する。
+
 
 import UIKit
 import Lottie
