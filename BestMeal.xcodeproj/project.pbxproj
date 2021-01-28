@@ -28,6 +28,7 @@
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
 		EB8D53E225BD673700C28D9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB8D53E125BD673700C28D9E /* GoogleService-Info.plist */; };
+		EBC0C48A25C263F1008603D4 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0C48925C263F1008603D4 /* AnalyticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 		EB80175D25B17D2F0075A814 /* BestMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestMeal.entitlements; sourceTree = "<group>"; };
 		EB8D53E125BD673700C28D9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EBC0C48925C263F1008603D4 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
+				EBC0C48925C263F1008603D4 /* AnalyticsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
 				EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */,
+				EBC0C48A25C263F1008603D4 /* AnalyticsViewController.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
