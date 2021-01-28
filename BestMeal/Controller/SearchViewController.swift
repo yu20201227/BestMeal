@@ -3,7 +3,6 @@
 //  BestMeal
 //
 //Created by Owner on 2020/12/12.
-//There is no indicator...
 
 import UIKit
 import MapKit
@@ -17,7 +16,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     @IBOutlet weak var searchTextField:UITextField!
     @IBOutlet weak var mapView:MKMapView!
-    @IBOutlet weak var showAlertUILabel: UILabel!
     
     let animationView = AnimationView()
     let locationManager = CLLocationManager()
@@ -38,35 +36,17 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var saveDataOnTheList = [PlaceDataModel]()
     let db = Firestore.firestore().collection("placeData")
     var smallestNumber = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //(適当な文字列＝)nil検出のエラー
+        
         mapView?.delegate = self
-
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
         
-        if searchTextField == nil {
-            alert()
-            return
-        }
-        
-
-        //design
-        searchTextField.layer.cornerRadius = 1.0
-        mapView.layer.cornerRadius = 1.0
-//
-//
-//        if searchTextField?.text == nil {
-//            alert()
-//            return
-//        }
-
     }
     
-    //get permisson of user's current location
     func startUpdatingLocation(){
         locationManager.requestAlwaysAuthorization()
         let status = CLAccuracyAuthorization.fullAccuracy
@@ -75,7 +55,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
     
-    //user changes the accuracy level of the location.
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -93,15 +72,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
     
-    //boot locationManager/MapView
     func configureSubview(){
         locationManager.delegate = self
-        // the highest accuracy possible
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
-                
+        
         mapView?.delegate = self
         mapView?.mapType = .standard
         mapView?.userTrackingMode = .follow
@@ -119,29 +96,24 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if searchTextField.text?.isEmpty == true {
             alert()
             return }
-
+        
         searchTextField.resignFirstResponder()
         let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
-        //元はlet analyticsModel = AnalyticsModel
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
         
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
-        
     }
-
+    
     func addAnnotation(shopData:[ShopData]){
         removeArray()
-        
         if totalHitCount == smallestNumber {
             alert()
             return
         }
         
-        //ここで整合性が取れなくなりエラー
         for i in 0...totalHitCount - 1{
-            
             print(i)
             annotation = MKPointAnnotation()
             
@@ -168,11 +140,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
-        if annotation == nil {
-            let listViewController =
-                self.storyboard?.instantiateViewController(identifier: "toListMenu") as! FavoritePlaceListViewController
-            self.present(listViewController, animated: true, completion: nil)
-        }
+        
         shopDataArray = arrayData
         totalHitCount = resultCount
         addAnnotation(shopData: shopDataArray)
@@ -180,15 +148,14 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
         indexNumber = Int()
         if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
         }
-        //↓アノテーションをタップしたらカードに遷移する
         performSegue(withIdentifier: "toCards", sender: nil)
     }
     
-    //それぞれのArrayの後に[indexNumber]をつける
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let cardVC = segue.destination as! CardSwipeViewController
@@ -200,15 +167,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func alert(){
-        let alert:UIAlertController = UIAlertController(title: "警告", message: "情報を取得できませんでした。", preferredStyle: .alert)
-        
+        let noInfoAlert:UIAlertController = UIAlertController(title: "情報を取得できません🙇‍♂️", message: "違うキーワードで検索してください！", preferredStyle: .alert)
         let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler:{
             (action: UIAlertAction!) -> Void in
             print("OK")
         })
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        noInfoAlert.addAction(okAction)
+        present(noInfoAlert, animated: true, completion: nil)
     }
-    
 }
 

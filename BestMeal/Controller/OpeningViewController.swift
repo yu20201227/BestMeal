@@ -21,7 +21,6 @@ class OpeningViewController: UIViewController {
        startOpeningAnimation()
        view.backgroundColor = UIColor.flatMint()
        self.navigationController?.isNavigationBarHidden = true
-        
     }
     
     func startOpeningAnimation(){
@@ -33,7 +32,6 @@ class OpeningViewController: UIViewController {
         animationView.loopMode = .loop
         animationView.play()
         view.addSubview(animationView)
-        
     }
     
     @IBAction func nextButton(sender:Any){

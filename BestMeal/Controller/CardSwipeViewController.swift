@@ -52,12 +52,10 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
-        
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: index) as? CardViewCell {
             verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
             view.backgroundColor = verticalCardSwiperView.backgroundColor
             
-            //カードに配列を表示させる
             let placeImage = imageUrlStringInfos[index]
             let placename = nameInfos[index]
             let placeUrl = urlInfos[index]
@@ -66,13 +64,11 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardCell.goodImages.sd_setImage(with: URL(string: imageUrlStringInfos[index]), completed: nil)
             
             return cardCell
-            
         }
         return CardCell()
     }
-
+    
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        
         indexNumber = index
         
         if swipeDirection == .Right {
@@ -85,19 +81,18 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         telInfos.remove(at: index)
         nameInfos.remove(at: index)
         imageUrlStringInfos.remove(at: index)
-    
-    if nameInfos.count == 0 {
-        if swipeDirection == .Right {
-            performSegue(withIdentifier: "toList", sender: nil)
-        } else {
-            if nameInfos.count == 0{
-                if swipeDirection == .Left {
-                    performSegue(withIdentifier: "toList", sender: nil) }
+        
+        if nameInfos.count == 0 {
+            if swipeDirection == .Right {
+                performSegue(withIdentifier: "toList", sender: nil)
+            } else {
+                if nameInfos.count == 0{
+                    if swipeDirection == .Left {
+                        performSegue(withIdentifier: "toList", sender: nil) }
+                }
             }
         }
     }
-    }
-
     
     func didSwipeCardAway(card:CardCell, index: Int, swipeDirection: SwipeDirection) {
     }
@@ -117,18 +112,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         listVC.listName = self.likePlaceNameArray
         listVC.listUrl = self.likePlaceUrlArray
     }
-    
-//    func didDragCard(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-//        // Called when the user starts dragging a card to the side (optional).
-//            if urlInfos.count <= infoCount {
-//                if swipeDirection == .Right {
-//                let listView = FavoritePlaceListViewController()
-//                var listViewUrl = listView.listUrl
-//                listViewUrl = urlInfos
-//                performSegue(withIdentifier: "toList", sender: nil)
-//            }
-//        }
-//    }
 }
 
 

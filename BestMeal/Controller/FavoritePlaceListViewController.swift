@@ -14,14 +14,12 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     @IBOutlet weak var favTableView:UITableView!
     
-    //var onTheCardDataArray = [SaveListData]()
     var listName = [String]()
     var listUrl = [String]()
     var listImage = [String]()
     var listTel = [String]()
     var userEmail = String()
     var userPass = String()
-    //var favRef = Database.database().reference()
     var indexNumber = Int()
     let db = Firestore.firestore().collection("placeData")
     var dataSets = [PlaceDataModel]()
@@ -61,7 +59,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         self.title = "\(userEmail)'s MusicList"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.favTableView.reloadData()
-        //loadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,15 +81,12 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         indexName = listName[indexPath.row]
         indexImage = listImage[indexPath.row]
         indexUrl = listUrl[indexPath.row]
-        //indexTel = listTel[indexPath.row]
+        indexTel = listTel[indexPath.row]
         
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as! UIImageView
-        //   placeImageViewOnTheList.sd_setImage(with: URL(string: loadDBModel.dataSets[indexPath.row].placeImage), completed: nil)
-        
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as! UILabel
-        placeNameLabelOnTheList.text = indexName
-        //  placeNameLabelOnTheList.text = loadDBModel.dataSets[indexPath.row].placeName
         
+        placeNameLabelOnTheList.text = indexName
         placeNameLabelOnTheList.textColor = .white
         placeNameLabelOnTheList.textAlignment = .center
         placeNameLabelOnTheList.layer.cornerRadius = 10.0
@@ -131,16 +125,13 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         if UIApplication.shared.canOpenURL(URL(string: listUrl[indexPath.row])!){
             UIApplication.shared.open(URL(string: listUrl[indexPath.row])!)
         }
-        //performSegue(withIdentifier: "toDetail", sender: nil)
     }
-    
     
     @IBAction func didTapGoBackButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
     }
     
     func uploadDataToFireStore(){
-        
         var ref:DocumentReference? = nil
         var refs:CollectionReference? = nil
         
@@ -155,7 +146,5 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
                 print("good")
             }
         }
-        
     }
-    
 }
