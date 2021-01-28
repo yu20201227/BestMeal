@@ -37,16 +37,33 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var shopDataArray = [ShopData]()
     var saveDataOnTheList = [PlaceDataModel]()
     let db = Firestore.firestore().collection("placeData")
-    
+    var smallestNumber = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
+        //(適当な文字列＝)nil検出のエラー
+        mapView?.delegate = self
+
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
+        
+        if searchTextField == nil {
+            alert()
+            return
+        }
+        
+
         //design
         searchTextField.layer.cornerRadius = 1.0
         mapView.layer.cornerRadius = 1.0
+//
+//
+//        if searchTextField?.text == nil {
+//            alert()
+//            return
+//        }
+
     }
     
     //get permisson of user's current location
@@ -84,10 +101,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
-        
-        mapView.delegate = self
-        mapView.mapType = .standard
-        mapView.userTrackingMode = .follow
+                
+        mapView?.delegate = self
+        mapView?.mapType = .standard
+        mapView?.userTrackingMode = .follow
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -99,31 +116,35 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     @IBAction func searchButton(sender:UIButton){
+        if searchTextField.text?.isEmpty == true {
+            alert()
+            return }
+
         searchTextField.resignFirstResponder()
         let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
-       
+        
+        //元はlet analyticsModel = AnalyticsModel
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
-        if analyticsModel.shopDataArray.count == nil {
-            self.alert()
-            return }
-        //boot AnalyticdModel
+        
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
         
-        }
-    
+    }
+
     func addAnnotation(shopData:[ShopData]){
         removeArray()
         
+        if totalHitCount == smallestNumber {
+            alert()
+            return
+        }
+        
+        //ここで整合性が取れなくなりエラー
         for i in 0...totalHitCount - 1{
-            //取得アノテーションが1以下だった場合、強制的にリストへ飛ばす
-            if totalHitCount <= 1 {
-                let listViewController = self.storyboard?.instantiateViewController(identifier: "ListMenu") as! FavoritePlaceListViewController
-                self.present(listViewController, animated: true, completion: nil)
-            }
+            
             print(i)
             annotation = MKPointAnnotation()
-
+            
             annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
             
             annotation.title = shopData[i].name
@@ -188,4 +209,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
 }
+

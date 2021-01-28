@@ -16,36 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="323" height="343"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-kC-AxP">
-                        <rect key="frame" x="20" y="42" width="287" height="216"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8u-3j-Oog">
+                        <rect key="frame" x="20" y="265" width="283" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="343" id="ThH-Ak-arG"/>
-                            <constraint firstAttribute="width" constant="323" id="ooA-7n-JC4"/>
+                            <constraint firstAttribute="width" constant="283" id="GJH-6D-j4S"/>
+                            <constraint firstAttribute="height" constant="60" id="oR8-13-KC8"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8u-3j-Oog">
-                        <rect key="frame" x="20" y="266" width="287" height="67"/>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
-                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="スワイプ-1" translatesAutoresizingMaskIntoConstraints="NO" id="q7y-6Y-I8y">
-                        <rect key="frame" x="129" y="9" width="78" height="86"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-kC-AxP">
+                        <rect key="frame" x="20" y="20" width="283" height="230"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="283" id="PLR-Nc-XyL"/>
+                            <constraint firstAttribute="height" constant="230" id="ZV8-z2-5AG"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="B8u-3j-Oog" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="3SL-E0-nbf"/>
-                <constraint firstItem="q7y-6Y-I8y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="9" id="AEV-j8-4AO"/>
-                <constraint firstItem="q7y-6Y-I8y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="129" id="HwU-5v-hHC"/>
-                <constraint firstAttribute="bottom" secondItem="B8u-3j-Oog" secondAttribute="bottom" constant="20" id="VhB-5h-lQG"/>
-                <constraint firstItem="cG6-kC-AxP" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="d6F-Ln-DWv"/>
-                <constraint firstItem="B8u-3j-Oog" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="dDn-W7-wpU"/>
-                <constraint firstItem="cG6-kC-AxP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="gTf-WG-nHW"/>
-                <constraint firstAttribute="trailing" secondItem="q7y-6Y-I8y" secondAttribute="trailing" constant="116" id="rU1-Ka-2RT"/>
-                <constraint firstAttribute="trailing" secondItem="B8u-3j-Oog" secondAttribute="trailing" constant="18" id="y6B-pV-VfE"/>
+                <constraint firstItem="cG6-kC-AxP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="DJK-i8-9Oh"/>
+                <constraint firstItem="cG6-kC-AxP" firstAttribute="leading" secondItem="B8u-3j-Oog" secondAttribute="leading" id="HGm-iM-eh7"/>
+                <constraint firstItem="B8u-3j-Oog" firstAttribute="top" secondItem="cG6-kC-AxP" secondAttribute="bottom" constant="15" id="JRs-gF-EMo"/>
+                <constraint firstAttribute="trailing" secondItem="cG6-kC-AxP" secondAttribute="trailing" constant="20" id="Q0C-Da-2yI"/>
+                <constraint firstAttribute="bottom" secondItem="B8u-3j-Oog" secondAttribute="bottom" constant="18" id="QLk-MR-81v"/>
+                <constraint firstItem="cG6-kC-AxP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="hMi-Ck-EQU"/>
             </constraints>
             <size key="customSize" width="323" height="343"/>
             <connections>
@@ -55,7 +52,4 @@
             <point key="canvasLocation" x="107.51953125" y="196.12005856515373"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="スワイプ-1" width="91" height="86"/>
-    </resources>
 </document>

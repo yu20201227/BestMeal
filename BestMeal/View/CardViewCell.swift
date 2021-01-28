@@ -19,6 +19,7 @@ class CardViewCell: CardCell {
         placeNameLabel.font = placeNameLabel.font.withSize(25.0)
         placeNameLabel.textColor = .white
         goodImages.adjustsImageSizeForAccessibilityContentSizeCategory = true
+        goodImages.layer.cornerRadius = 20.0
     }
     
     override func prepareForReuse() {
