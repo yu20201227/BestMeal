@@ -36,7 +36,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
             }
         }
     }
-    
 }
 
 
