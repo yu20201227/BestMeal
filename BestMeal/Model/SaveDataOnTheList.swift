@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 import Alamofire
 import FirebaseDatabase
-//ここ、要見直し（リストに保存するヒントになる）
 
 class PlaceDataModel {
     
@@ -17,15 +16,16 @@ class PlaceDataModel {
     var placeName:String! = ""
     var placeUrl:String! = ""
     var ref:DatabaseReference!
-    var docID:String! = ""
-    var db = Firestore.firestore().collection("placeData")
+    var userPass:String! = ""
     
-    init(placeName:String, placeImage:String, placeUrl:String, docID:String){
+    init(placeName:String, placeImage:String, placeUrl:String, userPass: String){
 
         self.placeName = placeName
         self.placeImage = placeImage
         self.placeUrl = placeUrl
-        self.docID = docID
+        self.userPass = userPass
+        
+        ref = Database.database().reference().child("placeData").childByAutoId()
         
     }
 
@@ -36,14 +36,14 @@ class PlaceDataModel {
             placeImage = value["placeImage"] as? String
             placeName = value["placeName"] as? String
             placeUrl = value["placeUrl"] as? String
-            docID = value["docID"] as? String
+            userPass = value["userPass"] as? String
             
         }
     }
 
-    func toContents(){
-         self.db.document().setData(
-            ["placeName":placeName as Any, "placeImage":placeImage as Any, "placeUrl":placeUrl as Any])
+    func toContents() -> [String:Any] {
+         return
+            ["placeName":placeName! as Any, "placeImage":placeImage! as Any, "placeUrl":placeUrl! as Any, "userPass":userPass as Any]
     }
     
     func save(){

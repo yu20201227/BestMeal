@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D06425686CD30A8C2C11D53 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */; };
-		EB5B111A25BA8EE5001F5A01 /* GetDataFromFireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B111925BA8EE5001F5A01 /* GetDataFromFireStore.swift */; };
-		EB5B111D25BA971C001F5A01 /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B111C25BA971C001F5A01 /* DataSet.swift */; };
+		EB05C7B425C3C39500C0AECD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05C7B325C3C39500C0AECD /* UserData.swift */; };
+		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
 		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
@@ -23,19 +23,17 @@
 		EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F784325849D8B00C50F9F /* ShopData.swift */; };
 		EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78602584CABB00C50F9F /* CardViewCell.swift */; };
 		EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78612584CABB00C50F9F /* CardViewCell.xib */; };
-		EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */; };
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
-		EB8D53E225BD673700C28D9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB8D53E125BD673700C28D9E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7FDD78726DFA4398899A1899 /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
 		AB652B1E367440AC205E2E80 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
 		D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB5B111925BA8EE5001F5A01 /* GetDataFromFireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataFromFireStore.swift; sourceTree = "<group>"; };
-		EB5B111C25BA971C001F5A01 /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
+		EB05C7B325C3C39500C0AECD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,12 +49,10 @@
 		EB6F784325849D8B00C50F9F /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
 		EB6F78602584CABB00C50F9F /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		EB6F78612584CABB00C50F9F /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
-		EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoToMakeOriginalList.swift; sourceTree = "<group>"; };
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
 		EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOnTheList.swift; sourceTree = "<group>"; };
 		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 		EB80175D25B17D2F0075A814 /* BestMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestMeal.entitlements; sourceTree = "<group>"; };
-		EB8D53E125BD673700C28D9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +110,7 @@
 				EB6F781125848AEF00C50F9F /* Controller */,
 				EB6F781025848AE900C50F9F /* View */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
-				EB8D53E125BD673700C28D9E /* GoogleService-Info.plist */,
+				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
 			);
 			path = BestMeal;
 			sourceTree = "<group>";
@@ -122,12 +118,10 @@
 		EB6F780F25848AE400C50F9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB05C7B325C3C39500C0AECD /* UserData.swift */,
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
-				EB6F78822584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift */,
 				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
-				EB5B111925BA8EE5001F5A01 /* GetDataFromFireStore.swift */,
-				EB5B111C25BA971C001F5A01 /* DataSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,10 +215,10 @@
 			files = (
 				EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */,
 				EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */,
-				EB8D53E225BD673700C28D9E /* GoogleService-Info.plist in Resources */,
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
 				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
 				EB6F78012584889E00C50F9F /* Main.storyboard in Resources */,
+				EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,18 +289,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
-				EB6F78832584E58000C50F9F /* GetUserInfoToMakeOriginalList.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
+				EB05C7B425C3C39500C0AECD /* UserData.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
-				EB5B111A25BA8EE5001F5A01 /* GetDataFromFireStore.swift in Sources */,
 				EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */,
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
-				EB5B111D25BA971C001F5A01 /* DataSet.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,12 +456,14 @@
 				CODE_SIGN_ENTITLEMENTS = BestMeal/BestMeal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = BestMealOnMyDevice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BestMealOnMyDevice;
@@ -489,12 +483,14 @@
 				CODE_SIGN_ENTITLEMENTS = BestMeal/BestMeal.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = HappyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = happyApp;
