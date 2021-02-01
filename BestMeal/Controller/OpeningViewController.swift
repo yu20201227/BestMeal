@@ -11,6 +11,8 @@
 import UIKit
 import Lottie
 
+var userPass = String()
+
 class OpeningViewController: UIViewController {
     
     @IBOutlet var didTapToNextButton:UIButton!
@@ -18,6 +20,11 @@ class OpeningViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.object(forKey: "userPass") != nil {
+            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+        }
+        
        startOpeningAnimation()
        view.backgroundColor = UIColor.flatMint()
        self.navigationController?.isNavigationBarHidden = true
@@ -34,7 +41,15 @@ class OpeningViewController: UIViewController {
         view.addSubview(animationView)
     }
     
-    @IBAction func nextButton(sender:Any){
-        performSegue(withIdentifier: "toRegister", sender: nil)
+    @IBAction func nextButton(sender:UIButton){
+        
+        if UserDefaults.standard.object(forKey: "userPass") != nil {
+            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+            performSegue(withIdentifier: "toSearch", sender: nil)
+
+        } else {
+           performSegue(withIdentifier: "toRegister", sender: nil)
+        }
     }
-}
+    }
+

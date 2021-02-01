@@ -12,7 +12,7 @@ import ChameleonFramework
 import Firebase
 import FirebaseFirestore
 
-class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol{
+class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol, UITextFieldDelegate{
     
     @IBOutlet weak var searchTextField:UITextField!
     @IBOutlet weak var mapView:MKMapView!
@@ -33,18 +33,39 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var telArray = [String]()
     
     var shopDataArray = [ShopData]()
-    var saveDataOnTheList = [PlaceDataModel]()
-    let db = Firestore.firestore().collection("placeData")
+    //var saveDataOnTheList = [PlaceDataModel]()
     var smallestNumber = 0
+    
+    var userEmail = String()
+    var userPass = String()
+    
+    var db = Database.database().reference()
+    var placeDataModelArray = [PlaceDataModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.object(forKey: "userPass") != nil {
+            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+        }
         
         mapView?.delegate = self
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
         
+        //        if UserDefaults.standard.object(forKey: "userEmail") != nil && UserDefaults.standard.object(forKey: "userPass") != nil {
+        //            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
+        //            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+        //        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchTextField.resignFirstResponder()
     }
     
     func startUpdatingLocation(){
@@ -94,7 +115,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     @IBAction func searchButton(sender:UIButton){
         if searchTextField.text?.isEmpty == true {
-            alert()
+            
+            let UIAlert = UIAlertController(title: "検索できません。", message: "キーワードを入れてください！", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
+                print("OK")
+            }
+            UIAlert.addAction(okAction)
+            present(UIAlert, animated: true, completion: nil)
             return }
         
         searchTextField.resignFirstResponder()
@@ -158,12 +185,18 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "toCards"{
+        
         let cardVC = segue.destination as! CardSwipeViewController
         cardVC.urlInfos = urlStringArray
         print("\(urlStringArray)")
         cardVC.nameInfos = nameStringArray
         cardVC.imageUrlStringInfos = imageStringArray
         cardVC.telInfos = telArray
+            
+        } else if segue.identifier == "gotoList" {
+            performSegue(withIdentifier: "gotoList", sender: nil)
+        }
     }
     
     func alert(){
@@ -175,5 +208,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         noInfoAlert.addAction(okAction)
         present(noInfoAlert, animated: true, completion: nil)
     }
+    
+    @IBAction func didTapAcessListButton(_ sender: Any) {
+        let listVC = storyboard?.instantiateViewController(identifier: "toList") as! FavoritePlaceListViewController
+        self.navigationController?.pushViewController(listVC, animated: true)
+    }
 }
-

@@ -12,57 +12,62 @@ import Firebase
 
 class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate{
     
+    
     @IBOutlet weak var favTableView:UITableView!
     
     var listName = [String]()
     var listUrl = [String]()
     var listImage = [String]()
     var listTel = [String]()
-    var userEmail = String()
     var userPass = String()
     var indexNumber = Int()
-    let db = Firestore.firestore().collection("placeData")
-    var dataSets = [PlaceDataModel]()
+    let db = Database.database().reference()
     
     var indexName = String()
     var indexImage = String()
     var indexUrl = String()
     var indexTel = String()
     
-    var loadDBModel = LoadDBModel()
+    var placeDataModelArray = [PlaceDataModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        favTableView.backgroundColor = .brown
-        print("\(listName)これがlistNameです")
-        
-        favTableView.allowsSelection = true
-        
-        if UserDefaults.standard.object(forKey: "userPass") != nil{
+        if UserDefaults.standard.object(forKey: "userPass") != nil {
             userPass = UserDefaults.standard.object(forKey: "userPass") as! String
         }
         
-        if UserDefaults.standard.object(forKey: "userName") != nil{
-            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
-            
-            self.title = "\(userEmail)'s MusicList"
-        }
         favTableView.delegate = self
         favTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = .white
-        self.title = "\(userEmail)'s MusicList"
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.favTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        db.child("placeData").child(userPass).observe(.value) { (snapshot) in
+            self.placeDataModelArray.removeAll()
+            
+            for child in snapshot.children {
+                let childSnapshot = child as! DataSnapshot
+                let placeDataMoldels = PlaceDataModel(snapShot: childSnapshot)
+                self.placeDataModelArray.insert(placeDataMoldels, at: 0)
+                self.favTableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        if listName.isEmpty {
+        return 0
+            print("やはりfirebaseは非同期通信だった。")
+    } else {
         return listName.count
+    }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,12 +75,18 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 160
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         cell.backgroundColor = .brown
         
         indexName = listName[indexPath.row]
@@ -90,17 +101,13 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         placeNameLabelOnTheList.textColor = .white
         placeNameLabelOnTheList.textAlignment = .center
         placeNameLabelOnTheList.layer.cornerRadius = 10.0
+ 
         
         placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, progress: nil, completed: nil)
         placeImageViewOnTheList.layer.cornerRadius = 20.0
+        
         return cell
         
-        let fo = ["placeName":listName[indexPath.row],"placeUrl":listUrl[indexPath.row], "placeImage":listImage[indexPath.row]] as [String : Any]
-        db.document().setData(fo)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -129,22 +136,5 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     @IBAction func didTapGoBackButton(sender:UIButton){
         dismiss(animated: true, completion: nil)
-    }
-    
-    func uploadDataToFireStore(){
-        var ref:DocumentReference? = nil
-        var refs:CollectionReference? = nil
-        
-        ref = db.document()
-        ref?.setData(["placeUrl" : indexUrl,
-                      "placeName": indexName,
-                      "placeImage": indexImage
-        ]) {  error in
-            if let error = error {
-                print("エラーが発生しています")
-            } else {
-                print("good")
-            }
-        }
     }
 }
