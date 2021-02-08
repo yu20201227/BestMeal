@@ -1,6 +1,6 @@
 <h1>BestMeal</h1>
+![IMG_6386](https://user-images.githubusercontent.com/72218177/107169034-3cf27900-6a00-11eb-9671-3b2266de108c.jpg)
 
-IMG_6386.jpg
 ・写真
 ・アプリ概要
 ・開発環境（MAc,xcode)
