@@ -1,8 +1,10 @@
 <h1>BestMeal</h1>
 
-写真（）
-<h5>![IMG_6386](https://user-images.githubusercontent.com/72218177/107169228-b722fd80-6a00-11eb-80ab-458e7de6b661.jpg)</h5>
+写真
+![IMG_6386](https://user-images.githubusercontent.com/72218177/107169228-b722fd80-6a00-11eb-80ab-458e7de6b661.jpg)
 
+
+<img src="https://user-images.githubusercontent.com/72218177/107169228-b722fd80-6a00-11eb-80ab-458e7de6b661.jpg" width="320px">
 ・写真
 ・アプリ概要
 ・開発環境（MAc,xcode)
