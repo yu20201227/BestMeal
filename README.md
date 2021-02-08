@@ -1,6 +1,7 @@
 <h1>BestMeal</h1>
 
-<h2>![IMG_6386](https://user-images.githubusercontent.com/72218177/107169228-b722fd80-6a00-11eb-80ab-458e7de6b661.jpg)</h2>
+写真
+![IMG_6386](https://user-images.githubusercontent.com/72218177/107169228-b722fd80-6a00-11eb-80ab-458e7de6b661.jpg)
 
 ・写真
 ・アプリ概要
