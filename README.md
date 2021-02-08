@@ -11,7 +11,7 @@
 
 
 <h5>・開発環境（Mac,xcode)
-・MacBook Pro Retina Late2013
+<h5>・MacBook Pro Retina Late2013
 ・MacOS Catalina (ver10.15.7)
 ・Xcode (Version 12.4)
 
