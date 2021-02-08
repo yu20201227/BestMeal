@@ -1,18 +1,11 @@
 <h1>BestMeal</h1>
 
-写真
-<img src="https://user-images.githubusercontent.com/72218177/107189991-8efdc380-6a2d-11eb-9ce7-2c364e6a2b11.png" width="100px">
-<img src="https://user-images.githubusercontent.com/72218177/107189995-91601d80-6a2d-11eb-9abb-517637a6fb1f.png" width="100px">
-<img src="https://user-images.githubusercontent.com/72218177/107190004-93c27780-6a2d-11eb-8c94-30553fe657b7.png" width="100px">
-<img src="https://user-images.githubusercontent.com/72218177/107190010-9624d180-6a2d-11eb-8775-6d5b34deddf1.png" width="100px">
-<img src="https://user-images.githubusercontent.com/72218177/107190015-97ee9500-6a2d-11eb-91a6-9998347fa876.png" width="100px">
+<img src="https://user-images.githubusercontent.com/72218177/107189991-8efdc380-6a2d-11eb-9ce7-2c364e6a2b11.png" width="150px">
+<img src="https://user-images.githubusercontent.com/72218177/107189995-91601d80-6a2d-11eb-9abb-517637a6fb1f.png" width="150px">
+<img src="https://user-images.githubusercontent.com/72218177/107190004-93c27780-6a2d-11eb-8c94-30553fe657b7.png" width="150px">
+<img src="https://user-images.githubusercontent.com/72218177/107190010-9624d180-6a2d-11eb-8775-6d5b34deddf1.png" width="150px">
+<img src="https://user-images.githubusercontent.com/72218177/107190015-97ee9500-6a2d-11eb-91a6-9998347fa876.png" width="150px">
 
-
-![ダウンロード (11)](https://user-images.githubusercontent.com/72218177/107190015-97ee9500-6a2d-11eb-91a6-9998347fa876.png)
-
-
-
-・写真
 <h2>アプリ概要</h2>
 「今日のランチはどうしよう？」「夜ふらっと飲みに行こうよ」なんて時に使える、飲食店検索アプリ。自分の位置情報を登録し、お店のキーワードを検索すれば、あなたにオススメのお店がカード状になって現れます。行ってみたい！と思ったら右にスワイプ、今度でいいや、、と思ったら左にスワイプ。右にスワイプしたお店たちだけがリストになり、あなただけのお気に入りリストが作れちゃう！リストから直接safariに飛び、詳細を見ることもできます）
 
