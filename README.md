@@ -1,7 +1,6 @@
 <h1>BestMeal</h1>
 
-<img src="https://user-images.githubusercontent.com/72218177/107189991-8efdc380-6a2d-11eb-9ce7-2c364e6a2b11.png" width="150px">
-<img src="https://user-images.githubusercontent.com/72218177/107189995-91601d80-6a2d-11eb-9abb-517637a6fb1f.png" width="150px">
+<img src="https://user-images.githubusercontent.com/72218177/107189991-8efdc380-6a2d-11eb-9ce7-2c364e6a2b11.png" width="150px"><img src="https://user-images.githubusercontent.com/72218177/107189995-91601d80-6a2d-11eb-9abb-517637a6fb1f.png" width="150px">
 <img src="https://user-images.githubusercontent.com/72218177/107190004-93c27780-6a2d-11eb-8c94-30553fe657b7.png" width="150px">
 <img src="https://user-images.githubusercontent.com/72218177/107190010-9624d180-6a2d-11eb-8775-6d5b34deddf1.png" width="150px">
 <img src="https://user-images.githubusercontent.com/72218177/107190015-97ee9500-6a2d-11eb-91a6-9998347fa876.png" width="150px">
