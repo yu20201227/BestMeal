@@ -17,8 +17,9 @@
 <br>・Xcode (Version 12.4)
 
 <h2>操作画面動画</h2>
-![result](https://github.com/fumikiri/SlidingModeControlMatlab/blob/master/GIF/lq_vs_smc_animation.gif?raw=true)
 https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-983f-fd06650fb163.mov
+※動画をダウンロードしてご覧ください。
+
 <h2>機能一覧</h2>
 ・新規登録画面（一度登録したらスキップ）
 <br>・ユーザー現在地探知機能（近くの飲食店検索のため）
