@@ -2,7 +2,7 @@
 //  SearchViewController.swift
 //  BestMeal
 //
-//Created by Owner on 2020/12/12.
+// Created by Owner on 2020/12/12.
 
 import UIKit
 import MapKit
@@ -12,52 +12,46 @@ import ChameleonFramework
 import Firebase
 import FirebaseFirestore
 
-class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol, UITextFieldDelegate{
-    
-    @IBOutlet weak var searchTextField:UITextField!
-    @IBOutlet weak var mapView:MKMapView!
+class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol, UITextFieldDelegate {
     
     let animationView = AnimationView()
     let locationManager = CLLocationManager()
     var annotation = MKPointAnnotation()
-    
     var idoValue = Double()
     var keidoValue = Double()
-    var apikey = "d88dcf59b664fa3f9b089ed353977965"
+    let apikey = "d88dcf59b664fa3f9b089ed353977965"
     var totalHitCount = Int()
     var indexNumber = Int()
-    
     var nameStringArray = [String]()
     var urlStringArray = [String]()
     var imageStringArray = [String]()
     var telArray = [String]()
-    
-    var shopDataArray = [ShopData]()
-    //var saveDataOnTheList = [PlaceDataModel]()
-    var smallestNumber = 0
-    
+    let smallestNumber = 0
     var userEmail = String()
     var userPass = String()
-    
-    var db = Database.database().reference()
+    var dbRf = Database.database().reference()
     var placeDataModelArray = [PlaceDataModel]()
+    var shopDataArray = [ShopData]()
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchBackImage: UIImageView!
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if UserDefaults.standard.object(forKey: "userPass") != nil {
-            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
+            userPass = (UserDefaults.standard.object(forKey: "userPass") as? String)!
         }
-        
+        let searchImage = UIImage(named: "search")
+        self.searchButton.setImage(searchImage, for: .normal)
+        searchBackImage.image = UIImage(named: "zoom_saga")
+        searchBackImage.contentMode = .scaleAspectFill
+        searchBackImage.alpha = 0.7
         mapView?.delegate = self
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
-        
-        //        if UserDefaults.standard.object(forKey: "userEmail") != nil && UserDefaults.standard.object(forKey: "userPass") != nil {
-        //            userEmail = UserDefaults.standard.object(forKey: "userEmail") as! String
-        //            userPass = UserDefaults.standard.object(forKey: "userPass") as! String
-        //        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -68,7 +62,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         searchTextField.resignFirstResponder()
     }
     
-    func startUpdatingLocation(){
+    func startUpdatingLocation() {
         locationManager.requestAlwaysAuthorization()
         let status = CLAccuracyAuthorization.fullAccuracy
         if status == .fullAccuracy {
@@ -76,36 +70,24 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        default:
-            print("error")
-        }
-        switch manager.accuracyAuthorization {
-        case .reducedAccuracy:
-            break
-        case .fullAccuracy:
-            break
-        default:
-            print("something wrong")
-        }
+     func locationManagerDidChangeAuthorization() {
+        let location = locationPermission()
+        location.locationManagerDidChange(manager: locationManager)
+        self.locationManagerDidChangeAuthorization()
     }
     
-    func configureSubview(){
+    func configureSubview() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
-        
         mapView?.delegate = self
         mapView?.mapType = .standard
         mapView?.userTrackingMode = .follow
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
@@ -113,52 +95,41 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         keidoValue = longitude!
     }
     
-    @IBAction func searchButton(sender:UIButton){
+    @IBAction func searchButton (sender: UIButton) {
         if searchTextField.text?.isEmpty == true {
-            
-            let UIAlert = UIAlertController(title: "検索できません。", message: "キーワードを入れてください！", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
-                print("OK")
-            }
-            UIAlert.addAction(okAction)
-            present(UIAlert, animated: true, completion: nil)
-            return }
-        
+            noKeyWordsAlert()
+            return
+        }
         searchTextField.resignFirstResponder()
         let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(apikey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
-        
-        let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url:urlString)
-        
+        let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
     }
     
-    func addAnnotation(shopData:[ShopData]){
+    func addAnnotation(shopData: [ShopData]) {
         removeArray()
         if totalHitCount == smallestNumber {
-            alert()
+            mainAlert()
             return
         }
         
-        for i in 0...totalHitCount - 1{
-            print(i)
+        for each in 0...totalHitCount - 1 {
+            print(each)
             annotation = MKPointAnnotation()
-            
-            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[i].latitude!)!, CLLocationDegrees(shopDataArray[i].longitude!)!)
-            
-            annotation.title = shopData[i].name
-            annotation.subtitle = shopData[i].tel
-            
-            urlStringArray.append(shopData[i].url!)
-            imageStringArray.append(shopData[i].shop_image!)
-            nameStringArray.append(shopData[i].name!)
-            telArray.append(shopData[i].tel!)
+            annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[each].latitude!)!, CLLocationDegrees(shopDataArray[each].longitude!)!)
+            annotation.title = shopData[each].name
+            annotation.subtitle = shopData[each].tel
+            urlStringArray.append(shopData[each].url!)
+            imageStringArray.append(shopData[each].shopImage!)
+            nameStringArray.append(shopData[each].name!)
+            telArray.append(shopData[each].tel!)
             mapView.addAnnotation(annotation)
         }
         searchTextField.resignFirstResponder()
     }
     
-    func removeArray(){
+    func removeArray() {
         mapView.removeAnnotations(mapView.annotations)
         urlStringArray = []
         imageStringArray = []
@@ -166,8 +137,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         telArray = []
     }
     
-    func catchProtocol(arrayData: Array<ShopData>, resultCount: Int) {
-        
+    func catchProtocol (arrayData: Array<ShopData>, resultCount: Int) {
         shopDataArray = arrayData
         totalHitCount = resultCount
         addAnnotation(shopData: shopDataArray)
@@ -175,7 +145,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         indexNumber = Int()
         if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
@@ -184,33 +153,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toCards"{
-        
-        let cardVC = segue.destination as! CardSwipeViewController
-        cardVC.urlInfos = urlStringArray
-        print("\(urlStringArray)")
-        cardVC.nameInfos = nameStringArray
-        cardVC.imageUrlStringInfos = imageStringArray
-        cardVC.telInfos = telArray
-            
+        if segue.identifier == "toCards" {
+            let cardVC = segue.destination as! CardSwipeViewController
+            cardVC.urlInfos = urlStringArray
+            print("\(urlStringArray)")
+            cardVC.nameInfos = nameStringArray
+            cardVC.imageUrlStringInfos = imageStringArray
+            cardVC.telInfos = telArray
         } else if segue.identifier == "gotoList" {
             performSegue(withIdentifier: "gotoList", sender: nil)
         }
     }
     
-    func alert(){
-        let noInfoAlert:UIAlertController = UIAlertController(title: "情報を取得できません🙇‍♂️", message: "違うキーワードで検索してください！", preferredStyle: .alert)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler:{
-            (action: UIAlertAction!) -> Void in
-            print("OK")
-        })
-        noInfoAlert.addAction(okAction)
-        present(noInfoAlert, animated: true, completion: nil)
-    }
-    
     @IBAction func didTapAcessListButton(_ sender: Any) {
-        let listVC = storyboard?.instantiateViewController(identifier: "toList") as! FavoritePlaceListViewController
-        self.navigationController?.pushViewController(listVC, animated: true)
+        let listVC = storyboard?.instantiateViewController(identifier: "toList") as? FavoritePlaceListViewController
+        self.navigationController?.pushViewController(listVC!, animated: true)
     }
 }

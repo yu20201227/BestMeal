@@ -10,15 +10,16 @@ import Firebase
 import Alamofire
 import FirebaseDatabase
 
+
 class PlaceDataModel {
     
-    var placeImage:String! = ""
-    var placeName:String! = ""
-    var placeUrl:String! = ""
-    var ref:DatabaseReference!
-    var userPass:String! = ""
+    var placeImage: String! = ""
+    var placeName: String! = ""
+    var placeUrl: String! = ""
+    var ref: DatabaseReference!
+    var userPass: String! = ""
     
-    init(placeName:String, placeImage:String, placeUrl:String, userPass: String){
+    init(placeName: String, placeImage: String, placeUrl: String, userPass: String){
 
         self.placeName = placeName
         self.placeImage = placeImage
@@ -29,25 +30,23 @@ class PlaceDataModel {
         
     }
 
-    init(snapShot:DataSnapshot){
+    init(snapShot: DataSnapshot) {
         ref = snapShot.ref
 
-        if let value = snapShot.value as? [String:Any]{
+        if let value = snapShot.value as? [String: Any] {
             placeImage = value["placeImage"] as? String
             placeName = value["placeName"] as? String
             placeUrl = value["placeUrl"] as? String
             userPass = value["userPass"] as? String
-            
         }
     }
 
-    func toContents() -> [String:Any] {
+    func toContents() -> [String: Any] {
          return
-            ["placeName":placeName! as Any, "placeImage":placeImage! as Any, "placeUrl":placeUrl! as Any, "userPass":userPass as Any]
+            ["placeName": placeName! as Any, "placeImage": placeImage! as Any, "placeUrl": placeUrl! as Any, "userPass": userPass as Any]
     }
     
-    func save(){
+    func save() {
         ref.setValue(toContents())
     }
 }
-

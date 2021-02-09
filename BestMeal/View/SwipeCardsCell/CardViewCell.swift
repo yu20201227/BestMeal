@@ -10,8 +10,8 @@ import VerticalCardSwiper
 
 class CardViewCell: CardCell {
     
-    @IBOutlet weak var goodImages:UIImageView!
-    @IBOutlet weak var placeNameLabel:UILabel!    
+    @IBOutlet weak var goodImages: UIImageView!
+    @IBOutlet weak var placeNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class CardViewCell: CardCell {
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-    public func setRandomBackgroundColor(){
+    public func setRandomBackgroundColor() {
         let randomRed: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
         let randomGreen: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
         let randomBlue: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)

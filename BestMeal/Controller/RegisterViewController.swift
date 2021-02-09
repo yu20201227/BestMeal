@@ -9,20 +9,36 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class RegisterViewController: UIViewController, UITextFieldDelegate{
-    
-    @IBOutlet weak var userEmailTextField:UITextField!
-    @IBOutlet weak var passTextField:UITextField!
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     var smallestPassCount = 6
     
+    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var goStartMessageLabel: UILabel!
+    @IBOutlet weak var alphaView: UIView!
+    @IBOutlet weak var goStartButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        goStartButton.backgroundColor = .gray
+        goStartButton.layer.cornerRadius = 30.0
+        goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
+        goStartMessageLabel.text = "登録してはじめよう。"
+        goStartMessageLabel.font = .boldSystemFont(ofSize: 28.0)
+        goStartMessageLabel.textColor = .black
+        backImageView.image = UIImage(named: "backimage")
+        backImageView.contentMode = .scaleAspectFill
+        backImageView.alpha = 1
+        alphaView.alpha = 0.7
         view.backgroundColor = .black
         userEmailTextField.delegate = self
         passTextField.delegate = self
         userEmailTextField.layer.cornerRadius = 20.0
         passTextField.layer.cornerRadius = 20.0
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -35,22 +51,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         passTextField.resignFirstResponder()
     }
     
-    @IBAction func registerButton(sender:UIButton){
+    @IBAction func registerButton(sender: UIButton) {
         if userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
-            showAlert()
+            canNotRegisterAlert()
             return
         }
         
         if passTextField.text!.count <= smallestPassCount {
-            let notRegsitered = UIAlertController(title: "登録できません。", message: "パスワードは6文字以上にしてください", preferredStyle: .alert)
-            let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
-                print("OK")
-            }
-            notRegsitered.addAction(okAction)
-            present(notRegsitered, animated: true, completion: nil)
+            tooShortPassAlert()
             return
         }
-        
         
         if userEmailTextField.text?.isEmpty != true && passTextField.text?.isEmpty != nil {
             UserDefaults.standard.set(userEmailTextField.text, forKey: "userEmail")
@@ -65,26 +75,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         Auth.auth().signInAnonymously { (result, err) in
             if err == nil {
                 guard let _ = result?.user else { return }
-//                let userPass = user.uid
-//                UserDefaults.standard.set(userPass, forKey: "userPass")
                 let saveProfile = SaveProfile(userEmail: self.userEmailTextField.text!, userPass: self.passTextField.text!)
                 saveProfile.saveProfile()
-                //self.dismiss(animated: true, completion: nil)
+                // self.dismiss(animated: true, completion: nil)
             } else {
                 print(err?.localizedDescription as Any)
                 return
             }
             self.performSegue(withIdentifier: "toSearch", sender: nil)
         }
-    }
-
-    func showAlert(){
-        let noInfoAlert:UIAlertController = UIAlertController(title: "登録できません🙇‍♂️", message: "もう一度やり直してください", preferredStyle: .alert)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler:{
-            (action: UIAlertAction!) -> Void in
-            print("OK")
-        })
-        noInfoAlert.addAction(okAction)
-        present(noInfoAlert, animated: true, completion: nil)
     }
 }
