@@ -10,6 +10,7 @@
 		5D06425686CD30A8C2C11D53 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */; };
 		EB05C7B425C3C39500C0AECD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05C7B325C3C39500C0AECD /* UserData.swift */; };
 		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
+		EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
 		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
@@ -24,6 +25,8 @@
 		EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78602584CABB00C50F9F /* CardViewCell.swift */; };
 		EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78612584CABB00C50F9F /* CardViewCell.xib */; };
 		EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */; };
+		EB7C715025CFAC9D00019F14 /* showAlertToUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C714F25CFAC9D00019F14 /* showAlertToUsers.swift */; };
+		EB7C715325CFB38D00019F14 /* AnimationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C715225CFB38D00019F14 /* AnimationCollection.swift */; };
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
 /* End PBXBuildFile section */
@@ -34,6 +37,7 @@
 		D0DF74C9DC9FE36EDC284FF6 /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB05C7B325C3C39500C0AECD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermitJudgeModel.swift; sourceTree = "<group>"; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 		EB6F78602584CABB00C50F9F /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		EB6F78612584CABB00C50F9F /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
 		EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewController.swift; sourceTree = "<group>"; };
+		EB7C714F25CFAC9D00019F14 /* showAlertToUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAlertToUsers.swift; sourceTree = "<group>"; };
+		EB7C715225CFB38D00019F14 /* AnimationCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCollection.swift; sourceTree = "<group>"; };
 		EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOnTheList.swift; sourceTree = "<group>"; };
 		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 		EB80175D25B17D2F0075A814 /* BestMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestMeal.entitlements; sourceTree = "<group>"; };
@@ -107,10 +113,12 @@
 			children = (
 				EB80175D25B17D2F0075A814 /* BestMeal.entitlements */,
 				EB6F780F25848AE400C50F9F /* Model */,
-				EB6F781125848AEF00C50F9F /* Controller */,
 				EB6F781025848AE900C50F9F /* View */,
+				EB6F781125848AEF00C50F9F /* Controller */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
 				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
+				EB6F78022584889F00C50F9F /* Assets.xcassets */,
+				EB80173E25B042A80075A814 /* 10685-breakfast.json */,
 			);
 			path = BestMeal;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				EB05C7B325C3C39500C0AECD /* UserData.swift */,
+				EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */,
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
@@ -129,12 +138,10 @@
 		EB6F781025848AE900C50F9F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EB6F78602584CABB00C50F9F /* CardViewCell.swift */,
-				EB6F78612584CABB00C50F9F /* CardViewCell.xib */,
-				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
-				EB6F78022584889F00C50F9F /* Assets.xcassets */,
-				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
-				EB80173E25B042A80075A814 /* 10685-breakfast.json */,
+				EB7C715925CFB57300019F14 /* Alerts */,
+				EB7C715525CFB39C00019F14 /* Animation */,
+				EB7C714D25CFAA3D00019F14 /* SwipeCardsCell */,
+				EB8FB6B225CE8EC00038413E /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +160,40 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		EB7C714D25CFAA3D00019F14 /* SwipeCardsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F78602584CABB00C50F9F /* CardViewCell.swift */,
+				EB6F78612584CABB00C50F9F /* CardViewCell.xib */,
+			);
+			path = SwipeCardsCell;
+			sourceTree = "<group>";
+		};
+		EB7C715525CFB39C00019F14 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				EB7C715225CFB38D00019F14 /* AnimationCollection.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		EB7C715925CFB57300019F14 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				EB7C714F25CFAC9D00019F14 /* showAlertToUsers.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		EB8FB6B225CE8EC00038413E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
+				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,6 +207,8 @@
 				EB6F77F42584889E00C50F9F /* Resources */,
 				B50D4B3786DAA5B835336268 /* [CP] Embed Pods Frameworks */,
 				31753CED3A3BC00124722EF4 /* [CP] Copy Pods Resources */,
+				EB7C70EB25CF6DEA00019F14 /* Run swiftLint */,
+				EB7C70ED25CF6DFB00019F14 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -281,6 +324,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EB7C70EB25CF6DEA00019F14 /* Run swiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run swiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = " 
+";
+		};
+		EB7C70ED25CF6DFB00019F14 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -296,9 +375,12 @@
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
+				EB7C715325CFB38D00019F14 /* AnimationCollection.swift in Sources */,
 				EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */,
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
+				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
+				EB7C715025CFAC9D00019F14 /* showAlertToUsers.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +552,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -497,7 +579,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
