@@ -17,7 +17,7 @@
 <br>・Xcode (Version 12.4)
 
 <h2>操作画面動画</h2>
-<video src="https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-983f-fd06650fb163.mov" autoplay muted></video>
+<video src="https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-983f-fd06650fb163.mov" controls></video>
 
 https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-983f-fd06650fb163.mov
 <h2>機能一覧</h2>
