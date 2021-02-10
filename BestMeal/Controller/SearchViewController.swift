@@ -71,7 +71,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
      func locationManagerDidChangeAuthorization() {
-        let location = locationPermission()
+        let location = LocationPermission()
         location.locationManagerDidChange(manager: locationManager)
         self.locationManagerDidChangeAuthorization()
     }
@@ -170,3 +170,4 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         self.navigationController?.pushViewController(listVC!, animated: true)
     }
 }
+

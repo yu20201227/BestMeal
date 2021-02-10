@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-public class locationPermission {
+public class LocationPermission {
     public func locationManagerDidChange(manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:

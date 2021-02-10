@@ -10,7 +10,6 @@ import Firebase
 import Alamofire
 import FirebaseDatabase
 
-
 class PlaceDataModel {
     
     var placeImage: String! = ""

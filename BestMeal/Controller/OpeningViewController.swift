@@ -9,7 +9,6 @@
 import UIKit
 import Lottie
 
-
 class OpeningViewController: UIViewController {
     
     var userPass = String()

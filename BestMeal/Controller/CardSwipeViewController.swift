@@ -43,8 +43,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         self.goListButton.setImage(goListButton, for: .normal)
         backImageView.image = UIImage(named: "Food")
         backImageView.contentMode = .scaleAspectFill
-        
         self.navigationController?.isNavigationBarHidden = true
+        
         if UserDefaults.standard.object(forKey: "userPass") != nil {
             userPass = (UserDefaults.standard.object(forKey: "userPass") as? String)!
         }
