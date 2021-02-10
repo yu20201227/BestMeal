@@ -29,6 +29,7 @@
 		EB7C715325CFB38D00019F14 /* AnimationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C715225CFB38D00019F14 /* AnimationCollection.swift */; };
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
+		EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */ = {isa = PBXBuildFile; fileRef = EBD913B825D35F6F008F23C3 /* 9637-check.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOnTheList.swift; sourceTree = "<group>"; };
 		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 		EB80175D25B17D2F0075A814 /* BestMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestMeal.entitlements; sourceTree = "<group>"; };
+		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
 				EB6F78022584889F00C50F9F /* Assets.xcassets */,
 				EB80173E25B042A80075A814 /* 10685-breakfast.json */,
+				EBD913B825D35F6F008F23C3 /* 9637-check.json */,
 			);
 			path = BestMeal;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
 				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
 				EB6F78012584889E00C50F9F /* Main.storyboard in Resources */,
+				EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */,
 				EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = " 
+			shellScript = "
 ";
 		};
 		EB7C70ED25CF6DFB00019F14 /* ShellScript */ = {
@@ -358,7 +362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

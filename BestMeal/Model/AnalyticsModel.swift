@@ -31,7 +31,7 @@ protocol DoneCatchProtocol {
         
         // analyize with JSON
         func analyizeWithJSON() {
-            let encoderUrlString:String = urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let encoderUrlString: String = urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             AF.request(encoderUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { [self] (response) in
                 print(response.debugDescription)
                 
@@ -47,7 +47,7 @@ protocol DoneCatchProtocol {
                                 totalCount = 15
                             }
                             
-                            for each in 0...totalCount! - 1{
+                            for each in 0...totalCount! - 1 {
                                 //if info exit on JSON
                                 if json["rest"][each]["latitude"] != "" && json["rest"][each]["longitude"] != "" && json["rest"][each]["url"] != "" && json["rest"][each]["name"] != "" && json["rest"][each]["tel"] != "" && json["rest"][each]["image_url"]["shop_image1"] != "" {
                                     

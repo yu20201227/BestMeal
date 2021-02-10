@@ -10,14 +10,26 @@ import Lottie
 
 extension OpeningViewController {
     public func startOpeningAnimation() {
-        let path = Bundle.main.path(forResource: "10685-breakfast", ofType:"json")
-        let animationView = AnimationView(filePath: path!)
+        let openingAnimationPath = Bundle.main.path(forResource: "10685-breakfast", ofType: "json")
+        let animationView = AnimationView(filePath: openingAnimationPath!)
         animationView.animationSpeed = 1.0
         animationView.center = self.view.center
         animationView.frame =
             CGRect(x: 0, y: 0, width: view.frame.size.width,
                    height: view.frame.size.height - didTapToNextButton.frame.size.height)
         animationView.loopMode = .loop
+        animationView.play()
+        view.addSubview(animationView)
+    }
+}
+extension RegisterViewController {
+    public func registerPermittedAnimation() {
+        let permitAnimationPath = Bundle.main.path(forResource: "9637-check", ofType: "json")
+        let animationView = AnimationView(filePath: permitAnimationPath!)
+        animationView.animationSpeed = 1.0
+        animationView.center = self.view.center
+        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        animationView.loopMode = .playOnce
         animationView.play()
         view.addSubview(animationView)
     }

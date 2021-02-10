@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Lottie
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
@@ -52,23 +53,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerButton(sender: UIButton) {
-        if userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
+        
+        if userEmailTextField.text?.isEmpty != true && passTextField.text!.count >= smallestPassCount {
+            registerPermittedAnimation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [self] in
+                UserDefaults.standard.set(userEmailTextField.text, forKey: "userEmail")
+                UserDefaults.standard.set(passTextField.text, forKey: "userPass")
+                self.performSegue(withIdentifier: "toSearch", sender: nil)
+            }
+        }
+        else if  userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
             canNotRegisterAlert()
             return
         }
-        
-        if passTextField.text!.count <= smallestPassCount {
-            tooShortPassAlert()
-            return
-        }
-        
-        if userEmailTextField.text?.isEmpty != true && passTextField.text?.isEmpty != nil {
-            UserDefaults.standard.set(userEmailTextField.text, forKey: "userEmail")
-            UserDefaults.standard.set(passTextField.text, forKey: "userPass")
-        } else {
+        else if passTextField.text!.count <= smallestPassCount {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
-            print("振動")
+            tooShortPassAlert()
             return
         }
         
@@ -82,7 +85,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 print(err?.localizedDescription as Any)
                 return
             }
-            self.performSegue(withIdentifier: "toSearch", sender: nil)
+//            self.performSegue(withIdentifier: "toSearch", sender: nil)
         }
     }
 }
