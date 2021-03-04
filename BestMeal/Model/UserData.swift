@@ -11,8 +11,8 @@ import FirebaseDatabase
 
 class SaveProfile {
     
-    var userEmail: String! = ""
-    var userPass: String! = ""
+    var userEmail: String?
+    var userPass: String?
     var ref: DatabaseReference!
     
     init(userEmail: String, userPass: String) {

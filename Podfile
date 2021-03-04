@@ -16,7 +16,5 @@ target 'BestMeal' do
  pod 'Firebase/Auth'
  pod 'Alamofire'
  pod 'Firebase/Database'
- pod 'Picasso'
-
 
 end

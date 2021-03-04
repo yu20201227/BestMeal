@@ -11,35 +11,48 @@ import FirebaseDatabase
 import Lottie
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var userEmailTextField: UITextField! {
+        didSet {
+            userEmailTextField.delegate = self
+            userEmailTextField.layer.cornerRadius = 20.0
+        }
+    }
+    @IBOutlet weak var passTextField: UITextField! {
+        didSet {
+            passTextField.delegate = self
+            passTextField.layer.cornerRadius = 20.0
+        }
+    }
+    @IBOutlet weak var backImageView: UIImageView! {
+        didSet {
+            backImageView.image = UIImage(named: ImageName.registerBackImage)
+            backImageView.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var goStartMessageLabel: UILabel! {
+        didSet {
+            goStartMessageLabel.text = ScreenText.registerLabel
+            goStartMessageLabel.font = .boldSystemFont(ofSize: 28.0)
+        }
+    }
     
-    var smallestPassCount = 6
-    
-    @IBOutlet weak var userEmailTextField: UITextField!
-    @IBOutlet weak var passTextField: UITextField!
-    @IBOutlet weak var backImageView: UIImageView!
-    @IBOutlet weak var goStartMessageLabel: UILabel!
     @IBOutlet weak var alphaView: UIView!
-    @IBOutlet weak var goStartButton: UIButton!
+    
+    @IBOutlet weak var goStartButton: UIButton! {
+        didSet {
+            goStartButton.layer.cornerRadius = 30.0
+            goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        goStartButton.backgroundColor = .gray
-        goStartButton.layer.cornerRadius = 30.0
-        goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
-        goStartMessageLabel.text = "登録してはじめよう。"
-        goStartMessageLabel.font = .boldSystemFont(ofSize: 28.0)
-        goStartMessageLabel.textColor = .black
-        backImageView.image = UIImage(named: "backimage")
-        backImageView.contentMode = .scaleAspectFill
-        backImageView.alpha = 1
-        alphaView.alpha = 0.7
-        view.backgroundColor = .black
-        userEmailTextField.delegate = self
-        passTextField.delegate = self
-        userEmailTextField.layer.cornerRadius = 20.0
-        passTextField.layer.cornerRadius = 20.0
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -54,27 +67,28 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerButton(sender: UIButton) {
         
-        if userEmailTextField.text?.isEmpty != true && passTextField.text!.count >= smallestPassCount {
+        if userEmailTextField.text?.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber {
             registerPermittedAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [self] in
-                UserDefaults.standard.set(userEmailTextField.text, forKey: "userEmail")
-                UserDefaults.standard.set(passTextField.text, forKey: "userPass")
-                self.performSegue(withIdentifier: "toSearch", sender: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [unowned self] in
+                UserDefaults.standard.set(userEmailTextField.text, forKey: UserDefaultForKey.userEmail)
+                UserDefaults.standard.set(passTextField.text, forKey: UserDefaultForKey.userPass)
+                self.performSegue(withIdentifier: SegueIdentifier.toSearch, sender: nil)
             }
         }
-        else if  userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
+        else if userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
             canNotRegisterAlert()
             return
         }
-        else if passTextField.text!.count <= smallestPassCount {
+        else if passTextField.text!.count <= Numbers.smallestPassNumber {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
             tooShortPassAlert()
             return
         }
         
+        // MARK: - closure
         Auth.auth().signInAnonymously { (result, err) in
             if err == nil {
                 guard let _ = result?.user else { return }
@@ -85,7 +99,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 print(err?.localizedDescription as Any)
                 return
             }
-//            self.performSegue(withIdentifier: "toSearch", sender: nil)
         }
     }
+    
 }

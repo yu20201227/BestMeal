@@ -10,7 +10,7 @@ import Firebase
 import Alamofire
 import FirebaseDatabase
 
-class PlaceDataModel {
+struct PlaceDataModel {
     
     var placeImage: String! = ""
     var placeName: String! = ""
@@ -25,7 +25,7 @@ class PlaceDataModel {
         self.placeUrl = placeUrl
         self.userPass = userPass
         
-        ref = Database.database().reference().child("placeData").childByAutoId()
+        ref = Database.database().reference().child(UserDefaultForKey.placeDatas).childByAutoId()
         
     }
 

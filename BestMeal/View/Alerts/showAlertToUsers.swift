@@ -11,10 +11,10 @@ import UIKit
 extension UIViewController {
     
     public func canNotRegisterAlert() {
-          let noInfoAlert: UIAlertController = UIAlertController(title: "登録できません🙇‍♂️", message: "もう一度やり直してください", preferredStyle: .alert)
-          let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: {
+        let noInfoAlert: UIAlertController = UIAlertController(title: AlertTitle.notRegistered, message: AlertMessage.seekOneMoreTime, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
               (_: UIAlertAction!) -> Void in
-              print("OK")
+            print(AlertTitle.okMessage)
           })
           noInfoAlert.addAction(okAction)
           present(noInfoAlert, animated: true, completion: nil)
@@ -22,9 +22,9 @@ extension UIViewController {
       }
 
     public func tooShortPassAlert() {
-        let notRegsitered = UIAlertController(title: "登録できません。", message: "パスワードは6文字以上にしてください", preferredStyle: .alert)
-        let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
-            print("OK")
+        let notRegsitered = UIAlertController(title: AlertTitle.failedToSearch, message: AlertMessage.notEnoughPass, preferredStyle: .alert)
+        let okAction:UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default) { (action: UIAlertAction) in
+            print(AlertTitle.okMessage)
         }
         notRegsitered.addAction(okAction)
         present(notRegsitered, animated: true, completion: nil)
@@ -32,10 +32,10 @@ extension UIViewController {
     }
     
     public func mainAlert() {
-        let noInfoAlert: UIAlertController = UIAlertController(title: "情報を取得できません🙇‍♂️", message: "違うキーワードで検索してください！", preferredStyle: .alert)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: {
+        let noInfoAlert: UIAlertController = UIAlertController(title: AlertTitle.failedGetData, message: AlertMessage.alertChangeKeyword, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
             (_: UIAlertAction!) -> Void in
-            print("OK")
+            print(AlertTitle.okMessage)
         })
         noInfoAlert.addAction(okAction)
         present(noInfoAlert, animated: true, completion: nil)
@@ -43,9 +43,9 @@ extension UIViewController {
     }
     
     public func noKeyWordsAlert() {
-        let UIAlert = UIAlertController(title: "検索できません。", message: "キーワードを入れてください！", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
-            print("OK")
+        let UIAlert = UIAlertController(title: AlertTitle.failedToSearch, message: AlertMessage.keywordIsEmpty, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: AlertTitle.okMessage, style: .default) { (_: UIAlertAction) in
+            print(AlertTitle.okMessage)
         }
         UIAlert.addAction(okAction)
         present(UIAlert, animated: true, completion: nil)
