@@ -26,8 +26,8 @@ class OpeningViewController: UIViewController {
 //        didTapToNextButton.backgroundColor = .white
 //        didTapToNextButton.layer.cornerRadius = 30.0
         startOpeningAnimation()
-        if UserDefaults.standard.object(forKey: "userPass") != nil {
-            userPass = (UserDefaults.standard.object(forKey: "userPass") as? String)!
+        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
+            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
         }
         view.backgroundColor = UIColor.flatMint()
         self.navigationController?.isNavigationBarHidden = true
@@ -36,7 +36,7 @@ class OpeningViewController: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
 //        if UserDefaults.standard.object(forKey: "userPass") != nil {
 //            userPass = (UserDefaults.standard.object(forKey: "userPass") as? String)!
-            performSegue(withIdentifier: "toSearch", sender: nil)
+        performSegue(withIdentifier: SegueIdentifier.toSearch, sender: nil)
 //        } else {
 //            performSegue(withIdentifier: "toRegister", sender: nil)
 //        }
