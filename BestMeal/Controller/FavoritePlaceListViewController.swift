@@ -7,9 +7,13 @@
 
 import UIKit
 import SDWebImage
-import FirebaseFirestore
+// import FirebaseFirestore
 import Firebase
 import MapKit
+
+// var placeDatas = [String]()
+
+var placeDatas = [String]()
 
 class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
@@ -25,63 +29,70 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var indexUrl = String()
     var indexTel = String()
     var placeDataModelArray = [PlaceDataModel]()
-
-    @IBOutlet weak var favTableView: UITableView!
+    
+    @IBOutlet weak var favTableView: UITableView! {
+        didSet {
+            favTableView.delegate = self
+            favTableView.dataSource = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: "userPass") != nil {
-            userPass = (UserDefaults.standard.object(forKey: "userPass") as? String)!
+        
+        overrideUserInterfaceStyle = .light
+        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
+            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
         }
-        favTableView.delegate = self
-        favTableView.dataSource = self
-    }
+        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
+            placeDatas = UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) as! [String]
+        }
+}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dbRf.child("placeData").child(userPass).observe(.value) { (snapshot) in
-            self.placeDataModelArray.removeAll()
-            
-            for child in snapshot.children {
-                let childSnapshot = child as? DataSnapshot
-                let placeDataMoldels = PlaceDataModel(snapShot: childSnapshot!)
-                self.placeDataModelArray.insert(placeDataMoldels, at: 0)
-                self.favTableView.reloadData()
-            }
-        }
     }
+    
+    // MARK: - TableView Delegate $ DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if listName.isEmpty {
-            return 0
+            return Numbers.smallestNumber
         } else {
             return listName.count
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return Numbers.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return CGFloat(Numbers.heightForRowAt)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
         
         indexName = listName[indexPath.row]
+        placeDatas.append(indexName)
         indexImage = listImage[indexPath.row]
+        placeDatas.append(indexImage)
         indexUrl = listUrl[indexPath.row]
+        placeDatas.append(indexUrl)
         indexTel = listTel[indexPath.row]
+        placeDatas.append(indexTel)
+        
+        UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
         
         let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as? UIImageView
         let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as? UILabel
@@ -90,8 +101,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         placeNameLabelOnTheList!.textColor = .white
         placeNameLabelOnTheList!.textAlignment = .center
         placeNameLabelOnTheList!.layer.cornerRadius = 10.0
-        placeImageViewOnTheList!.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: "noImage"),
-            options: .continueInBackground, progress: nil, completed: nil)
+        placeImageViewOnTheList!.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: ImageName.noImage),
+                                             options: .continueInBackground, progress: nil, completed: nil)
         placeImageViewOnTheList!.layer.cornerRadius = 30.0
         return cell
     }
@@ -111,7 +122,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func toDetailScreen() {
-        performSegue(withIdentifier: "toDetail", sender: nil)
+        performSegue(withIdentifier: SegueIdentifier.toDetail, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,6 +132,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func didTapGoBackButton(sender: UIButton) {
+        // addItemsToRealm()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

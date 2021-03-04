@@ -9,22 +9,24 @@ import Foundation
 import Lottie
 
 extension OpeningViewController {
+    
     public func startOpeningAnimation() {
-        let openingAnimationPath = Bundle.main.path(forResource: "10685-breakfast", ofType: "json")
+        let openingAnimationPath = Bundle.main.path(forResource: ForSourceType.openingAnimation, ofType: FileType.jsonType)
         let animationView = AnimationView(filePath: openingAnimationPath!)
         animationView.animationSpeed = 1.0
         animationView.center = self.view.center
-        animationView.frame =
-            CGRect(x: 0, y: 0, width: view.frame.size.width,
-                   height: view.frame.size.height - didTapToNextButton.frame.size.height)
+        //        animationView.frame =
+        //            CGRect(x: 0, y: 0, width: view.frame.size.width,
+        //                   height: view.frame.size.height - didTapToNextButton.frame.size.height)
         animationView.loopMode = .loop
         animationView.play()
         view.addSubview(animationView)
     }
 }
+
 extension RegisterViewController {
     public func registerPermittedAnimation() {
-        let permitAnimationPath = Bundle.main.path(forResource: "9637-check", ofType: "json")
+        let permitAnimationPath = Bundle.main.path(forResource: ForSourceType.registerPermitAnimation, ofType: FileType.jsonType)
         let animationView = AnimationView(filePath: permitAnimationPath!)
         animationView.animationSpeed = 1.0
         animationView.center = self.view.center
@@ -34,3 +36,4 @@ extension RegisterViewController {
         view.addSubview(animationView)
     }
 }
+

@@ -54,7 +54,6 @@ PODS:
     - nanopb/encode (= 2.30907.0)
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
-  - Picasso (0.4.6)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
@@ -69,7 +68,6 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `7.4.0`)
   - lottie-ios
-  - Picasso
   - SDWebImage
   - SwiftyJSON
   - VerticalCardSwiper
@@ -89,7 +87,6 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
-    - Picasso
     - PromisesObjC
     - SDWebImage
     - SwiftyJSON
@@ -120,12 +117,11 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
-  Picasso: cbc305d5e91446667413645b5faeb5d4b89d4c14
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VerticalCardSwiper: 41c8c0d8d87511ec269347f5671386acf66cd31a
 
-PODFILE CHECKSUM: 5c36bb85c03efcb7b238bd3cb701f3b50272b66a
+PODFILE CHECKSUM: 0fdb05d73052729d9ea293647d97d6b909318194
 
 COCOAPODS: 1.10.1

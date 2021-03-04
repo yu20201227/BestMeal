@@ -9,19 +9,24 @@ import Foundation
 import SDWebImage
 
 struct ShopData {
-    var latitude: String?
-    var longitude: String?
-    var url: String?
-    var name: String?
-    var tel: String?
-    var shopImage: String?
-    
-    init(latitude: String, longitude: String, url: String, name: String, tel: String, shopImage: String) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.url = url
-        self.name = name
-        self.tel = tel
-        self.shopImage = shopImage
-    }
+    let latitude: String
+    let longitude: String
+    let url: String
+    let name: String
+    let tel: String
+    let shopImage: String
+}
+
+struct FetchAllDatas {
+    static var urlInfos = [String]()
+    static var nameInfos = [String]()
+    static var imageUrlStringInfos = [String]()
+    static var telInfos = [String]()
+}
+
+struct ArrayData {
+    static var likePlaceUrlArray = [String]()
+    static var likePlaceNameArray = [String]()
+    static var likePlaceImageUrlArrary = [String]()
+    static var likePlaceTelArray = [String]()
 }
