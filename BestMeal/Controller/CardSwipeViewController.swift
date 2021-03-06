@@ -15,8 +15,6 @@ import FirebaseDatabase
 class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource {
     
     var userPass = String()
-    let dbRf = Database.database().reference()
-    var indexNumber = Int()
     var saveProfileHere = [SaveProfile]()
     var placeDataModelArray = [PlaceDataModel]()
     
@@ -81,7 +79,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-        indexNumber = index
+        let indexNumber = index
         if swipeDirection == .Right {
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])

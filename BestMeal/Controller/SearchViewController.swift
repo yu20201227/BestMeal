@@ -21,7 +21,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var userEmail = String()
     var userPass = String()
     var shopDataArray = [ShopData]()
-    var dbRf = Database.database().reference()
     var placeDataModelArray = [PlaceDataModel]()
     let locationManager = CLLocationManager()
     

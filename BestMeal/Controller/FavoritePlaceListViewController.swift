@@ -11,8 +11,6 @@ import SDWebImage
 import Firebase
 import MapKit
 
-// var placeDatas = [String]()
-
 var placeDatas = [String]()
 
 class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
@@ -22,12 +20,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var listImage = [String]()
     var listTel = [String]()
     var userPass = String()
-    var indexNumber = Int()
-    let dbRf = Database.database().reference()
-    var indexName = String()
-    var indexImage = String()
-    var indexUrl = String()
-    var indexTel = String()
     var placeDataModelArray = [PlaceDataModel]()
     
     @IBOutlet weak var favTableView: UITableView! {
@@ -83,13 +75,13 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
         
-        indexName = listName[indexPath.row]
+        let indexName = listName[indexPath.row]
         placeDatas.append(indexName)
-        indexImage = listImage[indexPath.row]
+        let indexImage = listImage[indexPath.row]
         placeDatas.append(indexImage)
-        indexUrl = listUrl[indexPath.row]
+        let indexUrl = listUrl[indexPath.row]
         placeDatas.append(indexUrl)
-        indexTel = listTel[indexPath.row]
+        let indexTel = listTel[indexPath.row]
         placeDatas.append(indexTel)
         
         UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
