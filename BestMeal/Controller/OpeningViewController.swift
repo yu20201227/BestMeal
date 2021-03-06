@@ -9,6 +9,12 @@
 import UIKit
 import Lottie
 
+// MARK: -  シングルトンメモ（sharedインスタンス)
+//class userInfo {
+//    let shared = userInfo()
+//    var userPass: String = ""
+//}
+
 class OpeningViewController: UIViewController {
     
     
