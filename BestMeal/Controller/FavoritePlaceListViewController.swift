@@ -93,8 +93,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         placeNameLabelOnTheList!.textColor = .white
         placeNameLabelOnTheList!.textAlignment = .center
         placeNameLabelOnTheList!.layer.cornerRadius = 10.0
-        placeImageViewOnTheList!.sd_setImage(with: URL(string: indexImage), placeholderImage: UIImage(named: ImageName.noImage),
-                                             options: .continueInBackground, progress: nil, completed: nil)
+        placeImageViewOnTheList!.sd_setImage(with: URL(string: indexImage), placeholderImage: R.image.noImage(),
+            options: .continueInBackground, progress: nil, completed: nil)
         placeImageViewOnTheList!.layer.cornerRadius = 30.0
         return cell
     }
@@ -105,6 +105,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
+            
             listUrl.remove(at: indexPath.row)
             listName.remove(at: indexPath.row)
             listImage.remove(at: indexPath.row)

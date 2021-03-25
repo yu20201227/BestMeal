@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		290187B7E3354AF4B84DC691 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1991CB2D71EB818584B8E590 /* Pods_BestMeal.framework */; };
+		4565546DD0A56F56623E9C41 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */; };
 		EB05C7B425C3C39500C0AECD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05C7B325C3C39500C0AECD /* UserData.swift */; };
 		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
 		EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */; };
@@ -30,6 +30,7 @@
 		EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */; };
 		EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */ = {isa = PBXBuildFile; fileRef = EB80173E25B042A80075A814 /* 10685-breakfast.json */; };
 		EB8F3BC525E685D900624807 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F3BC425E685D900624807 /* Constraints.swift */; };
+		EB903DE126045EA5004851B4 /* LikePlaceDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */; };
 		EBC16B6E25E767030066B110 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B6D25E767030066B110 /* Search.storyboard */; };
 		EBC16B7125E767690066B110 /* SwipeCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B7025E767690066B110 /* SwipeCards.storyboard */; };
 		EBC16B7425E7677E0066B110 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B7325E7677E0066B110 /* List.storyboard */; };
@@ -37,14 +38,18 @@
 		EBC16B7C25E76AA40066B110 /* ListPlaceImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B7A25E76AA40066B110 /* ListPlaceImageCell.xib */; };
 		EBC16B8025E76AC20066B110 /* ListPlaceNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC16B7E25E76AC20066B110 /* ListPlaceNameCell.swift */; };
 		EBC16B8125E76AC20066B110 /* ListPlaceNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B7F25E76AC20066B110 /* ListPlaceNameCell.xib */; };
+		EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */; };
 		EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */ = {isa = PBXBuildFile; fileRef = EBD913B825D35F6F008F23C3 /* 9637-check.json */; };
+		EBDDB63A2605EEC50033840D /* BallonMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */; };
+		EBDDB6442605F2B40033840D /* DetailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */; };
+		EBDDB6472605F2CF0033840D /* DetailedInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */; };
 		EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1149420E99BE2A84BD471CAC /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
-		1991CB2D71EB818584B8E590 /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A25342EF01C1A0C4A99D0C0 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
+		C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB05C7B325C3C39500C0AECD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermitJudgeModel.swift; sourceTree = "<group>"; };
@@ -70,6 +75,7 @@
 		EB80173E25B042A80075A814 /* 10685-breakfast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10685-breakfast.json"; sourceTree = "<group>"; };
 		EB80175D25B17D2F0075A814 /* BestMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestMeal.entitlements; sourceTree = "<group>"; };
 		EB8F3BC425E685D900624807 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePlaceDatas.swift; sourceTree = "<group>"; };
 		EBC16B6D25E767030066B110 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		EBC16B7025E767690066B110 /* SwipeCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SwipeCards.storyboard; sourceTree = "<group>"; };
 		EBC16B7325E7677E0066B110 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
@@ -77,7 +83,11 @@
 		EBC16B7A25E76AA40066B110 /* ListPlaceImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPlaceImageCell.xib; sourceTree = "<group>"; };
 		EBC16B7E25E76AC20066B110 /* ListPlaceNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlaceNameCell.swift; sourceTree = "<group>"; };
 		EBC16B7F25E76AC20066B110 /* ListPlaceNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPlaceNameCell.xib; sourceTree = "<group>"; };
+		EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
+		EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallonMessageViewController.swift; sourceTree = "<group>"; };
+		EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoViewController.swift; sourceTree = "<group>"; };
+		EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedInfo.storyboard; sourceTree = "<group>"; };
 		EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelOnRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				290187B7E3354AF4B84DC691 /* Pods_BestMeal.framework in Frameworks */,
+				4565546DD0A56F56623E9C41 /* Pods_BestMeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +115,7 @@
 		7F93EE6ED0E47D606646B805 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1991CB2D71EB818584B8E590 /* Pods_BestMeal.framework */,
+				C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,6 +146,7 @@
 				EB6F781025848AE900C50F9F /* View */,
 				EB6F781125848AEF00C50F9F /* Controller */,
 				EB8F3BC425E685D900624807 /* Constraints.swift */,
+				EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
 				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
 				EB6F78022584889F00C50F9F /* Assets.xcassets */,
@@ -154,6 +165,7 @@
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
 				EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */,
+				EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +191,8 @@
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
+				EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */,
+				EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 				EBC16B6D25E767030066B110 /* Search.storyboard */,
 				EBC16B7025E767690066B110 /* SwipeCards.storyboard */,
 				EBC16B7325E7677E0066B110 /* List.storyboard */,
+				EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -232,6 +247,7 @@
 			buildConfigurationList = EB6F780A2584889F00C50F9F /* Build configuration list for PBXNativeTarget "BestMeal" */;
 			buildPhases = (
 				EB40829725EF8E7000EDC690 /* [CP] Check Pods Manifest.lock */,
+				EBC5CEFB2602878800ED5AD8 /* R.swift */,
 				EB6F77F22584889E00C50F9F /* Sources */,
 				EB6F77F32584889E00C50F9F /* Frameworks */,
 				EB6F77F42584889E00C50F9F /* Resources */,
@@ -286,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC16B7125E767690066B110 /* SwipeCards.storyboard in Resources */,
+				EBDDB6472605F2CF0033840D /* DetailedInfo.storyboard in Resources */,
 				EB80173F25B042A80075A814 /* 10685-breakfast.json in Resources */,
 				EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */,
 				EBC16B7C25E76AA40066B110 /* ListPlaceImageCell.xib in Resources */,
@@ -373,7 +390,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
+		};
+		EBC5CEFB2602878800ED5AD8 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/BestMeal/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/BestMeal/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -385,10 +423,13 @@
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
 				EBC16B7B25E76AA40066B110 /* ListPlaceImageCell.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
+				EB903DE126045EA5004851B4 /* LikePlaceDatas.swift in Sources */,
 				EB8F3BC525E685D900624807 /* Constraints.swift in Sources */,
 				EB05C7B425C3C39500C0AECD /* UserData.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
+				EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */,
+				EBDDB6442605F2B40033840D /* DetailedInfoViewController.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
@@ -400,6 +441,7 @@
 				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
 				EB7C715025CFAC9D00019F14 /* showAlertToUsers.swift in Sources */,
+				EBDDB63A2605EEC50033840D /* BallonMessageViewController.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +508,7 @@
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -483,10 +526,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -530,6 +575,7 @@
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -541,6 +587,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -559,13 +606,17 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.12.1;
+				MARKETING_VERSION = 2.12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = BestMealOnMyDevice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BestMealOnMyDevice;
@@ -587,13 +638,17 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N5BTNCBLBU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BestMeal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.12.1;
+				MARKETING_VERSION = 2.12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = HappyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = happyApp;

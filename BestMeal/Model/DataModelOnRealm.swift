@@ -6,8 +6,9 @@
 //
 
 import Foundation
+// import RealmSwift
 
-//struct PlaceData: Object {
+// struct DataModelOnRealm: Object {
 //    dynamic var placeName = ""
 //    dynamic var placeImage = ""
 //    dynamic var placeUrl = ""

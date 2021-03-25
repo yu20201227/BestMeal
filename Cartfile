@@ -1,0 +1,11 @@
+github "realm/realm-cocoa"
+github "airbnb/lottie-ios"
+github "SwiftyJSON/SwiftyJSON"
+github "sanfreefeng/ChameleonFramework"
+github "JoniVR/VerticalCardSwiper"
+github "SDWebImage/SDWebImage"
+github "maximbilan/iOS-MapKit-Tutorial"
+
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseDatabaseBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"

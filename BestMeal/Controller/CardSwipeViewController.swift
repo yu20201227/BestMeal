@@ -11,6 +11,7 @@ import Firebase
 import SDWebImage
 import ChameleonFramework
 import FirebaseDatabase
+// import RealmSwift
 
 class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource {
     
@@ -26,9 +27,10 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         }
     }
     
+    
     @IBOutlet weak var backImageView: UIImageView! {
         didSet {
-            backImageView.image = UIImage(named: ImageName.food)
+            backImageView.image = R.image.food()
             backImageView.contentMode = .scaleAspectFill
         }
     }
@@ -44,9 +46,9 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let goBackImage = UIImage(named: ImageName.goBackButtonImage)
+        let goBackImage = R.image.iconfinder_Arrow_doodle_11_3847915()
         self.goBackButton.setImage(goBackImage, for: .normal)
-        let goListButton = UIImage(named: ImageName.goListButtonImage)
+        let goListButton = R.image.list2389219_12801()
         self.goListButton.setImage(goListButton, for: .normal)
         
         if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
@@ -81,10 +83,20 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
         if swipeDirection == .Right {
+            
+            //            let realm = try! Realm()
+            //            var favPlaceData = DataModelOnRealm()
+            //            favPlaceData.placeName = FetchAllDatas.nameInfos[indexNumber]
+            //            favPlaceData.placeUrl = FetchAllDatas.urlInfos[indexNumber]
+            //            favPlaceData.placeImage = FetchAllDatas.imageUrlStringInfos[indexNumber]
+            //            favPlaceData.placeTel = FetchAllDatas.telInfos[indexNumber]
+            //
+            
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
             ArrayData.likePlaceImageUrlArrary.append(FetchAllDatas.imageUrlStringInfos[indexNumber])
+            
             if ArrayData.likePlaceUrlArray.count != Numbers.smallestNumber {
                 let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber], userPass: userPass)
                 addDataToFirebase.save()
@@ -99,11 +111,10 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         if FetchAllDatas.nameInfos.count == Numbers.smallestNumber {
             if swipeDirection == .Right {
                 performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-//            } else if swipeDirection == .left {
-//                performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-//            }
+            } else if swipeDirection == .Left {
+                performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
+            }
         }
-    }
     }
     
     @IBAction func backButton(sender: UIButton) {
