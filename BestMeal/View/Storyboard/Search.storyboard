@@ -20,12 +20,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eaV-6r-N5R">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="141"/>
                             </imageView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-GV-XSD">
-                                <rect key="frame" x="0.0" y="136" width="414" height="760"/>
-                            </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZh-KA-8LN">
                                 <rect key="frame" x="20" y="74" width="374" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -35,10 +32,14 @@
                                     <constraint firstAttribute="width" constant="33" id="6SR-DN-aBF"/>
                                     <constraint firstAttribute="height" constant="29" id="Bn1-pq-gfl"/>
                                 </constraints>
+                                <state key="normal" image="search"/>
                                 <connections>
-                                    <action selector="searchButtonWithSender:" destination="G9X-ec-DnH" eventType="touchUpInside" id="BBh-zE-ovZ"/>
+                                    <action selector="searchButton:" destination="G9X-ec-DnH" eventType="touchUpInside" id="WDH-g6-bVS"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-GV-XSD">
+                                <rect key="frame" x="0.0" y="136" width="414" height="760"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yKu-0Q-Q3k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VoT-UH-eS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5832" y="44"/>
+            <point key="canvasLocation" x="5831.884057971015" y="43.526785714285715"/>
         </scene>
         <!--CardSwipeViewController-->
         <scene sceneID="lrm-0c-oU4">
@@ -82,6 +83,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="search" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

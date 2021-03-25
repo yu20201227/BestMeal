@@ -61,8 +61,9 @@ protocol TestViewControllerDelegate: AnyObject {
 // MARK: Main Type
 
 class TestViewController: UIViewController, TestViewControllerDelegate {
+    
     func didPressTrackedButton() {
-        let hoge = String()
+        var good: String?
     }
     
 

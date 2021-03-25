@@ -18,7 +18,7 @@ struct PlaceDataModel {
     var ref: DatabaseReference!
     var userPass: String! = ""
     
-    init(placeName: String, placeImage: String, placeUrl: String, userPass: String){
+    init(placeName: String, placeImage: String, placeUrl: String, userPass: String) {
 
         self.placeName = placeName
         self.placeImage = placeImage

@@ -58,14 +58,12 @@ struct SegueIdentifier {
     static let toDetail = "toDetail"
 }
 
-struct ImageName {
-    static let registerBackImage = "backimage"
-    static let searchBackImage = "search"
-    static let searchTextBackImage = "zoom_saga"
-    static let food = "Food"
-    static let goBackButtonImage = "iconfinder_Arrow_doodle_11_3847915"
-    static let goListButtonImage = "list-2389219_1280-1"
-    static let noImage = "noImage"
+struct NamedVC {
+     static var listVC: FavoritePlaceListViewController!
+}
+
+struct SegueName {
+    static var favoritePlaceListViewController = "FavoritePlaceListViewController"
 }
 
 struct LabelText {
@@ -83,7 +81,6 @@ struct CellIdentifier {
 
 struct ScreenText {
     static let registerLabel = "登録してはじめよう。"
-    
 }
 
 struct Numbers {
@@ -91,4 +88,13 @@ struct Numbers {
     static let numberOfSections = 1
     static let heightForRowAt = 160
     static let smallestPassNumber = 6
+    static let maxInfoCount = 15
+    static let registerAnimationSpeed = 1.0
+    static let listLabelCornerRadius = 10.0
+    static let listImageCornerRadius = 30.0
+}
+
+struct StoreDataType {
+    static let email = "EMAIL"
+    static let pass = "PASS"
 }

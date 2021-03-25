@@ -3,14 +3,16 @@
 //  BestMeal
 //
 //  Created by Owner on 2020/12/12.
-//
+// プログラムで取得できる値は、インスタンスを作成するのではなく関数を作ってそこから呼び出す。
+// function(object)の形よりobject.function()の形を好む(引数ラベルを先に持ってくる）
+
 
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import Lottie
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+final class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userEmailTextField: UITextField! {
         didSet {
@@ -18,18 +20,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             userEmailTextField.layer.cornerRadius = 20.0
         }
     }
+    
     @IBOutlet weak var passTextField: UITextField! {
         didSet {
             passTextField.delegate = self
             passTextField.layer.cornerRadius = 20.0
         }
     }
+    
     @IBOutlet weak var backImageView: UIImageView! {
         didSet {
-            backImageView.image = UIImage(named: ImageName.registerBackImage)
+            
+            backImageView.image = R.image.backimage()
             backImageView.contentMode = .scaleAspectFill
         }
     }
+    
     @IBOutlet weak var goStartMessageLabel: UILabel! {
         didSet {
             goStartMessageLabel.text = ScreenText.registerLabel
@@ -37,9 +43,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var alphaView: UIView!
-    
-    @IBOutlet weak var goStartButton: UIButton! {
+    @IBOutlet private weak var alphaView: UIView!
+    @IBOutlet private weak var goStartButton: UIButton! {
         didSet {
             goStartButton.layer.cornerRadius = 30.0
             goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
@@ -49,6 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+
     }
     
     override func viewDidLoad() {
@@ -57,9 +63,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        // カーソルが自動的に次のTextFieldへ移動する
+        let nextTag = textField.tag + 1
+        if let nextTextField = self.view.viewWithTag(nextTag) {
+            nextTextField.becomeFirstResponder()
+        }
         return true
     }
-    
+        
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         userEmailTextField.resignFirstResponder()
         passTextField.resignFirstResponder()
@@ -67,7 +78,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerButton(sender: UIButton) {
         
-        if userEmailTextField.text?.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber {
+        if userEmailTextField.text!.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber {
             registerPermittedAnimation()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [unowned self] in
                 UserDefaults.standard.set(userEmailTextField.text, forKey: UserDefaultForKey.userEmail)
@@ -75,12 +86,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: SegueIdentifier.toSearch, sender: nil)
             }
         }
-        else if userEmailTextField.text?.isEmpty == true || passTextField.text!.isEmpty == true {
+        
+        else if userEmailTextField.text!.isEmpty == true || passTextField.text!.isEmpty == true {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
             canNotRegisterAlert()
             return
         }
+        
         else if passTextField.text!.count <= Numbers.smallestPassNumber {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
@@ -88,18 +101,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        // MARK: - closure
-        Auth.auth().signInAnonymously { (result, err) in
-            if err == nil {
-                guard let _ = result?.user else { return }
-                let saveProfile = SaveProfile(userEmail: self.userEmailTextField.text!, userPass: self.passTextField.text!)
-                saveProfile.saveProfile()
-                // self.dismiss(animated: true, completion: nil)
-            } else {
-                print(err?.localizedDescription as Any)
-                return
-            }
-        }
+//        // MARK: - closure
+//        Auth.auth().signInAnonymously { (result, err) in
+//            if err == nil {
+//                guard let _ = result?.user else { return }
+////                let userData = UserData(userEmail: self.userEmailTextField.text!, userPass: self.passTextField.text!)
+//                userData!.saveProfile()
+//                // self.dismiss(animated: true, completion: nil)
+//            } else {
+//                print(err?.localizedDescription as Any)
+//                return
+//            }
+//        }
+        
     }
-    
 }
