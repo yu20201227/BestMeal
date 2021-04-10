@@ -16,7 +16,6 @@ import FirebaseDatabase
 class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource {
     
     var userPass = String()
-    var saveProfileHere = [SaveProfile]()
     var placeDataModelArray = [PlaceDataModel]()
     
     @IBOutlet weak var cardSwiper: VerticalCardSwiper! {
@@ -54,10 +53,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
         }
         cardSwiper.reloadData()
-        
-        //        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
-        //            placeDatas = UserDefaults.standard.object(forKey:UserDefaultForKey.placeDatas) as! [String]
-        //        }
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
@@ -82,21 +77,13 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
         if swipeDirection == .Right {
-            
-            //            let realm = try! Realm()
-            //            var favPlaceData = DataModelOnRealm()
-            //            favPlaceData.placeName = FetchAllDatas.nameInfos[indexNumber]
-            //            favPlaceData.placeUrl = FetchAllDatas.urlInfos[indexNumber]
-            //            favPlaceData.placeImage = FetchAllDatas.imageUrlStringInfos[indexNumber]
-            //            favPlaceData.placeTel = FetchAllDatas.telInfos[indexNumber]
-            //
-            
+    
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
             ArrayData.likePlaceImageUrlArrary.append(FetchAllDatas.imageUrlStringInfos[indexNumber])
             
-            if ArrayData.likePlaceUrlArray.count != Numbers.smallestNumber {
+            if ArrayData.likePlaceUrlArray.count == Numbers.smallestNumber { return } else {
                 let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber], userPass: userPass)
                 addDataToFirebase.save()
             }
