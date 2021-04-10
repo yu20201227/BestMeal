@@ -88,31 +88,20 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         else if userEmailTextField.text!.isEmpty == true || passTextField.text!.isEmpty == true {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
+            occureVibration()
             canNotRegisterAlert()
             return
         }
         
         else if passTextField.text!.count <= Numbers.smallestPassNumber {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
+            occureVibration()
             tooShortPassAlert()
             return
         }
-        
-//        // MARK: - closure
-//        Auth.auth().signInAnonymously { (result, err) in
-//            if err == nil {
-//                guard let _ = result?.user else { return }
-////                let userData = UserData(userEmail: self.userEmailTextField.text!, userPass: self.passTextField.text!)
-//                userData!.saveProfile()
-//                // self.dismiss(animated: true, completion: nil)
-//            } else {
-//                print(err?.localizedDescription as Any)
-//                return
-//            }
-//        }
-        
+    }
+    
+    func occureVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
     }
 }
