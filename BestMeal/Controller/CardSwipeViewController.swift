@@ -27,7 +27,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         }
     }
     
-    
     @IBOutlet weak var backImageView: UIImageView! {
         didSet {
             backImageView.image = R.image.food()
