@@ -14,21 +14,19 @@ import Firebase
 // SOLID原則
 
 @available(iOS 13.0, *)
-class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DoneCatchProtocol, UITextFieldDelegate {
+class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol {
     
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
     var userEmail = String()
     var userPass = String()
-    // var placeDataModelArray = [PlaceDataModel]()
     let locationManager = CLLocationManager()
     
     private(set) var shopDataArray = [ShopData]()
     
     @IBOutlet weak var searchTextField: UITextField! {
         didSet {
-            // searchTextField.backgroundColor = .yellow
         }
     }
     
@@ -53,6 +51,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
     
+    func searchLocation(latitude: Double, longitude: Double) {
+        idoValue = latitude
+        keidoValue = longitude
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
@@ -62,10 +65,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
-        
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
-            //            placeDatas = UserDefaults.standard.object(forKey:  UserDefaultForKey.placeDatas) as! [String]
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -111,7 +110,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
@@ -120,7 +119,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     @IBAction func searchButton (_ sender: UIButton) {
-        
         if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas ) != nil {
             //            placeDatas = UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) as! [String]
         }
@@ -175,11 +173,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     func startSearching() {
         if searchTextField.text?.isEmpty == true {
-            return noKeyWordsAlert()
+            noKeyWordsAlert()
+            return
         }
         searchTextField.resignFirstResponder()
-        let urlString =  "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
-        
+            let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
+
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()

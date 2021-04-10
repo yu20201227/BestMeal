@@ -86,7 +86,6 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: SegueIdentifier.toSearch, sender: nil)
             }
         }
-        
         else if userEmailTextField.text!.isEmpty == true || passTextField.text!.isEmpty == true {
             occureVibration()
             canNotRegisterAlert()
