@@ -22,7 +22,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardSwiper.delegate = self
             cardSwiper.datasource = self
             cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell,
-                                           bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
+            bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
         }
     }
     

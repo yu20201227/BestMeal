@@ -1,9 +1,8 @@
 //
-//  showAlertToUsers.swift
+//  UIViewController+Extension.swift
 //  BestMeal
 //
-//  Created by Owner on 2021/02/07.
-//
+//  Created by Owner on 2021/04/11.
 
 import Foundation
 import UIKit
@@ -13,14 +12,14 @@ extension UIViewController {
     public func canNotRegisterAlert() {
         let noInfoAlert: UIAlertController = UIAlertController(title: AlertTitle.notRegistered, message: AlertMessage.seekOneMoreTime, preferredStyle: .alert)
         let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
-              (_: UIAlertAction!) -> Void in
+            (_: UIAlertAction!) -> Void in
             print(AlertTitle.okMessage)
-          })
-          noInfoAlert.addAction(okAction)
-          present(noInfoAlert, animated: true, completion: nil)
+        })
+        noInfoAlert.addAction(okAction)
+        present(noInfoAlert, animated: true, completion: nil)
         return
-      }
-
+    }
+    
     public func tooShortPassAlert() {
         let notRegsitered = UIAlertController(title: AlertTitle.failedToSearch, message: AlertMessage.notEnoughPass, preferredStyle: .alert)
         let okAction:UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default) { (action: UIAlertAction) in
