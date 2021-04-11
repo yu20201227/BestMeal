@@ -22,6 +22,7 @@ struct AlertTitle {
     static let failedGetData =  "情報を取得できません🙇‍♂️"
     static let okMessage = "OK"
     static let failedToSearch =  "検索できません。"
+    static let jumpToList = "リストを見に行きますか？"
 }
 
 struct AlertMessage {
@@ -29,6 +30,7 @@ struct AlertMessage {
     static let notEnoughPass =  "パスワードは6文字以上にしてください"
     static let alertChangeKeyword =  "違うキーワードで検索してください！"
     static let keywordIsEmpty =  "キーワードを入れてください！"
+    static let lastSwipableCard = "スワイプが終了しました。"
 }
 
 struct ForSourceType {

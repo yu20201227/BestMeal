@@ -39,7 +39,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
             placeDatas = UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) as! [String]
         }
-}
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,7 +74,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
-            
+        
         let indexName = listName[indexPath.row]
         placeDatas.append(indexName)
         let indexImage = listImage[indexPath.row]
@@ -86,16 +86,19 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         
         UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
         
-        let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as? UIImageView
-        let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as? UILabel
+        if let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as? UIImageView {
+            placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage),
+                                                 placeholderImage: R.image.noImage(),options: .continueInBackground,
+                                                 progress: nil, completed: nil)
+            placeImageViewOnTheList.layer.cornerRadius = 30.0
+        }
         
-        placeNameLabelOnTheList!.text = indexName
-        placeNameLabelOnTheList!.textColor = .white
-        placeNameLabelOnTheList!.textAlignment = .center
-        placeNameLabelOnTheList!.layer.cornerRadius = 10.0
-        placeImageViewOnTheList!.sd_setImage(with: URL(string: indexImage), placeholderImage: R.image.noImage(),
-            options: .continueInBackground, progress: nil, completed: nil)
-        placeImageViewOnTheList!.layer.cornerRadius = 30.0
+        if let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as? UILabel {
+            placeNameLabelOnTheList.text = indexName
+            placeNameLabelOnTheList.textColor = .white
+            placeNameLabelOnTheList.textAlignment = .center
+            placeNameLabelOnTheList.layer.cornerRadius = 10.0
+        }
         return cell
     }
     
@@ -128,7 +131,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         // addItemsToRealm()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 

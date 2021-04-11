@@ -72,19 +72,18 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         return CardCell()
     }
     
-    
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
         
         if swipeDirection == .Right {
-    
+            
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
             ArrayData.likePlaceImageUrlArrary.append(FetchAllDatas.imageUrlStringInfos[indexNumber])
             
-            if ArrayData.likePlaceUrlArray.count == Numbers.smallestNumber { return } else {
-                let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber], userPass: userPass)
+            if ArrayData.likePlaceUrlArray.count == Numbers.smallestNumber { return }
+            else { let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber], userPass: userPass)
                 addDataToFirebase.save()
             }
         }
@@ -93,13 +92,19 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         FetchAllDatas.telInfos.remove(at: index)
         FetchAllDatas.nameInfos.remove(at: index)
         FetchAllDatas.imageUrlStringInfos.remove(at: index)
-        
-        if FetchAllDatas.nameInfos.count == Numbers.smallestNumber {
-            if swipeDirection == .Right {
-                performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-            } else if swipeDirection == .Left {
-                performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-            }
+    }
+
+    // 全てのカードスワイプ完了時に自動的にリストへ飛ばす+ダイアログ
+    func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+        if FetchAllDatas.urlInfos.count == Numbers.smallestNumber {
+            let alertDialog: UIAlertController = UIAlertController(title: AlertTitle.jumpToList, message: AlertMessage.lastSwipableCard, preferredStyle: .alert)
+            let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
+                (_: UIAlertAction!) -> Void in
+                print(AlertTitle.okMessage)
+                self.performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
+            })
+            alertDialog.addAction(okAction)
+            present(alertDialog, animated: true, completion: nil)
         }
     }
     
