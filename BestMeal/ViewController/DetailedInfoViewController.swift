@@ -17,9 +17,4 @@ class DetailedInfoViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
     }
-    
-//    func setDatas(cellForRowAt indexPath: IndexPath) {
-//         LikePlaceDatas.likePlaceImageUrlArrary[indexPath.row]
-//            }
-    
 }
