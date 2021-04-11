@@ -11,7 +11,6 @@ import Firebase
 import SDWebImage
 import ChameleonFramework
 import FirebaseDatabase
-// import RealmSwift
 
 class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource {
     
@@ -22,7 +21,8 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         didSet {
             cardSwiper.delegate = self
             cardSwiper.datasource = self
-            cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
+            cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell,
+                                           bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
         }
     }
     
@@ -33,8 +33,17 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         }
     }
     
-    @IBOutlet weak var goBackButton: UIButton!
-    @IBOutlet weak var goListButton: UIButton!
+    @IBOutlet weak var goBackButton: UIButton! {
+        didSet {
+            self.goBackButton.setImage(R.image.goBackButtonImage(), for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var goListButton: UIButton! {
+        didSet {
+            self.goListButton.setImage(R.image.listButtonImage(), for: .normal)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,16 +52,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let goBackImage = R.image.iconfinder_Arrow_doodle_11_3847915()
-        self.goBackButton.setImage(goBackImage, for: .normal)
-        let goListButton = R.image.list2389219_12801()
-        self.goListButton.setImage(goListButton, for: .normal)
-        
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
-            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
-        }
-        cardSwiper.reloadData()
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
@@ -61,21 +60,22 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.cardViewCell, for: index) as? CardViewCell {
-            //verticalCardSwiperView.backgroundColor = UIColor.randomFlat()
             view.backgroundColor = verticalCardSwiperView.backgroundColor
             _ = FetchAllDatas.imageUrlStringInfos[index]
             _ = FetchAllDatas.urlInfos[index]
             let placename = FetchAllDatas.nameInfos[index]
             cardCell.setRandomBackgroundColor()
             cardCell.placeNameLabel.text = placename
-            cardCell.goodImages.sd_setImage(with: URL(string:FetchAllDatas.imageUrlStringInfos[index]), completed: nil)
+            cardCell.goodImages.sd_setImage(with:URL(string:FetchAllDatas.imageUrlStringInfos[index]), completed: nil)
             return cardCell
         }
         return CardCell()
     }
     
+    
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
+        
         if swipeDirection == .Right {
     
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
@@ -108,15 +108,9 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     }
     
     @IBAction func toFavListButton(sender: UIButton) {
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
-            //            placeDatas = UserDefaults.standard.object(forKey:  UserDefaultForKey.placeDatas) as! [String]
-            //        }
-            _ = FavoritePlaceListViewController()
-            performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-        }
+        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
     }
     
-    // if let使用
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let listVC = segue.destination as? FavoritePlaceListViewController {
             listVC.listImage = ArrayData.likePlaceImageUrlArrary
