@@ -1,9 +1,9 @@
-//
-//  SaveDataOnTheList.swift
-//  BestMeal
-//
-//  Created by Owner on 2021/01/06.
-//
+////
+////  SaveDataOnTheList.swift
+////  BestMeal
+////
+////  Created by Owner on 2021/01/06.
+////
 
 import Foundation
 import Firebase
@@ -17,16 +17,17 @@ struct PlaceDataModel {
     var placeUrl: String! = ""
     var ref: DatabaseReference!
     var userPass: String! = ""
-    
+
+
     init(placeName: String, placeImage: String, placeUrl: String, userPass: String) {
 
         self.placeName = placeName
         self.placeImage = placeImage
         self.placeUrl = placeUrl
         self.userPass = userPass
-        
+
         ref = Database.database().reference().child(UserDefaultForKey.placeDatas).childByAutoId()
-        
+
     }
 
     init(snapShot: DataSnapshot) {
@@ -44,7 +45,7 @@ struct PlaceDataModel {
          return
             ["placeName": placeName! as Any, "placeImage": placeImage! as Any, "placeUrl": placeUrl! as Any, "userPass": userPass as Any]
     }
-    
+
     func save() {
         ref.setValue(toContents())
     }

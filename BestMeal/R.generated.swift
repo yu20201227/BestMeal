@@ -276,18 +276,18 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `Food`.
     static let food = Rswift.ImageResource(bundle: R.hostingBundle, name: "Food")
-    /// Image `backimage`.
-    static let backimage = Rswift.ImageResource(bundle: R.hostingBundle, name: "backimage")
+    /// Image `backiGroundImage`.
+    static let backiGroundImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "backiGroundImage")
     /// Image `breakfast-3765559_1920`.
     static let breakfast3765559_1920 = Rswift.ImageResource(bundle: R.hostingBundle, name: "breakfast-3765559_1920")
     /// Image `call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "call")
+    /// Image `goBackButtonImage`.
+    static let goBackButtonImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "goBackButtonImage")
     /// Image `iconfinder_17_google_play_353462`.
     static let iconfinder_17_google_play_353462 = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconfinder_17_google_play_353462")
-    /// Image `iconfinder_Arrow_doodle_11_3847915`.
-    static let iconfinder_Arrow_doodle_11_3847915 = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconfinder_Arrow_doodle_11_3847915")
-    /// Image `list-2389219_1280-1`.
-    static let list2389219_12801 = Rswift.ImageResource(bundle: R.hostingBundle, name: "list-2389219_1280-1")
+    /// Image `listButtonImage`.
+    static let listButtonImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "listButtonImage")
     /// Image `lunch`.
     static let lunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "lunch")
     /// Image `noImage`.
@@ -313,9 +313,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "backimage", bundle: ..., traitCollection: ...)`
-    static func backimage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.backimage, compatibleWith: traitCollection)
+    /// `UIImage(named: "backiGroundImage", bundle: ..., traitCollection: ...)`
+    static func backiGroundImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.backiGroundImage, compatibleWith: traitCollection)
     }
     #endif
 
@@ -334,6 +334,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "goBackButtonImage", bundle: ..., traitCollection: ...)`
+    static func goBackButtonImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.goBackButtonImage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "iconfinder_17_google_play_353462", bundle: ..., traitCollection: ...)`
     static func iconfinder_17_google_play_353462(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.iconfinder_17_google_play_353462, compatibleWith: traitCollection)
@@ -341,16 +348,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "iconfinder_Arrow_doodle_11_3847915", bundle: ..., traitCollection: ...)`
-    static func iconfinder_Arrow_doodle_11_3847915(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.iconfinder_Arrow_doodle_11_3847915, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "list-2389219_1280-1", bundle: ..., traitCollection: ...)`
-    static func list2389219_12801(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.list2389219_12801, compatibleWith: traitCollection)
+    /// `UIImage(named: "listButtonImage", bundle: ..., traitCollection: ...)`
+    static func listButtonImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.listButtonImage, compatibleWith: traitCollection)
     }
     #endif
 

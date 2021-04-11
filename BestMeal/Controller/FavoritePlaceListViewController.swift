@@ -74,7 +74,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
-        
+            
         let indexName = listName[indexPath.row]
         placeDatas.append(indexName)
         let indexImage = listImage[indexPath.row]
@@ -104,8 +104,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            
             listUrl.remove(at: indexPath.row)
             listName.remove(at: indexPath.row)
             listImage.remove(at: indexPath.row)
@@ -128,4 +128,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         // addItemsToRealm()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+
 }
+
+
