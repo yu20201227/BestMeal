@@ -7,7 +7,6 @@ target 'BestMeal' do
 
   # Pods for BestMeal
 
- pod 'VerticalCardSwiper'
  pod 'SDWebImage'
  pod 'SwiftyJSON'
  pod 'ChameleonFramework'
@@ -17,5 +16,6 @@ target 'BestMeal' do
  pod 'Alamofire'
  pod 'Firebase/Database'
  pod 'R.swift'
+ pod 'VerticalCardSwiper'
 
 end

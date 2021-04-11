@@ -276,8 +276,8 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `Food`.
     static let food = Rswift.ImageResource(bundle: R.hostingBundle, name: "Food")
-    /// Image `backiGroundImage`.
-    static let backiGroundImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "backiGroundImage")
+    /// Image `backGroundImage`.
+    static let backGroundImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "backGroundImage")
     /// Image `breakfast-3765559_1920`.
     static let breakfast3765559_1920 = Rswift.ImageResource(bundle: R.hostingBundle, name: "breakfast-3765559_1920")
     /// Image `call`.
@@ -313,9 +313,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "backiGroundImage", bundle: ..., traitCollection: ...)`
-    static func backiGroundImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.backiGroundImage, compatibleWith: traitCollection)
+    /// `UIImage(named: "backGroundImage", bundle: ..., traitCollection: ...)`
+    static func backGroundImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.backGroundImage, compatibleWith: traitCollection)
     }
     #endif
 

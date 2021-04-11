@@ -31,7 +31,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backImageView: UIImageView! {
         didSet {
             
-            backImageView.image = R.image.backiGroundImage()
+            backImageView.image = R.image.backGroundImage()
             backImageView.contentMode = .scaleAspectFill
         }
     }

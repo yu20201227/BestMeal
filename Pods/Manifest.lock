@@ -62,7 +62,7 @@ PODS:
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
   - SwiftyJSON (5.0.0)
-  - VerticalCardSwiper (2.2.0)
+  - VerticalCardSwiper (2.3.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -128,8 +128,8 @@ SPEC CHECKSUMS:
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  VerticalCardSwiper: 41c8c0d8d87511ec269347f5671386acf66cd31a
+  VerticalCardSwiper: 68df635b354500f86934ea044ade37a264c044c6
 
-PODFILE CHECKSUM: ee5b61a8df8064407a75d669f049751b6225de9a
+PODFILE CHECKSUM: 65a11de720cf0ebd5581dca3fa04bb15f08b72bd
 
 COCOAPODS: 1.10.1
