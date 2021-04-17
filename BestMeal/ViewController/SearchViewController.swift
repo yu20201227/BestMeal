@@ -10,11 +10,9 @@ import Lottie
 import SwiftyJSON
 import ChameleonFramework
 import Firebase
-// import FirebaseFirestore
-// SOLID原則
 
 @available(iOS 13.0, *)
-class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol {
+class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
     
     var idoValue = Double()
     var keidoValue = Double()
@@ -58,14 +56,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
-            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
-        }
         
         view.backgroundColor = .systemGreen
         startUpdatingLocation()
         configureSubview()
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -83,24 +79,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
     
-    @available(iOS 14.0, *)
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("user Permitted")
-            break
-        case .denied:
-            print("user Denied")
-            break
-        default: print("something error on the location permisssion")
-        }
-        
-        switch manager.accuracyAuthorization {
-        case .reducedAccuracy, .fullAccuracy: break
-        default: print("something wrong")
-        }
-    }
-    
     func configureSubview() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -110,7 +88,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+        
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
@@ -177,10 +155,27 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             return
         }
         searchTextField.resignFirstResponder()
-            let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
-
+        let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
+        
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
+    }
+}
+
+extension SearchViewController {
+    @available(iOS 14.0, *)
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("user Permitted"); break
+        case .denied: print("user Denied"); break
+        case .notDetermined: break
+        case .restricted: break
+            
+            switch manager.accuracyAuthorization {
+            case .reducedAccuracy, .fullAccuracy: break
+            }
+        }
     }
 }

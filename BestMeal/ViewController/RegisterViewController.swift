@@ -12,8 +12,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import Lottie
 
-final class RegisterViewController: UIViewController, UITextFieldDelegate {
-
+final class RegisterViewController: UIViewController, UITextFieldDelegate, showAlertProtocol {
+    
     @IBOutlet weak var userEmailTextField: UITextField! {
         didSet {
             userEmailTextField.delegate = self
@@ -54,7 +54,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-
+        
     }
     
     override func viewDidLoad() {
@@ -70,7 +70,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-        
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         userEmailTextField.resignFirstResponder()
         passTextField.resignFirstResponder()
@@ -78,14 +78,8 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerButton(sender: UIButton) {
         
-        if userEmailTextField.text!.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber {
-            registerPermittedAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [unowned self] in
-                UserDefaults.standard.set(userEmailTextField.text, forKey: UserDefaultForKey.userEmail)
-                UserDefaults.standard.set(passTextField.text, forKey: UserDefaultForKey.userPass)
-                self.performSegue(withIdentifier: SegueIdentifier.toSearch, sender: nil)
-            }
-        }
+        if userEmailTextField.text!.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber { registerPermittedAnimation() }
+        
         else if userEmailTextField.text!.isEmpty == true || passTextField.text!.isEmpty == true {
             occureVibration()
             canNotRegisterAlert()
@@ -98,9 +92,12 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate {
             return
         }
     }
-    
+}
+
+extension RegisterViewController {
     func occureVibration() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
     }
 }
+

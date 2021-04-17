@@ -1,5 +1,5 @@
 //
-//  UIViewController+Extension.swift
+//  showAlertProtocol.swift
 //  BestMeal
 //
 //  Created by Owner on 2021/04/11.
@@ -7,9 +7,11 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
+protocol showAlertProtocol { }
+
+extension showAlertProtocol where Self: UIViewController {
     
-    public func canNotRegisterAlert() {
+    func canNotRegisterAlert() {
         let noInfoAlert: UIAlertController = UIAlertController(title: AlertTitle.notRegistered, message: AlertMessage.seekOneMoreTime, preferredStyle: .alert)
         let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
             (_: UIAlertAction!) -> Void in
@@ -20,7 +22,7 @@ extension UIViewController {
         return
     }
     
-    public func tooShortPassAlert() {
+    func tooShortPassAlert() {
         let notRegsitered = UIAlertController(title: AlertTitle.failedToSearch, message: AlertMessage.notEnoughPass, preferredStyle: .alert)
         let okAction:UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default) { (action: UIAlertAction) in
             print(AlertTitle.okMessage)
@@ -30,7 +32,7 @@ extension UIViewController {
         return
     }
     
-    public func mainAlert() {
+    func mainAlert() {
         let noInfoAlert: UIAlertController = UIAlertController(title: AlertTitle.failedGetData, message: AlertMessage.alertChangeKeyword, preferredStyle: .alert)
         let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
             (_: UIAlertAction!) -> Void in
@@ -41,7 +43,7 @@ extension UIViewController {
         return
     }
     
-    public func noKeyWordsAlert() {
+    func noKeyWordsAlert() {
         let UIAlert = UIAlertController(title: AlertTitle.failedToSearch, message: AlertMessage.keywordIsEmpty, preferredStyle: .alert)
         let okAction = UIAlertAction(title: AlertTitle.okMessage, style: .default) { (_: UIAlertAction) in
             print(AlertTitle.okMessage)

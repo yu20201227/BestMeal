@@ -7,7 +7,6 @@
 
 import UIKit
 import SDWebImage
-// import FirebaseFirestore
 import Firebase
 import MapKit
 
@@ -53,9 +52,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     // MARK: - TableView Delegate $ DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if listName.isEmpty {
-            return Numbers.smallestNumber
-        } else {
+        if listName.isEmpty { return Numbers.smallestNumber } else {
             return listName.count
         }
     }
@@ -72,7 +69,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
+         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
         
         let indexName = listName[indexPath.row]
@@ -101,6 +98,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
         }
         return cell
     }
+
     
     func tableView(_ tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -128,7 +126,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func didTapGoBackButton(sender: UIButton) {
-        // addItemsToRealm()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
