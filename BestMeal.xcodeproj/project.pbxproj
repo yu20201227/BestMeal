@@ -11,6 +11,8 @@
 		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
 		EB08561A2622D27400DEEFB9 /* showAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0856192622D27400DEEFB9 /* showAlertProtocol.swift */; };
 		EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */; };
+		EB3C9E52262AA6F000041FD0 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C9E51262AA6F000041FD0 /* Presenter.swift */; };
+		EB3C9E56262AAA5500041FD0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C9E55262AAA5500041FD0 /* Router.swift */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
 		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB0856192622D27400DEEFB9 /* showAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAlertProtocol.swift; sourceTree = "<group>"; };
 		EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermitJudgeModel.swift; sourceTree = "<group>"; };
+		EB3C9E51262AA6F000041FD0 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		EB3C9E55262AAA5500041FD0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +148,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		EB085692262AA1F800DEEFB9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F784325849D8B00C50F9F /* ShopData.swift */,
+				EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */,
+				EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		EB6F77ED2584889E00C50F9F = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				EB80175D25B17D2F0075A814 /* BestMeal.entitlements */,
+				EB085692262AA1F800DEEFB9 /* Entity */,
 				EB6F780F25848AE400C50F9F /* Model */,
 				EB6F781025848AE900C50F9F /* View */,
 				EB6F781125848AEF00C50F9F /* ViewController */,
@@ -185,11 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */,
-				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
-				EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */,
-				EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,6 +229,8 @@
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
 				EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */,
 				EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */,
+				EB3C9E51262AA6F000041FD0 /* Presenter.swift */,
+				EB3C9E55262AAA5500041FD0 /* Router.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -449,6 +463,8 @@
 				EB6F783E25848F4400C50F9F /* OpeningViewController.swift in Sources */,
 				EBC16B8025E76AC20066B110 /* ListPlaceNameCell.swift in Sources */,
 				EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */,
+				EB3C9E56262AAA5500041FD0 /* Router.swift in Sources */,
+				EB3C9E52262AA6F000041FD0 /* Presenter.swift in Sources */,
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,

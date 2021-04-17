@@ -17,5 +17,7 @@ target 'BestMeal' do
  pod 'Firebase/Database'
  pod 'R.swift'
  pod 'VerticalCardSwiper'
+ pod 'RxSwift'
+ pod 'RxCocoa'
 
 end

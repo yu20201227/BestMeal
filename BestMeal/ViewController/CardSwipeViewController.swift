@@ -12,7 +12,16 @@ import SDWebImage
 import ChameleonFramework
 import FirebaseDatabase
 
-class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, VerticalCardSwiperDatasource {
+enum buttonActionOnCardSwipeView {
+    case backButton
+    case toFavListButton
+}
+
+protocol buttonActionOnCardSwipeViewProtocol {
+    func buttonAction(buttonAction: buttonActionOnCardSwipeView)
+}
+
+class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
     
     var userPass = String()
     var placeDataModelArray = [PlaceDataModel]()
@@ -22,7 +31,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             cardSwiper.delegate = self
             cardSwiper.datasource = self
             cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell,
-            bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
+                                           bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
         }
     }
     
@@ -57,6 +66,26 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return FetchAllDatas.urlInfos.count
     }
+        
+    @IBAction func backButton(sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func toFavListButton(sender: UIButton) {
+        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let listVC = segue.destination as? FavoritePlaceListViewController {
+            listVC.listImage = ArrayData.likePlaceImageUrlArrary
+            listVC.listTel = ArrayData.likePlaceTelArray
+            listVC.listName = ArrayData.likePlaceNameArray
+            listVC.listUrl = ArrayData.likePlaceUrlArray
+        }
+    }
+}
+
+extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.cardViewCell, for: index) as? CardViewCell {
@@ -93,7 +122,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
         FetchAllDatas.nameInfos.remove(at: index)
         FetchAllDatas.imageUrlStringInfos.remove(at: index)
     }
-
+    
     // 全てのカードスワイプ完了時に自動的にリストへ飛ばす+ダイアログ
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         if FetchAllDatas.urlInfos.count == Numbers.smallestNumber {
@@ -105,23 +134,6 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate, Ver
             })
             alertDialog.addAction(okAction)
             present(alertDialog, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func backButton(sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func toFavListButton(sender: UIButton) {
-        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let listVC = segue.destination as? FavoritePlaceListViewController {
-            listVC.listImage = ArrayData.likePlaceImageUrlArrary
-            listVC.listTel = ArrayData.likePlaceTelArray
-            listVC.listName = ArrayData.likePlaceNameArray
-            listVC.listUrl = ArrayData.likePlaceUrlArray
         }
     }
 }
