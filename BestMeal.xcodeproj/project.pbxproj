@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4565546DD0A56F56623E9C41 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */; };
 		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
-		EB08561A2622D27400DEEFB9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0856192622D27400DEEFB9 /* UIViewController+Extension.swift */; };
+		EB08561A2622D27400DEEFB9 /* showAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0856192622D27400DEEFB9 /* showAlertProtocol.swift */; };
 		EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
@@ -50,7 +50,7 @@
 		3A25342EF01C1A0C4A99D0C0 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
 		C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EB0856192622D27400DEEFB9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		EB0856192622D27400DEEFB9 /* showAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAlertProtocol.swift; sourceTree = "<group>"; };
 		EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermitJudgeModel.swift; sourceTree = "<group>"; };
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		EB0856172622D17000DEEFB9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EB0856192622D27400DEEFB9 /* UIViewController+Extension.swift */,
+				EB0856192622D27400DEEFB9 /* showAlertProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
 				EBDDB63A2605EEC50033840D /* BallonMessageViewController.swift in Sources */,
-				EB08561A2622D27400DEEFB9 /* UIViewController+Extension.swift in Sources */,
+				EB08561A2622D27400DEEFB9 /* showAlertProtocol.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

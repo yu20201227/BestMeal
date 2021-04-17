@@ -17,24 +17,15 @@ import Lottie
 
 class OpeningViewController: UIViewController {
     
-    
     var userPass = String()
     
     @IBOutlet weak var didTapToNextButton: UIButton!
-  //  @IBOutlet weak var didTapStartCell: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         overrideUserInterfaceStyle = .light
-//        didTapToNextButton.backgroundColor = .white
-//        didTapToNextButton.layer.cornerRadius = 30.0
         startOpeningAnimation()
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
-            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
-        }
         view.backgroundColor = UIColor.flatMint()
         self.navigationController?.isNavigationBarHidden = true
     }
