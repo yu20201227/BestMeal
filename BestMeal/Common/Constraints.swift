@@ -56,7 +56,6 @@ struct SegueIdentifier {
     static let toSearch = "toSearch"
     static let toCards = "toCards"
     static let toList = "toList"
-    static let gotoList = "gotoList"
     static let toDetail = "toDetail"
 }
 

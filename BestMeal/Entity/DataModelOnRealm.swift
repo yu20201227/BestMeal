@@ -6,11 +6,5 @@
 //
 
 import Foundation
-// import RealmSwift
 
-// struct DataModelOnRealm: Object {
-//    dynamic var placeName = ""
-//    dynamic var placeImage = ""
-//    dynamic var placeUrl = ""
-//    dynamic var placeTel = ""
-//}
+// MARK: -- Realm実装
