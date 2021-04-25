@@ -33,9 +33,6 @@
                                     <constraint firstAttribute="width" secondItem="5rc-2N-i23" secondAttribute="height" multiplier="47:43" id="wuB-P3-akY"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <connections>
-                                    <action selector="toFavListButtonWithSender:" destination="Nsc-j3-9cv" eventType="touchUpInside" id="V8T-nS-TJA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fj2-Ks-i4F">
                                 <rect key="frame" x="20" y="44.5" width="86" height="75"/>
@@ -49,9 +46,6 @@
                                 <state key="normal">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
-                                <connections>
-                                    <action selector="backButtonWithSender:" destination="Nsc-j3-9cv" eventType="touchUpInside" id="MeA-rg-xZw"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A5l-wf-plZ"/>

@@ -18,6 +18,4 @@ class BallonMessageViewController: UIViewController, VerticalCardSwiperDelegate 
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         
     }
-
-
 }

@@ -11,20 +11,20 @@ import Firebase
 import SDWebImage
 import ChameleonFramework
 import FirebaseDatabase
+import RxSwift
+import RxCocoa
 
 enum buttonActionOnCardSwipeView {
     case backButton
     case toFavListButton
 }
 
-protocol buttonActionOnCardSwipeViewProtocol {
-    func buttonAction(buttonAction: buttonActionOnCardSwipeView)
-}
-
 class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
     
     var userPass = String()
     var placeDataModelArray = [PlaceDataModel]()
+    let disposeBag = DisposeBag()
+    var buttonProtocol: buttonActionOnCardSwipeViewProtocol?
     
     @IBOutlet weak var cardSwiper: VerticalCardSwiper! {
         didSet {
@@ -61,18 +61,20 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        goListButton.rx.tap.subscribe(onNext: { [unowned self] _ in
+            self.buttonAction(buttonAction: .toFavListButton)
+        })
+        .disposed(by: disposeBag)
+        
+        goBackButton.rx.tap.subscribe(onNext: { [unowned self] _ in
+            self.buttonAction(buttonAction: .backButton)
+        })
+        .disposed(by: disposeBag)
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return FetchAllDatas.urlInfos.count
-    }
-        
-    @IBAction func backButton(sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func toFavListButton(sender: UIButton) {
-        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,9 +105,18 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
+                
+// //        以下、右スワイプ後の冗長な処理と変更できるかも
+//                func insertDatas() {
+//                    let finalDatas = [ ArrayData(likePlaceUrlArray: FetchAllDatas.urlInfos[indexNumber],
+//                                                 likePlaceNameArray: FetchAllDatas.telInfos[indexNumber],
+//                                                 likePlaceImageUrlArrary: FetchAllDatas.nameInfos[indexNumber],
+//                                                 likePlaceTelArray: FetchAllDatas.imageUrlStringInfos[indexNumber])
+//                    ]
+//                }
         
         if swipeDirection == .Right {
-            
+                    
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
@@ -123,8 +134,9 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
         FetchAllDatas.imageUrlStringInfos.remove(at: index)
     }
     
-    // 全てのカードスワイプ完了時に自動的にリストへ飛ばす+ダイアログ
+    // 全てのカードスワイプ完了時にリストへ飛ばす確認ダイアログ
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+                        
         if FetchAllDatas.urlInfos.count == Numbers.smallestNumber {
             let alertDialog: UIAlertController = UIAlertController(title: AlertTitle.jumpToList, message: AlertMessage.lastSwipableCard, preferredStyle: .alert)
             let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
@@ -136,4 +148,21 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
             present(alertDialog, animated: true, completion: nil)
         }
     }
+    
+    func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
+        switch buttonAction {
+        case .backButton:
+            cancelButton()
+        case .toFavListButton:
+            userButtonActions()
+        }
+        
+    }
+    func userButtonActions() {
+        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
+    }
+    func cancelButton() {
+        dismiss(animated: true, completion: nil)
+    }
+
 }

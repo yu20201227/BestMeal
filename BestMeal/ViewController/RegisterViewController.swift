@@ -76,7 +76,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate, showA
         passTextField.resignFirstResponder()
     }
     
-    @IBAction func registerButton(sender: UIButton) {
+    @IBAction func registerButton(_ sender: UIButton) {
         
         if userEmailTextField.text!.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber { registerPermittedAnimation() }
         

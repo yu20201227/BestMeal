@@ -15,9 +15,6 @@ extension OpeningViewController {
         let animationView = AnimationView(filePath: openingAnimationPath!)
         animationView.animationSpeed = 1.0
         animationView.center = self.view.center
-        //        animationView.frame =
-        //            CGRect(x: 0, y: 0, width: view.frame.size.width,
-        //                   height: view.frame.size.height - didTapToNextButton.frame.size.height)
         animationView.loopMode = .loop
         animationView.play()
         view.addSubview(animationView)

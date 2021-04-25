@@ -12,8 +12,8 @@ import ChameleonFramework
 import Firebase
 
 @available(iOS 13.0, *)
-class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
-    
+class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
+        
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
@@ -23,10 +23,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     private(set) var shopDataArray = [ShopData]()
     
-    @IBOutlet weak var searchTextField: UITextField! {
-        didSet {
-        }
-    }
+    @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var mapView: MKMapView? {
         didSet {
@@ -88,7 +85,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
@@ -97,20 +93,19 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     @IBAction func searchButton (_ sender: UIButton) {
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas ) != nil {
-            //            placeDatas = UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) as! [String]
-        }
         startSearching()
     }
     
     func addAnnotation(shopData: [ShopData]) {
         
         mapView!.removeAnnotations(mapView!.annotations)
+        
+    // MARK: - 下記の記述（1行）にまとめられるのではないか。
+      //  FetchAllDatas.AllCases = []
         FetchAllDatas.urlInfos = []
         FetchAllDatas.imageUrlStringInfos = []
         FetchAllDatas.nameInfos = []
         FetchAllDatas.telInfos = []
-        // Numbers.smallestNumber == 0
         if totalHitCount == Numbers.smallestNumber {
             return mainAlert()
         }
@@ -152,9 +147,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func startSearching() {
         if searchTextField.text?.isEmpty == true {
             noKeyWordsAlert()
-            return
         }
         searchTextField.resignFirstResponder()
+        // MARK: - API管理をInfo,Plistで実施。（現状,APIKeyのみ移動）
         let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
@@ -163,19 +158,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
 }
 
-extension SearchViewController {
+extension SearchViewController: CLLocationManagerDelegate {
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("user Permitted"); break
-        case .denied: print("user Denied"); break
+        case .authorizedAlways, .authorizedWhenInUse: print("user Permitted")
+        case .denied: print("user Denied")
         case .notDetermined: break
         case .restricted: break
             
             switch manager.accuracyAuthorization {
             case .reducedAccuracy, .fullAccuracy: break
             }
+        @unknown default:
+            print(Error.self)
         }
     }
 }

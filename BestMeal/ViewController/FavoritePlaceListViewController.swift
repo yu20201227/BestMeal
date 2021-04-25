@@ -9,10 +9,12 @@ import UIKit
 import SDWebImage
 import Firebase
 import MapKit
+import RxSwift
+import RxCocoa
 
 var placeDatas = [String]()
 
-class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
+class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
     var listName = [String]()
     var listUrl = [String]()
@@ -20,6 +22,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var listTel = [String]()
     var userPass = String()
     var placeDataModelArray = [PlaceDataModel]()
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var favTableView: UITableView! {
         didSet {
@@ -27,6 +30,8 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
             favTableView.dataSource = self
         }
     }
+    
+    @IBOutlet weak var didTapGoBackButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +52,12 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        didTapGoBackButton.rx.tap.subscribe(onNext: { [unowned self] _ in
+            self.didTapGoBackButtonMethod()
+        })
+        .disposed(by: disposeBag)
     }
-    
-    // MARK: - TableView Delegate $ DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if listName.isEmpty { return Numbers.smallestNumber } else {
@@ -67,38 +75,6 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
-        cell.backgroundColor = .brown
-        
-        let indexName = listName[indexPath.row]
-        placeDatas.append(indexName)
-        let indexImage = listImage[indexPath.row]
-        placeDatas.append(indexImage)
-        let indexUrl = listUrl[indexPath.row]
-        placeDatas.append(indexUrl)
-        let indexTel = listTel[indexPath.row]
-        placeDatas.append(indexTel)
-        
-        UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
-        
-        if let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as? UIImageView {
-            placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage),
-                                                 placeholderImage: R.image.noImage(),options: .continueInBackground,
-                                                 progress: nil, completed: nil)
-            placeImageViewOnTheList.layer.cornerRadius = 30.0
-        }
-        
-        if let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as? UILabel {
-            placeNameLabelOnTheList.text = indexName
-            placeNameLabelOnTheList.textColor = .white
-            placeNameLabelOnTheList.textAlignment = .center
-            placeNameLabelOnTheList.layer.cornerRadius = 10.0
-        }
-        return cell
-    }
-
     
     func tableView(_ tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -124,11 +100,56 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
             UIApplication.shared.open(URL(string: listUrl[indexPath.row])!)
         }
     }
+}
+
+extension FavoritePlaceListViewController: UITableViewDataSource {
     
-    @IBAction func didTapGoBackButton(sender: UIButton) {
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    // MARK: -- cellForRowAtをまとめて記述したい。エラー処理P.329参照
+//    func findData(_ listDataAbove: ListDatas, indexPath: IndexPath) {
+//        let listDatas = [ListDatas(name: listName[indexPath.row],
+//                                   image: listImage[indexPath.row],
+//                                   url: listUrl[indexPath.row],
+//                                   tel: listTel[indexPath.row])]
+//    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
+        cell.backgroundColor = .brown
+        
+        let indexName = listName[indexPath.row]
+        placeDatas.append(indexName)
+        let indexImage = listImage[indexPath.row]
+        placeDatas.append(indexImage)
+        let indexUrl = listUrl[indexPath.row]
+        placeDatas.append(indexUrl)
+        let indexTel = listTel[indexPath.row]
+        placeDatas.append(indexTel)
+        
+        UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
+        
+        if let placeImageViewOnTheList = cell.contentView.viewWithTag(1) as? UIImageView {
+                placeImageViewOnTheList.sd_setImage(with: URL(string: indexImage),
+                                                    placeholderImage: R.image.noImage(),
+                                                    options: .continueInBackground,
+                                                    progress: nil, completed: nil)
+                placeImageViewOnTheList.layer.cornerRadius = 30.0
+
+            }
+        
+        if let placeNameLabelOnTheList = cell.contentView.viewWithTag(2) as? UILabel {
+            placeNameLabelOnTheList.text = indexName
+            placeNameLabelOnTheList.UILabelExtension(placeNameLabelOnTheList: placeNameLabelOnTheList)
+        }
+        return cell
+    }
+}
+
+// MARK: -Observableで実行するメソッドをエクステンション下に実装
+extension FavoritePlaceListViewController {
+    
+    func didTapGoBackButtonMethod() {
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }
-
-
