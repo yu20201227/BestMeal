@@ -95,7 +95,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate, showA
 }
 
 extension RegisterViewController {
-    func occureVibration() {
+   private func occureVibration() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
     }
