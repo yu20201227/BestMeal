@@ -67,6 +67,7 @@ PODS:
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
+  - SwiftyBeaver (1.9.3)
   - SwiftyJSON (5.0.0)
   - VerticalCardSwiper (2.3.1)
 
@@ -81,6 +82,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - SDWebImage
+  - SwiftyBeaver
   - SwiftyJSON
   - VerticalCardSwiper
 
@@ -106,6 +108,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SwiftyBeaver
     - SwiftyJSON
     - VerticalCardSwiper
 
@@ -141,9 +144,10 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SwiftyBeaver: 2e8acd6fc90c6d0a27055867a290794926d57c02
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VerticalCardSwiper: 68df635b354500f86934ea044ade37a264c044c6
 
-PODFILE CHECKSUM: a4b6413265ebeda672a96f52c11a72c2af4edb6d
+PODFILE CHECKSUM: f21c9adf236b6b0ecaec5b860470d52854f7e206
 
 COCOAPODS: 1.10.1
