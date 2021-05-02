@@ -19,5 +19,6 @@ target 'BestMeal' do
  pod 'VerticalCardSwiper'
  pod 'RxSwift'
  pod 'RxCocoa'
+ pod 'SwiftyBeaver'
 
 end

@@ -13,7 +13,7 @@ import Firebase
 
 @available(iOS 13.0, *)
 class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
-        
+    
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
@@ -100,8 +100,8 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         
         mapView!.removeAnnotations(mapView!.annotations)
         
-    // MARK: - 下記の記述（1行）にまとめられるのではないか。
-      //  FetchAllDatas.AllCases = []
+        // MARK: - 下記の記述（1行）にまとめられるのではないか。
+        //  FetchAllDatas.AllCases = []
         FetchAllDatas.urlInfos = []
         FetchAllDatas.imageUrlStringInfos = []
         FetchAllDatas.nameInfos = []
@@ -149,7 +149,6 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
             noKeyWordsAlert()
         }
         searchTextField.resignFirstResponder()
-        // MARK: - API管理をInfo,Plistで実施。（現状,APIKeyのみ移動）
         let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
@@ -164,14 +163,17 @@ extension SearchViewController: CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse: print("user Permitted")
         case .denied: print("user Denied")
-        case .notDetermined: break
-        case .restricted: break
+        case .notDetermined: print("")
+        case .restricted: print("")
             
             switch manager.accuracyAuthorization {
-            case .reducedAccuracy, .fullAccuracy: break
+            case .reducedAccuracy, .fullAccuracy:
+                print("User chose low Accuracy mode.")
+            @unknown default:
+                print("Error Happened")
             }
         @unknown default:
-            print(Error.self)
+            print("")
         }
     }
 }
