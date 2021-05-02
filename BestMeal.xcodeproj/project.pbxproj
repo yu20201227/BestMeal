@@ -46,8 +46,6 @@
 		EBC16B8125E76AC20066B110 /* ListPlaceNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC16B7F25E76AC20066B110 /* ListPlaceNameCell.xib */; };
 		EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */; };
 		EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */ = {isa = PBXBuildFile; fileRef = EBD913B825D35F6F008F23C3 /* 9637-check.json */; };
-		EBDDB63A2605EEC50033840D /* BallonMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */; };
-		EBDDB6442605F2B40033840D /* DetailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */; };
 		EBDDB6472605F2CF0033840D /* DetailedInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */; };
 		EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */; };
 /* End PBXBuildFile section */
@@ -97,8 +95,6 @@
 		EBC16B7F25E76AC20066B110 /* ListPlaceNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPlaceNameCell.xib; sourceTree = "<group>"; };
 		EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
-		EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallonMessageViewController.swift; sourceTree = "<group>"; };
-		EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoViewController.swift; sourceTree = "<group>"; };
 		EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedInfo.storyboard; sourceTree = "<group>"; };
 		EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelOnRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,8 +239,6 @@
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
 				EB6F78862584ED4F00C50F9F /* FavoritePlaceListViewController.swift */,
-				EBDDB6392605EEC50033840D /* BallonMessageViewController.swift */,
-				EBDDB6432605F2B40033840D /* DetailedInfoViewController.swift */,
 				EB3C9E51262AA6F000041FD0 /* Presenter.swift */,
 			);
 			path = ViewController;
@@ -482,7 +476,6 @@
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */,
 				EB07827926340307000571D3 /* UIAlert+.swift in Sources */,
-				EBDDB6442605F2B40033840D /* DetailedInfoViewController.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
@@ -496,7 +489,6 @@
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
-				EBDDB63A2605EEC50033840D /* BallonMessageViewController.swift in Sources */,
 				EB08561A2622D27400DEEFB9 /* showAlertProtocol.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);

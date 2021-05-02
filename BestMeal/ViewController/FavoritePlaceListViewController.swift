@@ -21,6 +21,7 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     var listImage = [String]()
     var listTel = [String]()
     var userPass = String()
+    
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
     
@@ -104,27 +105,14 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
 
 extension FavoritePlaceListViewController: UITableViewDataSource {
     
-    // MARK: -- cellForRowAtをまとめて記述したい。エラー処理P.329参照
-//    func findData(_ listDataAbove: ListDatas, indexPath: IndexPath) {
-//        let listDatas = [ListDatas(name: listName[indexPath.row],
-//                                   image: listImage[indexPath.row],
-//                                   url: listUrl[indexPath.row],
-//                                   tel: listTel[indexPath.row])]
-//    }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
         
         let indexName = listName[indexPath.row]
-        placeDatas.append(indexName)
         let indexImage = listImage[indexPath.row]
-        placeDatas.append(indexImage)
         let indexUrl = listUrl[indexPath.row]
-        placeDatas.append(indexUrl)
         let indexTel = listTel[indexPath.row]
-        placeDatas.append(indexTel)
         
         UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
         
