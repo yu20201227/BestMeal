@@ -17,8 +17,6 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
-    var userEmail = String()
-    var userPass = String()
     let locationManager = CLLocationManager()
     
     private(set) var shopDataArray = [ShopData]()
