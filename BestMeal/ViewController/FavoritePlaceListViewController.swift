@@ -85,10 +85,11 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
 
 extension FavoritePlaceListViewController: UITableViewDataSource {
     
+    // MARK: - TODO - プロパティ４つをメンバワイズか何かでまとめられないか。
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
-        
+                
         let indexName = listVC.listName[indexPath.row]
         let indexImage = listVC.listImage[indexPath.row]
         let indexUrl = listVC.listUrl[indexPath.row]
