@@ -48,6 +48,8 @@
 		EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */ = {isa = PBXBuildFile; fileRef = EBD913B825D35F6F008F23C3 /* 9637-check.json */; };
 		EBDDB6472605F2CF0033840D /* DetailedInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */; };
 		EBE5FC7A2650EAE100B7A971 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5FC792650EAE100B7A971 /* BaseViewController.swift */; };
+		EBE5FD01265107D900B7A971 /* CardSwiperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */; };
+		EBF3EBA1265120270036CD49 /* DisplayDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3EBA0265120270036CD49 /* DisplayDatas.swift */; };
 		EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
 		EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedInfo.storyboard; sourceTree = "<group>"; };
 		EBE5FC792650EAE100B7A971 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperModel.swift; sourceTree = "<group>"; };
+		EBF3EBA0265120270036CD49 /* DisplayDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDatas.swift; sourceTree = "<group>"; };
 		EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelOnRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +173,7 @@
 				EB6F784325849D8B00C50F9F /* ShopData.swift */,
 				EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */,
 				EB903DE026045EA5004851B4 /* LikePlaceDatas.swift */,
+				EBF3EBA0265120270036CD49 /* DisplayDatas.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				EB2153DB25D264B0007BB9A0 /* PermitJudgeModel.swift */,
 				EB6F784025849B4B00C50F9F /* AnalyticsModel.swift */,
 				EB7E0DBF25AAF53D008BBE26 /* SaveDataOnTheList.swift */,
+				EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -473,10 +479,12 @@
 				EBC16B7B25E76AA40066B110 /* ListPlaceImageCell.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
 				EB903DE126045EA5004851B4 /* LikePlaceDatas.swift in Sources */,
+				EBF3EBA1265120270036CD49 /* DisplayDatas.swift in Sources */,
 				EBE5FC7A2650EAE100B7A971 /* BaseViewController.swift in Sources */,
 				EB8F3BC525E685D900624807 /* Constraints.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EB8805E1262BEF12006E8A98 /* UITextField+.swift in Sources */,
+				EBE5FD01265107D900B7A971 /* CardSwiperModel.swift in Sources */,
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */,
 				EB07827926340307000571D3 /* UIAlert+.swift in Sources */,

@@ -16,34 +16,29 @@ struct PlaceDataModel {
     var placeName: String! = ""
     var placeUrl: String! = ""
     var ref: DatabaseReference!
-    var userPass: String! = ""
 
 
-    init(placeName: String, placeImage: String, placeUrl: String, userPass: String) {
+    init(placeName: String, placeImage: String, placeUrl: String) {
 
         self.placeName = placeName
         self.placeImage = placeImage
         self.placeUrl = placeUrl
-        self.userPass = userPass
-
-        ref = Database.database().reference().child(UserDefaultForKey.placeDatas).childByAutoId()
-
+        
+        ref = Database.database().reference().child("placeImage")
     }
 
     init(snapShot: DataSnapshot) {
-        ref = snapShot.ref
 
         if let value = snapShot.value as? [String: Any] {
             placeImage = value["placeImage"] as? String
             placeName = value["placeName"] as? String
             placeUrl = value["placeUrl"] as? String
-            userPass = value["userPass"] as? String
         }
     }
 
     func toContents() -> [String: Any] {
          return
-            ["placeName": placeName! as Any, "placeImage": placeImage! as Any, "placeUrl": placeUrl! as Any, "userPass": userPass as Any]
+            ["placeName": placeName! as Any, "placeImage": placeImage! as Any, "placeUrl": placeUrl! as Any]
     }
 
     func save() {

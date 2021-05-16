@@ -19,39 +19,16 @@ enum buttonActionOnCardSwipeView {
     case toFavListButton
 }
 
-class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
+class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, CardSwiperModelProtocol {
     
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
     var buttonProtocol: buttonActionOnCardSwipeViewProtocol?
     
-    @IBOutlet weak var cardSwiper: VerticalCardSwiper! {
-        didSet {
-            cardSwiper.delegate = self
-            cardSwiper.datasource = self
-            cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell,
-                                           bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
-        }
-    }
-    
-    @IBOutlet weak var backImageView: UIImageView! {
-        didSet {
-            backImageView.image = R.image.food()
-            backImageView.contentMode = .scaleAspectFill
-        }
-    }
-    
-    @IBOutlet weak var goBackButton: UIButton! {
-        didSet {
-            self.goBackButton.setImage(R.image.goBackButtonImage(), for: .normal)
-        }
-    }
-    
-    @IBOutlet weak var goListButton: UIButton! {
-        didSet {
-            self.goListButton.setImage(R.image.listButtonImage(), for: .normal)
-        }
-    }
+    @IBOutlet weak var cardSwiper: VerticalCardSwiper!
+    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var goBackButton: UIButton!
+    @IBOutlet weak var goListButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,22 +46,22 @@ class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
             self.buttonAction(buttonAction: .backButton)
         })
         .disposed(by: disposeBag)
-
+        
+        cardSwiper.delegate = self
+        cardSwiper.datasource = self
+        cardSwiper.register(nib: UINib(nibName: Nib.cardViewCell,
+                                       bundle: nil),forCellWithReuseIdentifier: CellIdentifier.cardViewCell)
+        backImageView.image = R.image.food()
+        backImageView.contentMode = .scaleAspectFill
+        self.goBackButton.setImage(R.image.goBackButtonImage(), for: .normal)
+        self.goListButton.setImage(R.image.listButtonImage(), for: .normal)
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return FetchAllDatas.urlInfos.count
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let listVC = segue.destination as? FavoritePlaceListViewController {
-            listVC.listImage = ArrayData.likePlaceImageUrlArrary
-            listVC.listTel = ArrayData.likePlaceTelArray
-            listVC.listName = ArrayData.likePlaceNameArray
-            listVC.listUrl = ArrayData.likePlaceUrlArray
-        }
-    }
 }
+
 
 extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
@@ -121,8 +98,8 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
             ArrayData.likePlaceImageUrlArrary.append(FetchAllDatas.imageUrlStringInfos[indexNumber])
             
-            if ArrayData.likePlaceUrlArray.count == Numbers.smallestNumber { return }
-            else { let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber], userPass: userPass)
+            if ArrayData.likePlaceUrlArray.count == Numbers.smallestNumber { print("データが空になっています"); return }
+            else { let addDataToFirebase = PlaceDataModel(placeName: FetchAllDatas.nameInfos[indexNumber], placeImage: FetchAllDatas.imageUrlStringInfos[indexNumber], placeUrl: FetchAllDatas.urlInfos[indexNumber])
                 addDataToFirebase.save()
             }
         }
@@ -151,17 +128,18 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
     func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
         switch buttonAction {
         case .backButton:
-            cancelButton()
+            didTapGoBackAction()
         case .toFavListButton:
-            userButtonActions()
+            didTapGoNextAction()
         }
-        
     }
-    func userButtonActions() {
+    
+    func didTapGoNextAction() {
         performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
+
     }
-    func cancelButton() {
+    
+    func didTapGoBackAction() {
         dismiss(animated: true, completion: nil)
     }
-
 }
