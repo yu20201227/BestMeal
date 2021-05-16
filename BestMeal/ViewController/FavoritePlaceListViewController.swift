@@ -15,12 +15,7 @@ import RxCocoa
 var placeDatas = [String]()
 
 class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, UINavigationControllerDelegate {
-    
-    var listName = [String]()
-    var listUrl = [String]()
-    var listImage = [String]()
-    var listTel = [String]()
-    
+
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
     
@@ -30,6 +25,10 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
             favTableView.dataSource = self
         }
     }
+    
+        var listVC = displayDatas(listName: ArrayData.likePlaceNameArray, listUrl: ArrayData.likePlaceUrlArray, listImage: ArrayData.likePlaceImageUrlArrary, listTel: ArrayData.likePlaceTelArray)
+        
+    
     
     @IBOutlet weak var didTapGoBackButton: UIButton!
     
@@ -65,10 +64,10 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            listUrl.remove(at: indexPath.row)
-            listName.remove(at: indexPath.row)
-            listImage.remove(at: indexPath.row)
-            listTel.remove(at: indexPath.row)
+            listVC.listImage.remove(at: indexPath.row)
+            listVC.listName.remove(at: indexPath.row)
+            listVC.listTel.remove(at: indexPath.row)
+            listVC.listUrl.remove(at: indexPath.row)
             favTableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
     }
@@ -78,8 +77,8 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if UIApplication.shared.canOpenURL(URL(string: listUrl[indexPath.row])!){
-            UIApplication.shared.open(URL(string: listUrl[indexPath.row])!)
+        if UIApplication.shared.canOpenURL(URL(string: listVC.listUrl[indexPath.row])!){
+            UIApplication.shared.open(URL(string: listVC.listUrl[indexPath.row])!)
         }
     }
 }
@@ -90,10 +89,10 @@ extension FavoritePlaceListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cell, for: indexPath)
         cell.backgroundColor = .brown
         
-        let indexName = listName[indexPath.row]
-        let indexImage = listImage[indexPath.row]
-        let indexUrl = listUrl[indexPath.row]
-        let indexTel = listTel[indexPath.row]
+        let indexName = listVC.listName[indexPath.row]
+        let indexImage = listVC.listImage[indexPath.row]
+        let indexUrl = listVC.listUrl[indexPath.row]
+        let indexTel = listVC.listTel [indexPath.row]
         
         UserDefaults.standard.set(placeDatas, forKey: UserDefaultForKey.placeDatas)
         
@@ -114,8 +113,8 @@ extension FavoritePlaceListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if listName.isEmpty { return Numbers.smallestNumber } else {
-            return listName.count
+        if listVC.listName.isEmpty { return Numbers.smallestNumber } else {
+            return listVC.listName.count
         }
     }
 

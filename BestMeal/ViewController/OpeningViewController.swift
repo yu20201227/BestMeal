@@ -9,19 +9,18 @@
 import UIKit
 import Lottie
 
-class OpeningViewController: UIViewController {
+class OpeningViewController: BaseViewController {
     
     var userPass = String()
     
     @IBOutlet weak var didTapToNextButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setup() {
         
         overrideUserInterfaceStyle = .light
-        startOpeningAnimation()
         view.backgroundColor = UIColor.flatMint()
         self.navigationController?.isNavigationBarHidden = true
+        startOpeningAnimation()
     }
     
     @IBAction func nextButton(_ sender: UIButton) {
