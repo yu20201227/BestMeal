@@ -19,7 +19,7 @@ enum buttonActionOnCardSwipeView {
     case toFavListButton
 }
 
-class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
+class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
     
     var userPass = String()
     var placeDataModelArray = [PlaceDataModel]()
@@ -57,11 +57,10 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        setup()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func setup() {
         goListButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.buttonAction(buttonAction: .toFavListButton)
         })
@@ -71,6 +70,7 @@ class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
             self.buttonAction(buttonAction: .backButton)
         })
         .disposed(by: disposeBag)
+
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {

@@ -14,7 +14,7 @@ import RxCocoa
 
 var placeDatas = [String]()
 
-class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
+class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
     var listName = [String]()
     var listUrl = [String]()
@@ -49,23 +49,16 @@ class FavoritePlaceListViewController: UIViewController, UITableViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func setup() {
         didTapGoBackButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.didTapGoBackButtonMethod()
         })
         .disposed(by: disposeBag)
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if listName.isEmpty { return Numbers.smallestNumber } else {
-            return listName.count
-        }
-    }
-    
+        
     func numberOfSections(in tableView: UITableView) -> Int {
         return Numbers.numberOfSections
     }
@@ -131,6 +124,13 @@ extension FavoritePlaceListViewController: UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if listName.isEmpty { return Numbers.smallestNumber } else {
+            return listName.count
+        }
+    }
+
 }
 
 // MARK: -Observableで実行するメソッドをエクステンション下に実装
