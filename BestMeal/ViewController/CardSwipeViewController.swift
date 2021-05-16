@@ -57,6 +57,7 @@ class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        setup()
     }
     
     override func setup() {
