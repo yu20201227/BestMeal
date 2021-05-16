@@ -21,7 +21,6 @@ enum buttonActionOnCardSwipeView {
 
 class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
     
-    var userPass = String()
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
     var buttonProtocol: buttonActionOnCardSwipeViewProtocol?

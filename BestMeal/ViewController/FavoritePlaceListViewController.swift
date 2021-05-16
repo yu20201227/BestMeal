@@ -20,7 +20,6 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
     var listUrl = [String]()
     var listImage = [String]()
     var listTel = [String]()
-    var userPass = String()
     
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
@@ -34,21 +33,10 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
     
     @IBOutlet weak var didTapGoBackButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        overrideUserInterfaceStyle = .light
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) != nil {
-            userPass = (UserDefaults.standard.object(forKey: UserDefaultForKey.userPass) as? String)!
-        }
-        if UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) != nil {
-            placeDatas = UserDefaults.standard.object(forKey: UserDefaultForKey.placeDatas) as! [String]
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        overrideUserInterfaceStyle = .light
         setup()
     }
     
