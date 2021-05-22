@@ -14,7 +14,8 @@ import RxCocoa
 
 var placeDatas = [String]()
 
-class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, UINavigationControllerDelegate {
+// お気に入りリスト画面
+class FavoritePlaceListViewController: BaseViewController, UINavigationControllerDelegate {
 
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
@@ -75,12 +76,6 @@ class FavoritePlaceListViewController: BaseViewController, UITableViewDelegate, 
     func toDetailScreen() {
         performSegue(withIdentifier: SegueIdentifier.toDetail, sender: nil)
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if UIApplication.shared.canOpenURL(URL(string: listVC.listUrl[indexPath.row])!){
-            UIApplication.shared.open(URL(string: listVC.listUrl[indexPath.row])!)
-        }
-    }
 }
 
 extension FavoritePlaceListViewController: UITableViewDataSource {
@@ -119,6 +114,14 @@ extension FavoritePlaceListViewController: UITableViewDataSource {
         }
     }
 
+}
+
+extension FavoritePlaceListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if UIApplication.shared.canOpenURL(URL(string: listVC.listUrl[indexPath.row])!){
+            UIApplication.shared.open(URL(string: listVC.listUrl[indexPath.row])!)
+        }
+    }
 }
 
 // MARK: -Observableで実行するメソッドをエクステンション下に実装
