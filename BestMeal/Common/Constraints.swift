@@ -43,7 +43,7 @@ struct FileType {
 }
 
 struct ApiKey {
-    static let apiKey = "d88dcf59b664fa3f9b089ed353977965"
+    static let apiKey = "8156492e74d084a1bba1d7fdd1b39906"
 }
 
 struct UserDefaultForKey {

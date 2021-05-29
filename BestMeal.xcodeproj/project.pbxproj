@@ -18,7 +18,7 @@
 		EB3C9E52262AA6F000041FD0 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C9E51262AA6F000041FD0 /* Presenter.swift */; };
 		EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77F92584889E00C50F9F /* AppDelegate.swift */; };
 		EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */; };
-		EB6F78012584889E00C50F9F /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Register.storyboard */; };
+		EB6F78012584889E00C50F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F77FF2584889E00C50F9F /* Main.storyboard */; };
 		EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78022584889F00C50F9F /* Assets.xcassets */; };
 		EB6F78062584889F00C50F9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */; };
 		EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */; };
@@ -68,7 +68,7 @@
 		EB6F77F62584889E00C50F9F /* BestMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F77F92584889E00C50F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6F77FB2584889E00C50F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB6F78002584889E00C50F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Register.storyboard; sourceTree = "<group>"; };
+		EB6F78002584889E00C50F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB6F78022584889F00C50F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB6F78052584889F00C50F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB6F78072584889F00C50F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 		EB8FB6B225CE8EC00038413E /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				EB6F77FF2584889E00C50F9F /* Register.storyboard */,
+				EB6F77FF2584889E00C50F9F /* Main.storyboard */,
 				EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */,
 				EBC16B6D25E767030066B110 /* Search.storyboard */,
 				EBC16B7025E767690066B110 /* SwipeCards.storyboard */,
@@ -364,7 +364,7 @@
 				EB6F78032584889F00C50F9F /* Assets.xcassets in Resources */,
 				EBC16B6E25E767030066B110 /* Search.storyboard in Resources */,
 				EB6F78632584CABB00C50F9F /* CardViewCell.xib in Resources */,
-				EB6F78012584889E00C50F9F /* Register.storyboard in Resources */,
+				EB6F78012584889E00C50F9F /* Main.storyboard in Resources */,
 				EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */,
 				EBC16B7425E7677E0066B110 /* List.storyboard in Resources */,
 				EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */,
@@ -509,12 +509,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EB6F77FF2584889E00C50F9F /* Register.storyboard */ = {
+		EB6F77FF2584889E00C50F9F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EB6F78002584889E00C50F9F /* Base */,
 			);
-			name = Register.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		EB6F78042584889F00C50F9F /* LaunchScreen.storyboard */ = {
