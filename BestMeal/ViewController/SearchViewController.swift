@@ -11,13 +11,37 @@ import SwiftyJSON
 import ChameleonFramework
 import Firebase
 
+enum searchActionStatus {
+    case none
+    case search
+    case gotoList
+}
+
+protocol searchActionStatusProtocol {
+    func doAction()
+}
+
 @available(iOS 13.0, *)
 class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
-    
+        
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
     let locationManager = CLLocationManager()
+    var status: searchActionStatus = .none
+    
+//    func doAction( ) {
+//        switch status {
+//        case .none:
+//            break
+//        case .search:
+//            return startSearching()
+//        case .gotoList:
+//            return didTapAcessListButton(.init())
+//        }
+//    }
+
+    
     
     private(set) var shopDataArray = [ShopData]()
     
@@ -74,20 +98,20 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         }
     }
     
-    func configureSubview() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = 50
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    internal func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
         idoValue = latitude!
         keidoValue = longitude!
+    }
+    
+    private func configureSubview() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
     }
     
     @IBAction func searchButton (_ sender: UIButton) {
@@ -118,6 +142,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
             FetchAllDatas.imageUrlStringInfos.append(shopData[each].shopImage)
             FetchAllDatas.nameInfos.append(shopData[each].name)
             FetchAllDatas.telInfos.append(shopData[each].tel)
+                        
             mapView?.addAnnotation(annotation)
         }
         searchTextField.resignFirstResponder()
@@ -142,7 +167,8 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
-    func startSearching() {
+    private func startSearching() {
+        status = .search
         if searchTextField.text?.isEmpty == true {
             noKeyWordsAlert()
         }
@@ -152,10 +178,13 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
+        status = .gotoList
+       // self.doAction()
     }
 }
 
 extension SearchViewController: CLLocationManagerDelegate {
+    
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
