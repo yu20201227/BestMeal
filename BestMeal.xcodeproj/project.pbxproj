@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4565546DD0A56F56623E9C41 /* Pods_BestMeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */; };
+		EB01A618266B68560098181B /* OpeningViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01A617266B68560098181B /* OpeningViewPresenter.swift */; };
+		EB01A61A266B686F0098181B /* RegisterViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01A619266B686F0098181B /* RegisterViewPresenter.swift */; };
+		EB01A61C266B687F0098181B /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01A61B266B687F0098181B /* SearchViewPresenter.swift */; };
+		EB01A61E266B68990098181B /* CardSwipeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01A61D266B68990098181B /* CardSwipeViewPresenter.swift */; };
+		EB01A620266B68B10098181B /* FavoritePlaceListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01A61F266B68B10098181B /* FavoritePlaceListViewPresenter.swift */; };
 		EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */; };
 		EB0782292633F490000571D3 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0782282633F490000571D3 /* UILabel+.swift */; };
 		EB07822C2633FDEF000571D3 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07822B2633FDEF000571D3 /* UIImageView+.swift */; };
@@ -57,6 +62,11 @@
 		1149420E99BE2A84BD471CAC /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
 		3A25342EF01C1A0C4A99D0C0 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
 		C54F071308220D6AD5795E5A /* Pods_BestMeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestMeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB01A617266B68560098181B /* OpeningViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewPresenter.swift; sourceTree = "<group>"; };
+		EB01A619266B686F0098181B /* RegisterViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewPresenter.swift; sourceTree = "<group>"; };
+		EB01A61B266B687F0098181B /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
+		EB01A61D266B68990098181B /* CardSwipeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwipeViewPresenter.swift; sourceTree = "<group>"; };
+		EB01A61F266B68B10098181B /* FavoritePlaceListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceListViewPresenter.swift; sourceTree = "<group>"; };
 		EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB0782282633F490000571D3 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		EB07822B2633FDEF000571D3 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -145,6 +155,11 @@
 		EB01A615266B65FE0098181B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				EB01A617266B68560098181B /* OpeningViewPresenter.swift */,
+				EB01A619266B686F0098181B /* RegisterViewPresenter.swift */,
+				EB01A61B266B687F0098181B /* SearchViewPresenter.swift */,
+				EB01A61D266B68990098181B /* CardSwipeViewPresenter.swift */,
+				EB01A61F266B68B10098181B /* FavoritePlaceListViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -500,8 +515,10 @@
 			files = (
 				EB07822C2633FDEF000571D3 /* UIImageView+.swift in Sources */,
 				EB6F783525848EA000C50F9F /* CardSwipeViewController.swift in Sources */,
+				EB01A61E266B68990098181B /* CardSwipeViewPresenter.swift in Sources */,
 				EBC16B7B25E76AA40066B110 /* ListPlaceImageCell.swift in Sources */,
 				EB6F782F25848E7D00C50F9F /* RegisterViewController.swift in Sources */,
+				EB01A620266B68B10098181B /* FavoritePlaceListViewPresenter.swift in Sources */,
 				EB903DE126045EA5004851B4 /* LikePlaceDatas.swift in Sources */,
 				EBF3EBA1265120270036CD49 /* DisplayDatas.swift in Sources */,
 				EBE5FC7A2650EAE100B7A971 /* BaseViewController.swift in Sources */,
@@ -512,7 +529,9 @@
 				EB6F784125849B4B00C50F9F /* AnalyticsModel.swift in Sources */,
 				EBC5CEFD2602883C00ED5AD8 /* R.generated.swift in Sources */,
 				EB07827926340307000571D3 /* UIAlert+.swift in Sources */,
+				EB01A618266B68560098181B /* OpeningViewPresenter.swift in Sources */,
 				EB6F78872584ED4F00C50F9F /* FavoritePlaceListViewController.swift in Sources */,
+				EB01A61A266B686F0098181B /* RegisterViewPresenter.swift in Sources */,
 				EB6F784425849D8B00C50F9F /* ShopData.swift in Sources */,
 				EB6F783225848E8900C50F9F /* SearchViewController.swift in Sources */,
 				EB7C715325CFB38D00019F14 /* AnimationCollection.swift in Sources */,
@@ -525,6 +544,7 @@
 				EB6F77FC2584889E00C50F9F /* SceneDelegate.swift in Sources */,
 				EB2153DC25D264B0007BB9A0 /* PermitJudgeModel.swift in Sources */,
 				EB6F78622584CABB00C50F9F /* CardViewCell.swift in Sources */,
+				EB01A61C266B687F0098181B /* SearchViewPresenter.swift in Sources */,
 				EB08561A2622D27400DEEFB9 /* showAlertProtocol.swift in Sources */,
 				EB7E0DC025AAF53D008BBE26 /* SaveDataOnTheList.swift in Sources */,
 			);
