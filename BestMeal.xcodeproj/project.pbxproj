@@ -134,6 +134,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB01A614266B65DD0098181B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				EB6F780F25848AE400C50F9F /* Model */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		EB01A615266B65FE0098181B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EB01A616266B660A0098181B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		EB0856132622D0E500DEEFB9 /* CellView */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,10 +222,11 @@
 			isa = PBXGroup;
 			children = (
 				EB80175D25B17D2F0075A814 /* BestMeal.entitlements */,
-				EB085692262AA1F800DEEFB9 /* Entity */,
-				EB6F780F25848AE400C50F9F /* Model */,
 				EB6F781025848AE900C50F9F /* View */,
-				EB6F781125848AEF00C50F9F /* ViewController */,
+				EB01A614266B65DD0098181B /* Interactor */,
+				EB01A615266B65FE0098181B /* Presenter */,
+				EB085692262AA1F800DEEFB9 /* Entity */,
+				EB01A616266B660A0098181B /* Router */,
 				EB0856162622D13200DEEFB9 /* Common */,
 				EB0856172622D17000DEEFB9 /* Extension */,
 				EB880617262C20EF006E8A98 /* Resource */,
@@ -235,6 +258,7 @@
 				EB0856132622D0E500DEEFB9 /* CellView */,
 				EB7C715525CFB39C00019F14 /* Animation */,
 				EB8FB6B225CE8EC00038413E /* Storyboard */,
+				EB6F781125848AEF00C50F9F /* ViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
