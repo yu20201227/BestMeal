@@ -21,6 +21,10 @@ protocol searchActionStatusProtocol {
     func doAction()
 }
 
+protocol SearchViewProtocol {
+    var presenter: SearchViewPresenter? { get set }
+}
+
 @available(iOS 13.0, *)
 class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
         

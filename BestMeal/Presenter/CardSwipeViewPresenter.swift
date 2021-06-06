@@ -5,16 +5,9 @@
 //  Created by Owner on 2021/06/05.
 //
 
-import UIKit
+import Foundation
 
-class CardSwipeViewPresenter: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+class CardSwipeViewPresenter {
 
     /*
     // MARK: - Navigation
