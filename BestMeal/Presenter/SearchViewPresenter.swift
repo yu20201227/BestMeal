@@ -7,23 +7,28 @@
 
 import UIKit
 
-class SearchViewPresenter: UIViewController {
+/// ユーザーの検索ボタンタップ時
+/// 検索開始
+/// 検索終了しスワイプ画面へ遷移
+enum SearchScreenActionFlow {
+    case didTapSearchButton
+    case startSearching
+    case gotoCardSwipeScreen
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+protocol SearchViewPresenterProtocol {
+    var searchView: SearchViewProtocol? { get set }
+    var interactor: SearchInteractorInputProtocol? { get set }
+    func onSearchingButtonTapped()
+}
 
-        // Do any additional setup after loading the view.
-    }
+class SearchViewPresenter: UIViewController, SearchViewPresenterProtocol {
+
+    var searchView: SearchViewProtocol?
+    var interactor: SearchInteractorInputProtocol?
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func onSearchingButtonTapped() {
+        self.interactor?.startSearching()
     }
-    */
 
 }
