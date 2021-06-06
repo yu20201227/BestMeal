@@ -5,6 +5,6 @@
 //  Created by Owner on 2021/06/05.
 //
 
-import UIKit
+import Foundation
 
-class OpeningViewPresenter: UIViewController { }
+class OpeningViewPresenter { }

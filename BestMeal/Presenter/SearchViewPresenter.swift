@@ -5,7 +5,7 @@
 //  Created by Owner on 2021/06/05.
 //
 
-import UIKit
+import Foundation
 
 /// ユーザーの検索ボタンタップ時
 /// 検索開始
@@ -22,7 +22,7 @@ protocol SearchViewPresenterProtocol {
     func onSearchingButtonTapped()
 }
 
-class SearchViewPresenter: UIViewController, SearchViewPresenterProtocol {
+class SearchViewPresenter: SearchViewPresenterProtocol {
 
     var searchView: SearchViewProtocol?
     var interactor: SearchInteractorInputProtocol?

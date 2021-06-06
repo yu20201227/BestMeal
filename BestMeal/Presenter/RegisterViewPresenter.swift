@@ -5,13 +5,8 @@
 //  Created by Owner on 2021/06/05.
 //
 
-import UIKit
+import Foundation
 
-class RegisterViewPresenter: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+class RegisterViewPresenter {
 
 }

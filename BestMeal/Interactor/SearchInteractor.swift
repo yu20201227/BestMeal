@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchInteractorInputProtocol {
     var presenter: SearchInteractorOutputProtocol? { get set }
+    func startSearching()
 }
 
 protocol SearchInteractorOutputProtocol {
@@ -16,6 +17,9 @@ protocol SearchInteractorOutputProtocol {
 }
 
 class SearchInteractor: UIViewController, SearchInteractorInputProtocol, SearchInteractorOutputProtocol {
+    func startSearching() {
+    }
+    
     
     var presenter: SearchInteractorOutputProtocol?
     
