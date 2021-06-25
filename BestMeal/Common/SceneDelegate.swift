@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func goLogin() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Register", bundle: nil)
         let registerVC = storyboard.instantiateViewController(identifier: "RegisterViewController")
         window?.rootViewController = registerVC
         window?.makeKeyAndVisible()

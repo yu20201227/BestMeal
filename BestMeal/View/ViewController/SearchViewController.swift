@@ -6,10 +6,9 @@
 
 import UIKit
 import MapKit
-import Lottie
 import SwiftyJSON
-import ChameleonFramework
-import Firebase
+import RxSwift
+import RxCocoa
 
 enum searchActionStatus {
     case none
@@ -25,62 +24,36 @@ protocol SearchViewProtocol {
     var presenter: SearchViewPresenter? { get set }
 }
 
-@available(iOS 13.0, *)
-class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, DoneCatchProtocol, showAlertProtocol {
-        
+class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
+    
     var idoValue = Double()
     var keidoValue = Double()
     var totalHitCount = Int()
     let locationManager = CLLocationManager()
     var status: searchActionStatus = .none
     
-//    func doAction( ) {
-//        switch status {
-//        case .none:
-//            break
-//        case .search:
-//            return startSearching()
-//        case .gotoList:
-//            return didTapAcessListButton(.init())
-//        }
-//    }
-
-    
-    
     private(set) var shopDataArray = [ShopData]()
-    
+    private var presenter: SearchPresenter = SearchViewPresenter()
+        
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var mapView: MKMapView?
+    @IBOutlet weak var searchBackImage: UIImageView!
+    @IBOutlet weak var searchButton: UIButton!
     
-    @IBOutlet weak var mapView: MKMapView? {
-        didSet {
-            mapView?.delegate = self
-            mapView?.mapType = .standard
-            mapView?.userTrackingMode = .follow
-        }
-    }
-    
-    @IBOutlet weak var searchBackImage: UIImageView! {
-        didSet {
-            searchBackImage.image = R.image.zoom_saga()
-            searchBackImage.contentMode = .scaleAspectFill
-        }
-    }
-    
-    @IBOutlet weak var searchButton: UIButton! {
-        didSet {
-            searchButton.imageView?.image = R.image.search()
-        }
-    }
-    
-    func searchLocation(latitude: Double, longitude: Double) {
-        idoValue = latitude
-        keidoValue = longitude
+    override func setup() {
+        mapView?.delegate = self
+        mapView?.mapType = .standard
+        mapView?.userTrackingMode = .follow
+        searchBackImage.image = R.image.zoom_saga()
+        searchBackImage.contentMode = .scaleAspectFill
+        searchButton.imageView?.image = R.image.search()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemGreen
+        setup()
         startUpdatingLocation()
         configureSubview()
     }
@@ -92,6 +65,11 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         searchTextField.resignFirstResponder()
+    }
+    
+    private func searchLocation(latitude: Double, longitude: Double) {
+        idoValue = latitude
+        keidoValue = longitude
     }
     
     private func startUpdatingLocation() {
@@ -137,7 +115,6 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         }
         
         for each in 0...totalHitCount - 1 {
-            print(each)
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopDataArray[each].latitude)!, (CLLocationDegrees(shopDataArray[each].longitude))!)
             annotation.title = shopDataArray[each].name
@@ -146,7 +123,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
             FetchAllDatas.imageUrlStringInfos.append(shopData[each].shopImage)
             FetchAllDatas.nameInfos.append(shopData[each].name)
             FetchAllDatas.telInfos.append(shopData[each].tel)
-                        
+            
             mapView?.addAnnotation(annotation)
         }
         searchTextField.resignFirstResponder()
@@ -156,7 +133,8 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
         shopDataArray = arrayData
         totalHitCount = resultCount
         addAnnotation(shopData: shopDataArray)
-        performSegue(withIdentifier: SegueIdentifier.toCards, sender: nil)
+        // 画面遷移
+        self.presenter.gotoCardSwipeScreen(self)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -177,34 +155,17 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
             noKeyWordsAlert()
         }
         searchTextField.resignFirstResponder()
+
         let urlString =   "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=\(ApiKey.apiKey)&latitude=\(idoValue)&longitude=\(keidoValue)&range=3&hit_per_page=15&freeword=\(searchTextField.text!)"
         
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
         status = .gotoList
-       // self.doAction()
     }
-}
-
-extension SearchViewController: CLLocationManagerDelegate {
     
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse: print("user Permitted")
-        case .denied: print("user Denied")
-        case .notDetermined: print("")
-        case .restricted: print("")
-            
-            switch manager.accuracyAuthorization {
-            case .reducedAccuracy, .fullAccuracy:
-                print("User chose low Accuracy mode.")
-            @unknown default:
-                print("Error Happened")
-            }
-        @unknown default:
-            print("")
-        }
+        self.presenter.locationManagerDidChangeAuthorization(manager)
     }
 }

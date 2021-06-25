@@ -6,11 +6,8 @@
 
 import UIKit
 import VerticalCardSwiper
-import Lottie
-import Firebase
 import SDWebImage
 import ChameleonFramework
-import FirebaseDatabase
 import RxSwift
 import RxCocoa
 
@@ -21,9 +18,9 @@ enum buttonActionOnCardSwipeView {
 // カードスワイプ店舗選択画面
 class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, CardSwiperModelProtocol {
     
+    var presenter: CardSwipePresenter = CardSwipeViewPresenter()
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
-    var buttonProtocol: buttonActionOnCardSwipeViewProtocol?
     
     @IBOutlet weak var cardSwiper: VerticalCardSwiper!
     @IBOutlet weak var backImageView: UIImageView!
@@ -60,6 +57,23 @@ class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, C
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return FetchAllDatas.urlInfos.count
     }
+    
+    private func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
+        switch buttonAction {
+        case .backButton:
+            didTapGoBackAction()
+        case .toFavListButton:
+            didTapGoNextAction()
+        }
+    }
+    
+    internal func didTapGoNextAction() {
+        self.presenter.gotoListScreen(self)
+    }
+    
+    internal func didTapGoBackAction() {
+        self.presenter.goBackToPreviousScreen(self)
+    }
 }
 
 
@@ -81,18 +95,18 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         let indexNumber = index
-                
-// //        以下、右スワイプ後の冗長な処理と変更できるかも
-//                func insertDatas() {
-//                    let finalDatas = [ ArrayData(likePlaceUrlArray: FetchAllDatas.urlInfos[indexNumber],
-//                                                 likePlaceNameArray: FetchAllDatas.telInfos[indexNumber],
-//                                                 likePlaceImageUrlArrary: FetchAllDatas.nameInfos[indexNumber],
-//                                                 likePlaceTelArray: FetchAllDatas.imageUrlStringInfos[indexNumber])
-//                    ]
-//                }
+        
+        // //        以下、右スワイプ後の冗長な処理と変更できるかも
+        //                func insertDatas() {
+        //                    let finalDatas = [ ArrayData(likePlaceUrlArray: FetchAllDatas.urlInfos[indexNumber],
+        //                                                 likePlaceNameArray: FetchAllDatas.telInfos[indexNumber],
+        //                                                 likePlaceImageUrlArrary: FetchAllDatas.nameInfos[indexNumber],
+        //                                                 likePlaceTelArray: FetchAllDatas.imageUrlStringInfos[indexNumber])
+        //                    ]
+        //                }
         
         if swipeDirection == .Right {
-                    
+            
             ArrayData.likePlaceUrlArray.append(FetchAllDatas.urlInfos[indexNumber])
             ArrayData.likePlaceTelArray.append(FetchAllDatas.telInfos[indexNumber])
             ArrayData.likePlaceNameArray.append(FetchAllDatas.nameInfos[indexNumber])
@@ -112,7 +126,7 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
     // 全てのカードスワイプ完了時にリストへ飛ばす確認ダイアログ
     func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
-                        
+        
         if FetchAllDatas.urlInfos.count == Numbers.smallestNumber {
             let alertDialog: UIAlertController = UIAlertController(title: AlertTitle.jumpToList, message: AlertMessage.lastSwipableCard, preferredStyle: .alert)
             let okAction: UIAlertAction = UIAlertAction(title: AlertTitle.okMessage, style: .default, handler: {
@@ -123,23 +137,5 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource {
             alertDialog.addAction(okAction)
             present(alertDialog, animated: true, completion: nil)
         }
-    }
-    
-    func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
-        switch buttonAction {
-        case .backButton:
-            didTapGoBackAction()
-        case .toFavListButton:
-            didTapGoNextAction()
-        }
-    }
-    
-    func didTapGoNextAction() {
-        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-
-    }
-    
-    func didTapGoBackAction() {
-        dismiss(animated: true, completion: nil)
     }
 }
