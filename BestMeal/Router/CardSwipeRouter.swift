@@ -2,34 +2,23 @@
 //  CardSwipeRouter.swift
 //  BestMeal
 //
-//  Created by Owner on 2021/06/12.
+//  Created by Owner on 2021/06/24.
 //
 
 import UIKit
 
 protocol CardSwipeWireFrame {
-    func didTapGoToList()
-    
+    func getListToken(_ view: CardSwipeViewController)
+    func goBack(_ view: CardSwipeViewController)
 }
 
-class CardSwipeRouter: UIViewController, CardSwipeWireFrame {
+class CardSwipeRouter: CardSwipeWireFrame {
     
-    var presenterProtocol: CardSwipePresenterProtocol?
-    var cardSwipeWireFrame: CardSwipeWireFrame?
-        
-@discardableResult
- private func assembleModule(_ delegate: CardSwipePresenterProtocol) -> UIViewController {
-        // UIViewControllerの生成とか色々
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "CardSwipeViewController") as! CardSwipeViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-        performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
-        //let presenter = CardSwipeViewPresenter(delegate)
-        return secondViewController
+    func getListToken(_ view: CardSwipeViewController) {
+        view.performSegue(withIdentifier: SegueIdentifier.toList, sender: nil)
     }
-
-
-    func didTapGoToList() {
-        self.cardSwipeWireFrame?.didTapGoToList()
-        self.assembleModule(presenterProtocol!)
+    
+    func goBack(_ view: CardSwipeViewController) {
+        view.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,47 +8,30 @@
 
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import Lottie
 
-final class RegisterViewController: UIViewController, UITextFieldDelegate, showAlertProtocol {
-    
-    @IBOutlet weak var userEmailTextField: UITextField! {
-        didSet {
-            userEmailTextField.delegate = self
-            userEmailTextField.layer.cornerRadius = 20.0
-        }
-    }
-    
-    @IBOutlet weak var passTextField: UITextField! {
-        didSet {
-            passTextField.delegate = self
-            passTextField.layer.cornerRadius = 20.0
-        }
-    }
-    
-    @IBOutlet weak var backImageView: UIImageView! {
-        didSet {
-            
-            backImageView.image = R.image.backGroundImage()
-            backImageView.contentMode = .scaleAspectFill
-        }
-    }
-    
-    @IBOutlet weak var goStartMessageLabel: UILabel! {
-        didSet {
-            goStartMessageLabel.text = ScreenText.registerLabel
-            goStartMessageLabel.font = .boldSystemFont(ofSize: 28.0)
-        }
-    }
-    
+final class RegisterViewController: BaseViewController, UITextFieldDelegate, showAlertProtocol {
+        
+    @IBOutlet private weak var userEmailTextField: UITextField!
+    @IBOutlet private weak var passTextField: UITextField!
+    @IBOutlet private weak var backImageView: UIImageView!
+    @IBOutlet private weak var goStartMessageLabel: UILabel!
     @IBOutlet private weak var alphaView: UIView!
-    @IBOutlet private weak var goStartButton: UIButton! {
-        didSet {
-            goStartButton.layer.cornerRadius = 30.0
-            goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
-        }
+    @IBOutlet private weak var goStartButton: UIButton!
+    
+    private var presenter: RegisterPresenter = RegisterViewPresenter()
+    
+    override func setup() {
+        userEmailTextField.delegate = self
+        userEmailTextField.layer.cornerRadius = 20.0
+        passTextField.delegate = self
+        passTextField.layer.cornerRadius = 20.0
+        backImageView.image = R.image.backGroundImage()
+        backImageView.contentMode = .scaleAspectFill
+        goStartMessageLabel.text = ScreenText.registerLabel
+        goStartMessageLabel.font = .boldSystemFont(ofSize: 28.0)
+        goStartButton.layer.cornerRadius = 30.0
+        goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +42,7 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate, showA
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -92,12 +76,28 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate, showA
             return
         }
     }
-}
-
-extension RegisterViewController {
-   private func occureVibration() {
+    
+    private func occureVibration() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
     }
+    
+    private func registerPermittedAnimation() {
+        
+        let permitAnimationPath = Bundle.main.path(forResource: ForSourceType.registerPermitAnimation, ofType: FileType.jsonType)
+        let animationView = AnimationView(filePath: permitAnimationPath!)
+        animationView.animationSpeed = 1.0
+        animationView.center = self.view.center
+        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        animationView.loopMode = .playOnce
+        animationView.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [unowned self] in
+            UserDefaults.standard.set(userEmailTextField.text, forKey: UserDefaultForKey.userEmail)
+            UserDefaults.standard.set(passTextField.text, forKey: UserDefaultForKey.userPass)
+            // 画面遷移
+            self.presenter.gotoSearchScreen(self)
+        }
+        view.addSubview(animationView)
+    }
 }
-

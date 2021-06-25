@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 /// ユーザーの検索ボタンタップ時
 /// 検索開始
@@ -16,19 +17,41 @@ enum SearchScreenActionFlow {
     case gotoCardSwipeScreen
 }
 
-protocol SearchViewPresenterProtocol {
-    var searchView: SearchViewProtocol? { get set }
-    var interactor: SearchInteractorInputProtocol? { get set }
-    func onSearchingButtonTapped()
+protocol SearchPresenter {
+    func gotoCardSwipeScreen(_ view: SearchViewController)
+    @available(iOS 14.0, *)
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager)
 }
 
-class SearchViewPresenter: SearchViewPresenterProtocol {
-
-    var searchView: SearchViewProtocol?
-    var interactor: SearchInteractorInputProtocol?
+class SearchViewPresenter: SearchPresenter {
     
-    func onSearchingButtonTapped() {
-        self.interactor?.startSearching()
+    var interactor: SearchUseCase = SearchInteractor()
+    var router: SearchWireFrame = SearchRouter()
+    
+    internal func gotoCardSwipeScreen(_ view: SearchViewController) {
+        self.router.toCardsToken(view)
+    }
+}
+
+@available(iOS 14.0, *)
+extension SearchViewPresenter {
+    
+    internal func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse: print("user Permitted")
+        case .denied: print("user Denied")
+        case .notDetermined: print("")
+        case .restricted: print("")
+            
+            switch manager.accuracyAuthorization {
+            case .reducedAccuracy, .fullAccuracy:
+                print("User chose low Accuracy mode.")
+            @unknown default:
+                print("Error Happened")
+            }
+        @unknown default:
+            print("")
+        }
     }
 
 }

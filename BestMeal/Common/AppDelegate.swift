@@ -7,6 +7,9 @@
 
 import UIKit
 import Firebase
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

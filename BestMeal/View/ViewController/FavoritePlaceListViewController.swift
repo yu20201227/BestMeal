@@ -7,7 +7,6 @@
 
 import UIKit
 import SDWebImage
-import Firebase
 import MapKit
 import RxSwift
 import RxCocoa
