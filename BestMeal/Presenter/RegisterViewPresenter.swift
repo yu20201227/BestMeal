@@ -44,7 +44,7 @@ class RegisterViewPresenter: RegisterPresenter {
     }
     
     func gotoSearchScreen(_ view: RegisterViewController) {
-        self.router.toSearchToken(view)
+        self.router.getSearchToken(view)
     }
     
 

@@ -29,7 +29,7 @@ class SearchViewPresenter: SearchPresenter {
     var router: SearchWireFrame = SearchRouter()
     
     internal func gotoCardSwipeScreen(_ view: SearchViewController) {
-        self.router.toCardsToken(view)
+        self.router.getCardsToken(view)
     }
 }
 
