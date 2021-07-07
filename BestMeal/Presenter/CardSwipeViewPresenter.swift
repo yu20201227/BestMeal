@@ -14,8 +14,8 @@ protocol CardSwipePresenter {
 
 class CardSwipeViewPresenter: CardSwipePresenter {
     
-    var interactor: CardSwipeUseCase = CardSwipeViewController()
-    var router: CardSwipeWireFrame = CardSwipeViewController()
+    var interactor: CardSwipeUseCase = CardSwipeInteractor()
+    var router: CardSwipeWireFrame = CardSwipeRouter()
     
     func gotoListScreen(_ view: CardSwipeViewController) {
         self.router.getListToken(view)
