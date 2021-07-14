@@ -11,7 +11,7 @@ import ChameleonFramework
 import RxSwift
 import RxCocoa
 
-enum buttonActionOnCardSwipeView {
+enum ButtonActionOnCardSwipeView {
     case backButton
     case toFavListButton
 }

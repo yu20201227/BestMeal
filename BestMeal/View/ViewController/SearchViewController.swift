@@ -10,7 +10,7 @@ import SwiftyJSON
 import RxSwift
 import RxCocoa
 
-enum searchActionStatus {
+enum SearchActionStatus {
     case none
     case search
     case gotoList
