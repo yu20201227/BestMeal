@@ -30,7 +30,7 @@ class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDe
     var keidoValue = Double()
     var totalHitCount = Int()
     let locationManager = CLLocationManager()
-    var status: searchActionStatus = .none
+    var status: SearchActionStatus = .none
     
     private(set) var shopDataArray = [ShopData]()
     private var presenter: SearchPresenter = SearchViewPresenter()

@@ -58,7 +58,7 @@ class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, C
         return FetchAllDatas.urlInfos.count
     }
     
-    private func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
+    private func buttonAction(buttonAction: ButtonActionOnCardSwipeView) {
         switch buttonAction {
         case .backButton:
             didTapGoBackAction()
