@@ -11,7 +11,7 @@ import ChameleonFramework
 import RxSwift
 import RxCocoa
 
-enum buttonActionOnCardSwipeView {
+enum ButtonActionOnCardSwipeView {
     case backButton
     case toFavListButton
 }
@@ -58,7 +58,7 @@ class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, C
         return FetchAllDatas.urlInfos.count
     }
     
-    private func buttonAction(buttonAction: buttonActionOnCardSwipeView) {
+    private func buttonAction(buttonAction: ButtonActionOnCardSwipeView) {
         switch buttonAction {
         case .backButton:
             didTapGoBackAction()
