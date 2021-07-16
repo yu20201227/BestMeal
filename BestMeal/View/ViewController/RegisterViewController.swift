@@ -77,6 +77,7 @@ final class RegisterViewController: BaseViewController, UITextFieldDelegate, sho
         }
     }
     
+    // 振動でエラーを知らせる
     private func occureVibration() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
