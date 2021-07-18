@@ -34,5 +34,5 @@ https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-
 <br>・お気に入り店をリスト化でき、そのままsafariに飛ぶことで意思決定までを短時間にできるような実装。
 
 <h2>使用ライブラリ</h2>
-Lottie/FirebaseAuth/RealmSwift/R.swift/VerticalCardSwiper/SDWebImage/ChameleonFramework/SwiftyJSON/MapKit
+Lottie/FirebaseAuth/R.swift/VerticalCardSwiper/SDWebImage/ChameleonFramework/SwiftyJSON/MapKit
 
