@@ -16,7 +16,7 @@ enum ButtonActionOnCardSwipeView {
     case toFavListButton
 }
 // カードスワイプ店舗選択画面
-class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, CardSwiperModelProtocol {
+final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, CardSwiperModelProtocol {
     
     var presenter: CardSwipePresenter = CardSwipeViewPresenter()
     var placeDataModelArray = [PlaceDataModel]()

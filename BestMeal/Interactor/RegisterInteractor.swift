@@ -12,7 +12,7 @@ protocol RegisterUseCase {
 }
 
 
-class RegisterInteractor: RegisterUseCase {
+final class RegisterInteractor: RegisterUseCase {
     
     func saveUserData() {
         

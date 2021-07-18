@@ -24,7 +24,7 @@ protocol SearchViewProtocol {
     var presenter: SearchViewPresenter? { get set }
 }
 
-class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
+final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
     
     var idoValue = Double()
     var keidoValue = Double()

@@ -8,7 +8,7 @@
 import UIKit
 import VerticalCardSwiper
 
-class CardViewCell: CardCell {
+final class CardViewCell: CardCell {
     
     @IBOutlet weak var goodImages: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!

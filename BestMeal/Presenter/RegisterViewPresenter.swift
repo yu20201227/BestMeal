@@ -22,7 +22,7 @@ protocol RegisterPresenter {
     func gotoSearchScreen(_ view: RegisterViewController)
 }
 
-class RegisterViewPresenter: RegisterPresenter {
+final class RegisterViewPresenter: RegisterPresenter {
     
     var interactor: RegisterUseCase = RegisterInteractor()
     var router: RegisterWireFrame = RegisterRouter()

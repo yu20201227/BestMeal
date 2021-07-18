@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavoritePlaceListViewPresenter {
+final class FavoritePlaceListViewPresenter {
     
 
     /*

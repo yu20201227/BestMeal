@@ -23,7 +23,7 @@ protocol SearchPresenter {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager)
 }
 
-class SearchViewPresenter: SearchPresenter {
+final class SearchViewPresenter: SearchPresenter {
     
     var interactor: SearchUseCase = SearchInteractor()
     var router: SearchWireFrame = SearchRouter()

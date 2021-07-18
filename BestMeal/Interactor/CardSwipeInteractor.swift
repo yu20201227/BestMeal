@@ -11,7 +11,7 @@ protocol CardSwipeUseCase {
     
 }
 
-class CardSwipeInteractor: CardSwipeUseCase {
+final class CardSwipeInteractor: CardSwipeUseCase {
 
     
 }

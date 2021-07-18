@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritePlaceListInteractor: UIViewController {
+final class FavoritePlaceListInteractor: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
