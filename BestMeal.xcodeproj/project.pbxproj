@@ -261,10 +261,7 @@
 				EB0856162622D13200DEEFB9 /* Common */,
 				EB0856172622D17000DEEFB9 /* Extension */,
 				EB6F78072584889F00C50F9F /* Info.plist */,
-				EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */,
-				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
-				EB6F78022584889F00C50F9F /* Assets.xcassets */,
-				EBD913B825D35F6F008F23C3 /* 9637-check.json */,
+				EB77F37626A41BAA00CDAC22 /* Resource */,
 			);
 			path = BestMeal;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 			children = (
 				EB7C714D25CFAA3D00019F14 /* Cell */,
 				EB0856132622D0E500DEEFB9 /* CellView */,
-				EB7C715525CFB39C00019F14 /* Animation */,
 				EB8FB6B225CE8EC00038413E /* Storyboard */,
 				EB6F781125848AEF00C50F9F /* ViewController */,
 			);
@@ -304,6 +300,17 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		EB77F37626A41BAA00CDAC22 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */,
+				EB05C82125C45AC500C0AECD /* GoogleService-Info.plist */,
+				EB6F78022584889F00C50F9F /* Assets.xcassets */,
+				EBD913B825D35F6F008F23C3 /* 9637-check.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		EB7C714D25CFAA3D00019F14 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,13 +319,6 @@
 				EBC16B7F25E76AC20066B110 /* ListPlaceNameCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		EB7C715525CFB39C00019F14 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		EB8FB6B225CE8EC00038413E /* Storyboard */ = {
