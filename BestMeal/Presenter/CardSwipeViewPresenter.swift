@@ -12,7 +12,7 @@ protocol CardSwipePresenter {
     func goBackToPreviousScreen(_ view: CardSwipeViewController)
 }
 
-class CardSwipeViewPresenter: CardSwipePresenter {
+final class CardSwipeViewPresenter: CardSwipePresenter {
     
     var interactor: CardSwipeUseCase = CardSwipeInteractor()
     var router: CardSwipeWireFrame = CardSwipeRouter()

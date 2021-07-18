@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListPlaceImageCell: UITableViewCell {
+final class ListPlaceImageCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

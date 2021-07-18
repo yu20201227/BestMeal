@@ -15,7 +15,7 @@ protocol DoneCatchProtocol {
     func catchProtocol(arrayData: Array<ShopData>, resultCount: Int)
 }
 
-open class AnalyticsModel {
+final class AnalyticsModel {
     
     var idoValue: Double?
     var keidoValue: Double?

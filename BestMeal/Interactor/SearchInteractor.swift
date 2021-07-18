@@ -11,6 +11,6 @@ protocol SearchUseCase {
 
 }
 
-class SearchInteractor: SearchUseCase {
+final class SearchInteractor: SearchUseCase {
     
 }

@@ -14,7 +14,7 @@ import RxCocoa
 var placeDatas = [String]()
 
 // お気に入りリスト画面
-class FavoritePlaceListViewController: BaseViewController, UINavigationControllerDelegate {
+final class FavoritePlaceListViewController: BaseViewController, UINavigationControllerDelegate {
 
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
