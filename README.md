@@ -31,7 +31,6 @@ https://user-images.githubusercontent.com/72218177/107367956-4b858100-6b23-11eb-
 <br>・「すぐに行ける」がコンセプトのため、現在地から歩ける範囲(1km圏内）の飲食店に限定し情報を取得できるようにした。
 <br>・お店情報をカード状にしてスワイプできるようにすることで、直感的で遊びゴゴロのあるUI/UXをイメージし実装。
 <br>・「好き」か「嫌い」の２択で選んでもらうことで、飲食店を選ぶ際の『選択肢が多すぎる』というストレスフルな状況を解消できる。
-<br>・お気に入り店をリスト化でき、そのままsafariに飛ぶことで意思決定までを短時間にできるような実装。
 
 <h2>使用ライブラリ</h2>
 Lottie/FirebaseAuth/R.swift/VerticalCardSwiper/SDWebImage/ChameleonFramework/SwiftyJSON/MapKit
