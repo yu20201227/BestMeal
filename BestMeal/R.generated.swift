@@ -208,31 +208,6 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 1 colors.
-  struct color {
-    /// Color `AccentColor`.
-    static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(watchOS)
-    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func accentColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.accentColor.name)
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-
   /// This `R.entitlements` struct is generated, and contains static references to 3 properties.
   struct entitlements {
     static let comAppleSecurityAppSandbox = true
@@ -242,20 +217,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
-    /// Resource file `10685-breakfast.json`.
-    static let breakfastJson = Rswift.FileResource(bundle: R.hostingBundle, name: "10685-breakfast", pathExtension: "json")
     /// Resource file `9637-check.json`.
     static let checkJson = Rswift.FileResource(bundle: R.hostingBundle, name: "9637-check", pathExtension: "json")
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
-
-    /// `bundle.url(forResource: "10685-breakfast", withExtension: "json")`
-    static func breakfastJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.breakfastJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
 
     /// `bundle.url(forResource: "9637-check", withExtension: "json")`
     static func checkJson(_: Void = ()) -> Foundation.URL? {
@@ -272,7 +239,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 11 images.
   struct image {
     /// Image `Food`.
     static let food = Rswift.ImageResource(bundle: R.hostingBundle, name: "Food")
@@ -292,18 +259,10 @@ struct R: Rswift.Validatable {
     static let lunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "lunch")
     /// Image `noImage`.
     static let noImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "noImage")
-    /// Image `register`.
-    static let register = Rswift.ImageResource(bundle: R.hostingBundle, name: "register")
     /// Image `search`.
     static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
-    /// Image `start2`.
-    static let start2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "start2")
-    /// Image `startButton`.
-    static let startButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "startButton")
     /// Image `zoom_saga`.
     static let zoom_saga = Rswift.ImageResource(bundle: R.hostingBundle, name: "zoom_saga")
-    /// Image `戻り`.
-    static let 戻り = Rswift.ImageResource(bundle: R.hostingBundle, name: "戻り")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Food", bundle: ..., traitCollection: ...)`
@@ -369,13 +328,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "register", bundle: ..., traitCollection: ...)`
-    static func register(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.register, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "search", bundle: ..., traitCollection: ...)`
     static func search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.search, compatibleWith: traitCollection)
@@ -383,30 +335,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "start2", bundle: ..., traitCollection: ...)`
-    static func start2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.start2, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "startButton", bundle: ..., traitCollection: ...)`
-    static func startButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.startButton, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "zoom_saga", bundle: ..., traitCollection: ...)`
     static func zoom_saga(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.zoom_saga, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "戻り", bundle: ..., traitCollection: ...)`
-    static func 戻り(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.戻り, compatibleWith: traitCollection)
     }
     #endif
 
