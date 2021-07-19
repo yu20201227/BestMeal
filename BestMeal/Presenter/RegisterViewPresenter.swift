@@ -24,8 +24,8 @@ protocol RegisterPresenter {
 
 final class RegisterViewPresenter: RegisterPresenter {
     
-    var interactor: RegisterUseCase = RegisterInteractor()
-    var router: RegisterWireFrame = RegisterRouter()
+    private var interactor: RegisterUseCase = RegisterInteractor()
+    private var router: RegisterWireFrame = RegisterRouter()
     
     func registerUserName() {
         

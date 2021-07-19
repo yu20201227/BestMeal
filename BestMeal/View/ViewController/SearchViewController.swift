@@ -26,19 +26,19 @@ protocol SearchViewProtocol {
 
 final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
     
-    var idoValue = Double()
-    var keidoValue = Double()
-    var totalHitCount = Int()
-    let locationManager = CLLocationManager()
-    var status: SearchActionStatus = .none
+    private var idoValue = Double()
+    private var keidoValue = Double()
+    private var totalHitCount = Int()
+    private let locationManager = CLLocationManager()
+    private var status: SearchActionStatus = .none
     
     private(set) var shopDataArray = [ShopData]()
     private var presenter: SearchPresenter = SearchViewPresenter()
         
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var mapView: MKMapView?
-    @IBOutlet weak var searchBackImage: UIImageView!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var mapView: MKMapView?
+    @IBOutlet private weak var searchBackImage: UIImageView!
+    @IBOutlet private weak var searchButton: UIButton!
     
     override func setup() {
         mapView?.delegate = self

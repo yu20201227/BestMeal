@@ -22,10 +22,10 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
     var placeDataModelArray = [PlaceDataModel]()
     let disposeBag = DisposeBag()
     
-    @IBOutlet weak var cardSwiper: VerticalCardSwiper!
-    @IBOutlet weak var backImageView: UIImageView!
-    @IBOutlet weak var goBackButton: UIButton!
-    @IBOutlet weak var goListButton: UIButton!
+    @IBOutlet private weak var cardSwiper: VerticalCardSwiper!
+    @IBOutlet private weak var backImageView: UIImageView!
+    @IBOutlet private weak var goBackButton: UIButton!
+    @IBOutlet private weak var goListButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
