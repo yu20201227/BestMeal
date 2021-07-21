@@ -25,8 +25,8 @@ protocol SearchPresenter {
 
 final class SearchViewPresenter: SearchPresenter {
     
-    var interactor: SearchUseCase = SearchInteractor()
-    var router: SearchWireFrame = SearchRouter()
+    private var interactor: SearchUseCase = SearchInteractor()
+    private var router: SearchWireFrame = SearchRouter()
     
     internal func gotoCardSwipeScreen(_ view: SearchViewController) {
         self.router.getCardsToken(view)

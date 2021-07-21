@@ -12,10 +12,10 @@ import FirebaseDatabase
 
 struct PlaceDataModel {
     
-    var placeImage: String! = ""
-    var placeName: String! = ""
-    var placeUrl: String! = ""
-    var ref: DatabaseReference!
+    private var placeImage: String! = ""
+    private var placeName: String! = ""
+    private var placeUrl: String! = ""
+    private var ref: DatabaseReference!
 
 
     init(placeName: String, placeImage: String, placeUrl: String) {

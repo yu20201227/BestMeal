@@ -16,21 +16,21 @@ var placeDatas = [String]()
 // お気に入りリスト画面
 final class FavoritePlaceListViewController: BaseViewController, UINavigationControllerDelegate {
 
-    var placeDataModelArray = [PlaceDataModel]()
-    let disposeBag = DisposeBag()
+    private var placeDataModelArray = [PlaceDataModel]()
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var favTableView: UITableView! {
+    @IBOutlet private weak var favTableView: UITableView! {
         didSet {
             favTableView.delegate = self
             favTableView.dataSource = self
         }
     }
     
-        var listVC = displayDatas(listName: ArrayData.likePlaceNameArray, listUrl: ArrayData.likePlaceUrlArray, listImage: ArrayData.likePlaceImageUrlArrary, listTel: ArrayData.likePlaceTelArray)
+        private var listVC = displayDatas(listName: ArrayData.likePlaceNameArray, listUrl: ArrayData.likePlaceUrlArray, listImage: ArrayData.likePlaceImageUrlArrary, listTel: ArrayData.likePlaceTelArray)
         
     
     
-    @IBOutlet weak var didTapGoBackButton: UIButton!
+    @IBOutlet private weak var didTapGoBackButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
