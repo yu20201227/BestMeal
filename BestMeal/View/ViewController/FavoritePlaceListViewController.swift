@@ -10,6 +10,7 @@ import SDWebImage
 import MapKit
 import RxSwift
 import RxCocoa
+import SafariServices
 
 var placeDatas = [String]()
 
@@ -119,6 +120,12 @@ extension FavoritePlaceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if UIApplication.shared.canOpenURL(URL(string: listVC.listUrl[indexPath.row])!){
             UIApplication.shared.open(URL(string: listVC.listUrl[indexPath.row])!)
+            
+            /// TODO: SafariViewに移行する時は、コメントアウトを外す
+//            let url = URL(string: listVC.listUrl[indexPath.row])
+//            if let url = url {
+//                let vc = SFSafariViewController(url: url)
+//                present(vc, animated: true, completion: nil)
         }
     }
 }
