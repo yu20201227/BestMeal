@@ -12,15 +12,14 @@ import RxSwift
 import RxCocoa
 
 enum ButtonActionOnCardSwipeView {
-    case backButton
-    case toFavListButton
+    case backButton, didTapGotoPlaceListButton
 }
 // カードスワイプ店舗選択画面
-final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate, CardSwiperModelProtocol {
+final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
     
-    var presenter: CardSwipePresenter = CardSwipeViewPresenter()
-    var placeDataModelArray = [PlaceDataModel]()
-    let disposeBag = DisposeBag()
+    private var presenter: CardSwipePresenter = CardSwipeViewPresenter()
+    private var placeDataModelArray = [PlaceDataModel]()
+    private let disposeBag = DisposeBag()
     
     @IBOutlet private weak var cardSwiper: VerticalCardSwiper!
     @IBOutlet private weak var backImageView: UIImageView!
@@ -35,7 +34,7 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
     
     override func setup() {
         goListButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.buttonAction(buttonAction: .toFavListButton)
+            self.buttonAction(buttonAction: .didTapGotoPlaceListButton)
         })
         .disposed(by: disposeBag)
         
@@ -61,21 +60,12 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
     private func buttonAction(buttonAction: ButtonActionOnCardSwipeView) {
         switch buttonAction {
         case .backButton:
-            didTapGoBackAction()
-        case .toFavListButton:
-            didTapGoNextAction()
+            self.presenter.goBackToPreviousScreen(self)
+        case .didTapGotoPlaceListButton:
+            self.presenter.gotoListScreen(self)
         }
     }
-    
-    internal func didTapGoNextAction() {
-        self.presenter.gotoListScreen(self)
-    }
-    
-    internal func didTapGoBackAction() {
-        self.presenter.goBackToPreviousScreen(self)
-    }
 }
-
 
 extension CardSwipeViewController: VerticalCardSwiperDatasource {
     
