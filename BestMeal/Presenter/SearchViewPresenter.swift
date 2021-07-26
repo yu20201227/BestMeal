@@ -21,6 +21,7 @@ protocol SearchPresenter {
     func gotoCardSwipeScreen(_ view: SearchViewController)
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager)
+    func gotoPlaceListScreen(_ view: SearchViewController)
 }
 
 final class SearchViewPresenter: SearchPresenter {
@@ -31,6 +32,11 @@ final class SearchViewPresenter: SearchPresenter {
     internal func gotoCardSwipeScreen(_ view: SearchViewController) {
         self.router.getCardsToken(view)
     }
+    
+    func gotoPlaceListScreen(_ view: SearchViewController) {
+        self.router.didTapAccessPlaceList(view)
+    }
+    
 }
 
 @available(iOS 14.0, *)
