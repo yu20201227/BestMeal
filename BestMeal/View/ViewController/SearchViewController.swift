@@ -10,7 +10,7 @@ import SwiftyJSON
 import RxSwift
 import RxCocoa
 
-enum SearchStatus {
+enum ActionButtonType {
     case search // 店舗検索開始
     case placeList // 店舗一覧リスト
 }
@@ -60,7 +60,7 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
         configureSubview()
         
         _ = self.searchButton.rx.tap.subscribe(onNext: {[unowned self] _ in
-            self.judgeSearchStatus(searchStatus: .search)
+            self.judgeActionButtonType(actionType: .search)
         }).disposed(by: disposeBag)
         
         // リスト画面へ遷移するためのアクション購読
@@ -69,8 +69,8 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
 //        }).disposed(by: disposeBag)
     }
 
-    private func judgeSearchStatus(searchStatus: SearchStatus) {
-        switch searchStatus {
+    private func judgeActionButtonType(actionType: ActionButtonType) {
+        switch actionType {
         case .search:
             self.startSearching()
         case .placeList:
