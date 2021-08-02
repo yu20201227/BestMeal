@@ -10,10 +10,9 @@ import SwiftyJSON
 import RxSwift
 import RxCocoa
 
-enum SearchActionStatus {
-    case none
-    case search
-    case gotoList
+enum ActionButtonType {
+    case search // 店舗検索開始
+    case placeList // 店舗一覧リスト
 }
 
 protocol searchActionStatusProtocol {
@@ -30,15 +29,18 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
     private var keidoValue = Double()
     private var totalHitCount = Int()
     private let locationManager = CLLocationManager()
-    private var status: SearchActionStatus = .none
+    private let disposeBag = DisposeBag()
     
     private(set) var shopDataArray = [ShopData]()
     private var presenter: SearchPresenter = SearchViewPresenter()
-        
+    
     @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var mapView: MKMapView?
     @IBOutlet private weak var searchBackImage: UIImageView!
     @IBOutlet private weak var searchButton: UIButton!
+    
+    // リストへのアクセスボタン
+    // @IBOutlet private weak var goToListButton: UIButton!
     
     override func setup() {
         mapView?.delegate = self
@@ -56,6 +58,24 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
         setup()
         startUpdatingLocation()
         configureSubview()
+        
+        _ = self.searchButton.rx.tap.subscribe(onNext: {[unowned self] _ in
+            self.judgeActionButtonType(actionType: .search)
+        }).disposed(by: disposeBag)
+        
+        // リスト画面へ遷移するためのアクション購読
+//        _ = self.goToListButton.rx.tap.subscribe(onNext: { [unowned self] _ in
+//            self.setEnumStatusAction(searchStatus: .gotoList)
+//        }).disposed(by: disposeBag)
+    }
+
+    private func judgeActionButtonType(actionType: ActionButtonType) {
+        switch actionType {
+        case .search:
+            self.startSearching()
+        case .placeList:
+            self.didTapAccessPlaceList()
+        }
     }
     
     
@@ -94,10 +114,6 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
-    }
-    
-    @IBAction func searchButton (_ sender: UIButton) {
-        startSearching()
     }
     
     func addAnnotation(shopData: [ShopData]) {
@@ -144,13 +160,12 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
         performSegue(withIdentifier: SegueIdentifier.toCards, sender: nil)
     }
     
-    @IBAction func didTapAcessListButton(_ sender: UIButton) {
+    private func didTapAccessPlaceList() {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "FavoritePlaceListViewController") as! FavoritePlaceListViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     private func startSearching() {
-        status = .search
         if searchTextField.text?.isEmpty == true {
             noKeyWordsAlert()
         }
@@ -161,7 +176,6 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
         let analyticsModel = AnalyticsModel(latitude: idoValue, longitude: keidoValue, url: urlString)
         analyticsModel.doneCatchDataProtocol = self
         analyticsModel.analyizeWithJSON()
-        status = .gotoList
     }
     
     @available(iOS 14.0, *)
