@@ -10,7 +10,7 @@
 import UIKit
 import Lottie
 
-final class RegisterViewController: BaseViewController, UITextFieldDelegate, showAlertProtocol {
+final class RegisterViewController: UIViewController, UITextFieldDelegate, showAlertProtocol {
         
     @IBOutlet private weak var userEmailTextField: UITextField!
     @IBOutlet private weak var passTextField: UITextField!
@@ -20,8 +20,15 @@ final class RegisterViewController: BaseViewController, UITextFieldDelegate, sho
     @IBOutlet private weak var goStartButton: UIButton!
     
     private var presenter: RegisterPresenter = RegisterViewPresenter()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
-    override func setup() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         userEmailTextField.delegate = self
         userEmailTextField.layer.cornerRadius = 20.0
         passTextField.delegate = self
@@ -33,18 +40,7 @@ final class RegisterViewController: BaseViewController, UITextFieldDelegate, sho
         goStartButton.layer.cornerRadius = 30.0
         goStartButton.titleLabel?.font = .boldSystemFont(ofSize: 26.0)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         // カーソルが自動的に次のTextFieldへ移動する

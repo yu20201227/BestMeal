@@ -23,7 +23,7 @@ protocol SearchViewProtocol {
     var presenter: SearchViewPresenter? { get set }
 }
 
-final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
+final class SearchViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate,CLLocationManagerDelegate, DoneCatchProtocol, showAlertProtocol {
     
     private var idoValue = Double()
     private var keidoValue = Double()
@@ -42,20 +42,17 @@ final class SearchViewController: BaseViewController, MKMapViewDelegate, UITextF
     // リストへのアクセスボタン
     // @IBOutlet private weak var goToListButton: UIButton!
     
-    override func setup() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         mapView?.delegate = self
         mapView?.mapType = .standard
         mapView?.userTrackingMode = .follow
         searchBackImage.image = R.image.zoom_saga()
         searchBackImage.contentMode = .scaleAspectFill
         searchButton.imageView?.image = R.image.search()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         view.backgroundColor = .systemGreen
-        setup()
         startUpdatingLocation()
         configureSubview()
         

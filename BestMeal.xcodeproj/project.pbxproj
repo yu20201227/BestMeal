@@ -49,7 +49,6 @@
 		EBC8E939268221D000F84287 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC8E938268221D000F84287 /* SearchRouter.swift */; };
 		EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */ = {isa = PBXBuildFile; fileRef = EBD913B825D35F6F008F23C3 /* 9637-check.json */; };
 		EBDDB6472605F2CF0033840D /* DetailedInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */; };
-		EBE5FC7A2650EAE100B7A971 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5FC792650EAE100B7A971 /* BaseViewController.swift */; };
 		EBE5FD01265107D900B7A971 /* CardSwiperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */; };
 		EBF3EBA1265120270036CD49 /* DisplayDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3EBA0265120270036CD49 /* DisplayDatas.swift */; };
 		EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */; };
@@ -114,7 +113,6 @@
 		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
 		EBDC9B68266D0E560091F381 /* BestMealUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestMealUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedInfo.storyboard; sourceTree = "<group>"; };
-		EBE5FC792650EAE100B7A971 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperModel.swift; sourceTree = "<group>"; };
 		EBF3EBA0265120270036CD49 /* DisplayDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDatas.swift; sourceTree = "<group>"; };
 		EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelOnRealm.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 		EB6F781125848AEF00C50F9F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EBE5FC792650EAE100B7A971 /* BaseViewController.swift */,
 				EB6F782E25848E7D00C50F9F /* RegisterViewController.swift */,
 				EB6F783125848E8900C50F9F /* SearchViewController.swift */,
 				EB6F783425848EA000C50F9F /* CardSwipeViewController.swift */,
@@ -551,7 +548,6 @@
 				EB01A622266B70A10098181B /* SearchInteractor.swift in Sources */,
 				EB903DE126045EA5004851B4 /* LikePlaceDatas.swift in Sources */,
 				EBF3EBA1265120270036CD49 /* DisplayDatas.swift in Sources */,
-				EBE5FC7A2650EAE100B7A971 /* BaseViewController.swift in Sources */,
 				EB8F3BC525E685D900624807 /* Constraints.swift in Sources */,
 				EB6F77FA2584889E00C50F9F /* AppDelegate.swift in Sources */,
 				EBE5FD01265107D900B7A971 /* CardSwiperModel.swift in Sources */,

@@ -14,7 +14,7 @@ import RxCocoa
 var placeDatas = [String]()
 
 // お気に入りリスト画面
-final class FavoritePlaceListViewController: BaseViewController, UINavigationControllerDelegate {
+final class FavoritePlaceListViewController: UIViewController, UINavigationControllerDelegate {
 
     private var placeDataModelArray = [PlaceDataModel]()
     private let disposeBag = DisposeBag()
@@ -36,10 +36,11 @@ final class FavoritePlaceListViewController: BaseViewController, UINavigationCon
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         overrideUserInterfaceStyle = .light
-        setup()
     }
     
-    override func setup() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         didTapGoBackButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.didTapGoBackButtonMethod()
         })

@@ -15,7 +15,7 @@ enum ButtonActionOnCardSwipeView {
     case backButton, didTapGotoPlaceListButton
 }
 // カードスワイプ店舗選択画面
-final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDelegate {
+final class CardSwipeViewController: UIViewController, VerticalCardSwiperDelegate {
     
     private var presenter: CardSwipePresenter = CardSwipeViewPresenter()
     private var placeDataModelArray = [PlaceDataModel]()
@@ -29,10 +29,11 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        setup()
     }
     
-    override func setup() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         goListButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.buttonAction(buttonAction: .didTapGotoPlaceListButton)
         })
@@ -51,10 +52,7 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
         backImageView.contentMode = .scaleAspectFill
         self.goBackButton.setImage(R.image.goBackButtonImage(), for: .normal)
         self.goListButton.setImage(R.image.listButtonImage(), for: .normal)
-    }
-    
-    func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
-        return FetchAllDatas.urlInfos.count
+        
     }
     
     private func buttonAction(buttonAction: ButtonActionOnCardSwipeView) {
@@ -65,10 +63,14 @@ final class CardSwipeViewController: BaseViewController, VerticalCardSwiperDeleg
             self.presenter.gotoListScreen(self)
         }
     }
+    
+    func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
+        return FetchAllDatas.urlInfos.count
+    }
 }
 
 extension CardSwipeViewController: VerticalCardSwiperDatasource {
-    
+        
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.cardViewCell, for: index) as? CardViewCell {
             view.backgroundColor = verticalCardSwiperView.backgroundColor
