@@ -54,16 +54,6 @@
 		EBF51CED25D9215B00F0747C /* DataModelOnRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF51CEC25D9215B00F0747C /* DataModelOnRealm.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EBDC9B6D266D0E560091F381 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB6F77EE2584889E00C50F9F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EB6F77F52584889E00C50F9F;
-			remoteInfo = BestMeal;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1149420E99BE2A84BD471CAC /* Pods-BestMeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.debug.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.debug.xcconfig"; sourceTree = "<group>"; };
 		3A25342EF01C1A0C4A99D0C0 /* Pods-BestMeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestMeal.release.xcconfig"; path = "Target Support Files/Pods-BestMeal/Pods-BestMeal.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,7 +101,6 @@
 		EBC5CEFC2602883C00ED5AD8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		EBC8E938268221D000F84287 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		EBD913B825D35F6F008F23C3 /* 9637-check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9637-check.json"; sourceTree = "<group>"; };
-		EBDC9B68266D0E560091F381 /* BestMealUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestMealUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDDB6462605F2CF0033840D /* DetailedInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedInfo.storyboard; sourceTree = "<group>"; };
 		EBE5FD00265107D900B7A971 /* CardSwiperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperModel.swift; sourceTree = "<group>"; };
 		EBF3EBA0265120270036CD49 /* DisplayDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDatas.swift; sourceTree = "<group>"; };
@@ -124,13 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4565546DD0A56F56623E9C41 /* Pods_BestMeal.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBDC9B65266D0E560091F381 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				EB6F77F62584889E00C50F9F /* BestMeal.app */,
-				EBDC9B68266D0E560091F381 /* BestMealUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,24 +336,6 @@
 			productReference = EB6F77F62584889E00C50F9F /* BestMeal.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EBDC9B67266D0E560091F381 /* BestMealUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EBDC9B6F266D0E560091F381 /* Build configuration list for PBXNativeTarget "BestMealUITests" */;
-			buildPhases = (
-				EBDC9B64266D0E560091F381 /* Sources */,
-				EBDC9B65266D0E560091F381 /* Frameworks */,
-				EBDC9B66266D0E560091F381 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EBDC9B6E266D0E560091F381 /* PBXTargetDependency */,
-			);
-			name = BestMealUITests;
-			productName = BestMealUITests;
-			productReference = EBDC9B68266D0E560091F381 /* BestMealUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -384,10 +347,6 @@
 				TargetAttributes = {
 					EB6F77F52584889E00C50F9F = {
 						CreatedOnToolsVersion = 12.2;
-					};
-					EBDC9B67266D0E560091F381 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = EB6F77F52584889E00C50F9F;
 					};
 				};
 			};
@@ -405,7 +364,6 @@
 			projectRoot = "";
 			targets = (
 				EB6F77F52584889E00C50F9F /* BestMeal */,
-				EBDC9B67266D0E560091F381 /* BestMealUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -427,13 +385,6 @@
 				EBD913B925D35F6F008F23C3 /* 9637-check.json in Resources */,
 				EBC16B7425E7677E0066B110 /* List.storyboard in Resources */,
 				EB05C82225C45AC500C0AECD /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBDC9B66266D0E560091F381 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,22 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBDC9B64266D0E560091F381 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EBDC9B6E266D0E560091F381 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EB6F77F52584889E00C50F9F /* BestMeal */;
-			targetProxy = EBDC9B6D266D0E560091F381 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB6F77FF2584889E00C50F9F /* Register.storyboard */ = {
@@ -803,47 +739,6 @@
 			};
 			name = Release;
 		};
-		EBDC9B70266D0E560091F381 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BestMealUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.LIAM.BestMealUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BestMeal;
-			};
-			name = Debug;
-		};
-		EBDC9B71266D0E560091F381 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BestMealUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LIAM.BestMealUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BestMeal;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -861,15 +756,6 @@
 			buildConfigurations = (
 				EB6F780B2584889F00C50F9F /* Debug */,
 				EB6F780C2584889F00C50F9F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EBDC9B6F266D0E560091F381 /* Build configuration list for PBXNativeTarget "BestMealUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EBDC9B70266D0E560091F381 /* Debug */,
-				EBDC9B71266D0E560091F381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
