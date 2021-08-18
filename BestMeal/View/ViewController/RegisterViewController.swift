@@ -58,9 +58,9 @@ final class RegisterViewController: UIViewController, UITextFieldDelegate, showA
     
     @IBAction func registerButton(_ sender: UIButton) {
         
-        if userEmailTextField.text!.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber { registerPermittedAnimation() }
+        if userEmailTextField.text?.isEmpty != true && passTextField.text!.count >= Numbers.smallestPassNumber { registerPermittedAnimation() }
         
-        else if userEmailTextField.text!.isEmpty == true || passTextField.text!.isEmpty == true {
+        else if userEmailTextField.text?.isEmpty == true || passTextField.text?.isEmpty == true {
             occureVibration()
             canNotRegisterAlert()
             return
